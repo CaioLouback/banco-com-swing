@@ -35,6 +35,7 @@ public class Login extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de login");
+        setResizable(false);
 
         jButtonLogin.setText("Entrar");
 
