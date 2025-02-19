@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package com.mycompany.banco.view;
 
-/**
- *
- * @author caiol
- */
+import java.awt.Component;
+import javax.swing.JOptionPane;
+
+
+
+
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -15,6 +14,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        
     }
 
     /**
@@ -38,6 +38,11 @@ public class Login extends javax.swing.JFrame {
         setResizable(false);
 
         jButtonLogin.setText("Entrar");
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLoginActionPerformed(evt);
+            }
+        });
 
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +112,18 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
+    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
+         if(jTextFieldUsuario.getText() != null && !jTextFieldUsuario.getText().isEmpty() && 
+         jPasswordFieldLogin.getText() != null && !jPasswordFieldLogin.getText().isEmpty() ){
+             Component btnNewButton = null;
+             JOptionPane.showMessageDialog(btnNewButton, "sei la");
+             
+         } else {
+             Component btnNewButton = null;
+             JOptionPane.showMessageDialog(btnNewButton, "Informações inválidas!");
+         }
+    }//GEN-LAST:event_jButtonLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -152,4 +169,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordFieldLogin;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
+
+   
 }
