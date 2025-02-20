@@ -32,7 +32,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         btnLogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tela de cadastro");
+        setTitle("Tela de Cadastro");
         setResizable(false);
 
         jButtonCadastrar.setText("Cadastrar");
