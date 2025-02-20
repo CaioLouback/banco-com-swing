@@ -1,6 +1,7 @@
 package com.mycompany.banco.view;
 
 import java.awt.Component;
+import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -10,6 +11,7 @@ public class TelaCadastro extends javax.swing.JFrame {
   
     public TelaCadastro() {
         initComponents();
+        setIcon();
     }
 
     @SuppressWarnings("unchecked")
@@ -221,4 +223,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldCPF;
     private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
+    }
 }
