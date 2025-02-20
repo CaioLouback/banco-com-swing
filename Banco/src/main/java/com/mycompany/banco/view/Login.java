@@ -4,6 +4,10 @@ package com.mycompany.banco.view;
 import java.awt.Component;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 
 
 
@@ -16,6 +20,24 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setIcon();
+        ((AbstractDocument) txtNome.getDocument()).setDocumentFilter(new DocumentFilter() {
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                if (string.matches("[a-zA-Z ]+")) {  
+                    super.insertString(fb, offset, string, attr);
+                }
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                if (text.matches("[a-zA-Z ]+")) {  
+                    super.replace(fb, offset, length, text, attrs);
+                }
+            }
+        });
+        
+        
+        
     }
 
     /**
@@ -29,7 +51,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnEntrar = new javax.swing.JButton();
-        jTextFieldUsuario = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         jPasswordFieldLogin = new javax.swing.JPasswordField();
         jLabelUsuario = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
@@ -47,9 +69,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldUsuarioActionPerformed(evt);
+                txtNomeActionPerformed(evt);
             }
         });
 
@@ -85,7 +107,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(btnCadastrar))
                             .addComponent(jLabelSenha)
                             .addComponent(jPasswordFieldLogin)
-                            .addComponent(jTextFieldUsuario))))
+                            .addComponent(txtNome))))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -95,7 +117,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(jLabelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -127,12 +149,12 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-         if(jTextFieldUsuario.getText() != null || jTextFieldUsuario.getText().isEmpty() && 
+         if(txtNome.getText() != null || txtNome.getText().isEmpty() && 
          jPasswordFieldLogin.getPassword() != null || jPasswordFieldLogin.getText().isEmpty() ){
              Component btnNewButton = null;
              JOptionPane.showMessageDialog(btnNewButton, "Há informações em branco. Favor inserir um cadastro válido!"); 
@@ -191,7 +213,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldLogin;
-    private javax.swing.JTextField jTextFieldUsuario;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
