@@ -7,8 +7,7 @@ import javax.swing.SwingUtilities;
 
 
 public class TelaCadastro extends javax.swing.JFrame {
-
-    
+  
     public TelaCadastro() {
         initComponents();
     }
@@ -28,10 +27,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPasswordFieldCadastro = new javax.swing.JPasswordField();
         jTextFieldCPF = new javax.swing.JTextField();
         jTextFieldNome = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnLogar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Tela de cadastro");
+        setResizable(false);
 
         jButtonCadastrar.setText("Cadastrar");
         jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
@@ -58,10 +58,10 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jLabelSenhaCadastro.setText("Senha:");
 
-        jButton1.setText("Logar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogar.setText("Logar");
+        btnLogar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLogarActionPerformed(evt);
             }
         });
 
@@ -93,7 +93,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                         .addGap(17, 17, 17)
                         .addComponent(jButtonCadastrar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLogar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -120,7 +120,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar)
-                    .addComponent(jButton1))
+                    .addComponent(btnLogar))
                 .addGap(15, 15, 15))
         );
 
@@ -142,6 +142,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jComboBoxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUsuarioActionPerformed
@@ -162,14 +163,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         SwingUtilities.invokeLater(() -> {
-            Login login = new Login();  // Substitua "Login" pelo nome correto do seu JFrame
-            login.setLocationRelativeTo(null);
-            login.setVisible(true);  // Torna o JFrame visível
-            login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        });
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
+        Login login = new Login();
+        this.dispose();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);  // Torna o JFrame visível
+    }//GEN-LAST:event_btnLogarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,7 +208,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogar;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JComboBox<String> jComboBoxUsuario;
     private javax.swing.JLabel jLabelCPFCadastro;
