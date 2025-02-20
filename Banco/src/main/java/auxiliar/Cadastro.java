@@ -17,4 +17,9 @@ public class Cadastro {
     public void cadastrarGerente(String nome, String cpf, String senha){
         Gerente gerente = new Gerente(nome, cpf, senha);
     }
+    
+    
+    
+    
+    
 }

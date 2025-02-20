@@ -37,7 +37,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Tela de Login");
+        setTitle("Login");
         setResizable(false);
 
         btnEntrar.setText("Entrar");
