@@ -20,24 +20,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         setIcon();
-        ((AbstractDocument) txtNome.getDocument()).setDocumentFilter(new DocumentFilter() {
-            @Override
-            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
-                if (string.matches("[a-zA-Z ]+")) {  
-                    super.insertString(fb, offset, string, attr);
-                }
-            }
-
-            @Override
-            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-                if (text.matches("[a-zA-Z ]+")) {  
-                    super.replace(fb, offset, length, text, attrs);
-                }
-            }
-        });
-        
-        
-        
+         
     }
 
     /**
@@ -51,12 +34,12 @@ public class Login extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         btnEntrar = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
         jPasswordFieldLogin = new javax.swing.JPasswordField();
         jLabelUsuario = new javax.swing.JLabel();
         jLabelSenha = new javax.swing.JLabel();
         btnCadastrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        txtCPF = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -69,13 +52,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
-
-        jLabelUsuario.setText("Usuário:");
+        jLabelUsuario.setText("Usuário (CPF):");
 
         jLabelSenha.setText("Senha:");
 
@@ -87,6 +64,12 @@ public class Login extends javax.swing.JFrame {
         });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
+
+        try {
+            txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -107,8 +90,8 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(btnCadastrar))
                             .addComponent(jLabelSenha)
                             .addComponent(jPasswordFieldLogin)
-                            .addComponent(txtNome))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                            .addComponent(txtCPF))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,7 +100,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabelUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
                 .addComponent(jLabelSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -149,12 +132,8 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-         if(txtNome.getText() != null || txtNome.getText().isEmpty() && 
+         if(txtCPF.getText() != null || txtCPF.getText().isEmpty() && 
          jPasswordFieldLogin.getPassword() != null || jPasswordFieldLogin.getText().isEmpty() ){
              Component btnNewButton = null;
              JOptionPane.showMessageDialog(btnNewButton, "Há informações em branco. Favor inserir um cadastro válido!"); 
@@ -213,7 +192,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordFieldLogin;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JFormattedTextField txtCPF;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
