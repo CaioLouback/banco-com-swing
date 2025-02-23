@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class ArquivoJson {
     private static final String CAMINHO_ARQUIVO = "usuarios.json"; // Nome do arquivo JSON
-    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     
     public static void salvarUsuario(Usuario usuario) {
         List<Usuario> usuarios = lerUsuarios(); // Carrega os usuários já salvos
@@ -23,7 +23,7 @@ public class ArquivoJson {
 
         try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO)) {
             gson.toJson(usuarios, writer);
-            System.out.println("Usuário salvo com sucesso!");
+            System.out.println("Usuario salvo com sucesso!");
         } catch (IOException e) {
             e.printStackTrace();
         }

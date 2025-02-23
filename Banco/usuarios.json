@@ -1,20 +1,16 @@
 [
   {
-    "nome": "Gleiph",
-    "cpf": "404.578.560-41",
-    "senha": "admin",
-    "tipo": "Gerente"
-  },
-  {
-    "nome": "Caio Cesar",
-    "cpf": "426.484.190-98",
+    "nome": "Caio",
+    "cpf": "431.694.970-57",
     "senha": "123",
-    "tipo": "Cliente"
+    "tipo": "Cliente",
+    "saldo": 100.0
   },
   {
-    "nome": "Maria",
-    "cpf": "726.939.490-33",
+    "nome": "Cesar",
+    "cpf": "228.744.780-67",
     "senha": "321",
-    "tipo": "Caixa"
+    "tipo": "Caixa",
+    "saldo": 0.0
   }
 ]
