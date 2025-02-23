@@ -18,5 +18,4 @@ public class Cadastro {
         Gerente gerente = new Gerente(nome, cpf, senha);
     }
      
-    
 }

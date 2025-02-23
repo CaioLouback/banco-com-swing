@@ -133,11 +133,14 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-         if(txtCPF.getText() != null || txtCPF.getText().isEmpty() && 
-         jPasswordFieldLogin.getPassword() != null || jPasswordFieldLogin.getText().isEmpty() ){
+         if(txtCPF.getText() == null || txtCPF.getText().isEmpty() || 
+         jPasswordFieldLogin.getPassword() == null || jPasswordFieldLogin.getText().isEmpty() ){
              Component btnNewButton = null;
              JOptionPane.showMessageDialog(btnNewButton, "Há informações em branco. Favor inserir um cadastro válido!"); 
-         } 
+         } //else if (txtCPF.getText() != || jPasswordFieldLogin !=  ){
+             //Component btnNewButton = null;
+             //JOptionPane.showMessageDialog(btnNewButton, "Cadastro inválido! Favor realizar um cadastro."); 
+         //} 
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed

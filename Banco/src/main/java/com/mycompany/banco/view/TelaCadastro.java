@@ -1,6 +1,7 @@
 package com.mycompany.banco.view;
 
-import auxiliar.Cpf;
+import auxiliar.Cadastro;
+import auxiliar.Verifica;
 import java.awt.Component;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
@@ -42,7 +43,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jButtonCadastrar = new javax.swing.JButton();
-        jComboBoxUsuario = new javax.swing.JComboBox<>();
+        jBox = new javax.swing.JComboBox<>();
         jLabelTituloCadastro = new javax.swing.JLabel();
         jLabelOpcao = new javax.swing.JLabel();
         jLabelNomeCadastro = new javax.swing.JLabel();
@@ -67,10 +68,10 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
-        jComboBoxUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Caixa", "Gerente"}));
-        jComboBoxUsuario.addActionListener(new java.awt.event.ActionListener() {
+        jBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Caixa", "Gerente"}));
+        jBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxUsuarioActionPerformed(evt);
+                jBoxActionPerformed(evt);
             }
         });
 
@@ -123,7 +124,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                                                 .addComponent(jLabelTituloCadastro))))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGap(82, 82, 82)
-                                        .addComponent(jComboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabelSenhaCadastro)
                                     .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
@@ -142,7 +143,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabelOpcao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBoxUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelNomeCadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -181,9 +182,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBoxUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUsuarioActionPerformed
+    private void jBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoxActionPerformed
        //
-    }//GEN-LAST:event_jComboBoxUsuarioActionPerformed
+    }//GEN-LAST:event_jBoxActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
         if(txtNome.getText() == null || txtNome.getText().isEmpty()){
@@ -199,19 +200,27 @@ public class TelaCadastro extends javax.swing.JFrame {
             String nome = txtNome.getText();
             String senha = jSenha.getPassword().toString();
             String numCpf = txtCPF.getText();
-            Cpf cpf = new Cpf(numCpf);
+            Verifica cpf = new Verifica(numCpf);
             
             if(!cpf.isCPF()){
                 Component btnNewButton = null;
                 JOptionPane.showMessageDialog(btnNewButton, "CPF inválido! Favor inserir um CPF válido!");
             } else {
+                Cadastro c = new Cadastro();
+
+                if("Cliente".equals(jBox.getSelectedItem().toString())){
+                    c.cadastrarCliente(nome, numCpf, senha);
+                } else if ("Caixa".equals(jBox.getSelectedItem().toString())){
+                    c.cadastrarCaixa(nome, numCpf, senha);
+                } else if ("Gerente".equals(jBox.getSelectedItem().toString())){
+                    c.cadastrarGerente(nome, numCpf, senha);
+                } 
                 Component btnNewButton = null;
-                JOptionPane.showMessageDialog(btnNewButton, "TUDO CERTO!!");
-            }
-            
-            
+                JOptionPane.showMessageDialog(btnNewButton, "Cadastro realizado com sucesso!");
+ 
+            } 
         }
-        
+     
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -259,8 +268,8 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jBox;
     private javax.swing.JButton jButtonCadastrar;
-    private javax.swing.JComboBox<String> jComboBoxUsuario;
     private javax.swing.JLabel jLabelCPFCadastro;
     private javax.swing.JLabel jLabelNomeCadastro;
     private javax.swing.JLabel jLabelOpcao;

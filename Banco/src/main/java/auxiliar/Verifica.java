@@ -4,11 +4,11 @@ package auxiliar;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 
-public class Cpf {
+public class Verifica {
     private String cpf;
     private static final String Formato = "###.###.###-##";
     
-    public Cpf(String C) {
+    public Verifica(String C) {
         this.cpf = this.Format(C,false);
     }
     
