@@ -4,6 +4,7 @@ import auxiliar.Cadastro;
 import auxiliar.Verifica;
 import java.awt.Component;
 import java.awt.Toolkit;
+import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -53,6 +54,8 @@ public class TelaCadastro extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtCPF = new javax.swing.JFormattedTextField();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
+        jSenha2 = new javax.swing.JPasswordField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -112,6 +115,8 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Confirmar Senha:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,12 +137,14 @@ public class TelaCadastro extends javax.swing.JFrame {
                             .addComponent(jBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabelCPFCadastro)
                                 .addComponent(jLabelSenhaCadastro)
-                                .addComponent(jSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jCheckBox1))))
+                                .addComponent(jSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                                .addComponent(jCheckBox1)
+                                .addComponent(jLabel1)
+                                .addComponent(jSenha2))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(75, 75, 75)
                         .addComponent(jButtonCadastrar)))
@@ -146,7 +153,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jLabelTituloCadastro)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelOpcao)
@@ -164,7 +171,11 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addComponent(jLabelSenhaCadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCadastrar)
@@ -184,8 +195,8 @@ public class TelaCadastro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -209,32 +220,39 @@ public class TelaCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Favor inserir uma senha!");
             return;
         }
-
-        // Obtendo os valores
-        String nome = txtNome.getText().trim();
-        String senha = new String(jSenha.getPassword());
-        String numCpf = txtCPF.getText().trim();
-
-        Verifica cpf = new Verifica(numCpf);
-
-        if (!cpf.isCPF()) {
-            JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir um CPF válido!");
+        if (jSenha2.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Favor confirmar a sua senha!");
             return;
         }
+        if(Arrays.equals(jSenha2.getPassword(), jSenha.getPassword())){
+            // Obtendo os valores
+            String nome = txtNome.getText().trim();
+            String senha = new String(jSenha.getPassword());
+            String numCpf = txtCPF.getText().trim();
 
-        Cadastro c = new Cadastro();
-        String tipoUsuario = jBox.getSelectedItem().toString();
+            Verifica cpf = new Verifica(numCpf);
+            
+            if (!cpf.isCPF()) {
+                JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir um CPF válido!");
+                return;
+            }
 
-        if ("Cliente".equals(tipoUsuario)) {
-            c.cadastrarCliente(nome, numCpf, senha);
-        } else if ("Caixa".equals(tipoUsuario)) {
-            c.cadastrarCaixa(nome, numCpf, senha);
-        } else if ("Gerente".equals(tipoUsuario)) {
-            c.cadastrarGerente(nome, numCpf, senha);
-        }
-        
-        JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
-        reset();
+            Cadastro c = new Cadastro();
+            String tipoUsuario = jBox.getSelectedItem().toString();
+
+            if ("Cliente".equals(tipoUsuario)) {
+                c.cadastrarCliente(nome, numCpf, senha);
+            } else if ("Caixa".equals(tipoUsuario)) {
+                c.cadastrarCaixa(nome, numCpf, senha);
+            } else if ("Gerente".equals(tipoUsuario)) {
+                c.cadastrarGerente(nome, numCpf, senha);
+            }
+
+            JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
+            reset();
+        } else {
+            JOptionPane.showMessageDialog(this, "Sua confirmação de senha está incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);   
+        }  
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -242,10 +260,13 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if(jCheckBox1.isSelected())
+        if(jCheckBox1.isSelected()){
             jSenha.setEchoChar((char)0);
-        else
-           jSenha.setEchoChar('*');
+            jSenha2.setEchoChar((char)0);
+        }else{
+            jSenha.setEchoChar('*');
+            jSenha2.setEchoChar('*');
+        }    
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
@@ -292,6 +313,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jBox;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCPFCadastro;
     private javax.swing.JLabel jLabelNomeCadastro;
     private javax.swing.JLabel jLabelOpcao;
@@ -300,6 +322,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField jSenha;
+    private javax.swing.JPasswordField jSenha2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JTextField txtNome;
@@ -310,8 +333,20 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
     
     private void reset(){
-        txtCPF.setText(null);
-        jSenha.setText(null);
-        txtNome.setText(null);
+         txtCPF.setFocusable(false);
+        jSenha.setFocusable(false);
+        txtNome.setFocusable(false);
+        jSenha2.setFocusable(false);
+
+        txtCPF.setText("");
+        jSenha.setText("");
+        txtNome.setText("");
+        jSenha2.setText("");
+
+        txtCPF.setFocusable(true);
+        jSenha.setFocusable(true);
+        txtNome.setFocusable(true);
+        jSenha2.setFocusable(true);
+        
     }
 }
