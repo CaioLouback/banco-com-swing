@@ -10,6 +10,7 @@ import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class ArquivoJson {
@@ -43,6 +44,32 @@ public class ArquivoJson {
             return new ArrayList<>();
         }
     }
+    
+    public static void removerUsuarioPorCPF(String cpf) {
+        try {
+            // Ler o JSON
+            Gson gson = new Gson();
+            String FILE_PATH = null;
+            Reader reader = new FileReader(FILE_PATH);
+            Type listType = new TypeToken<List<Map<String, String>>>() {}.getType();
+            List<Map<String, String>> usuarios = gson.fromJson(reader, listType);
+            reader.close();
+
+            // Remover o usuário com o CPF fornecido
+            usuarios.removeIf(usuario -> usuario.get("cpf").equals(cpf));
+
+            // Salvar o JSON atualizado
+            Writer writer = new FileWriter(FILE_PATH);
+            gson.toJson(usuarios, writer);
+            writer.close();
+
+            System.out.println("Usuário removido com sucesso!");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     
    /* public static Usuario buscarUsuarioPorCPF(String cpf) {

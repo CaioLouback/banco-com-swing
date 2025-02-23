@@ -187,40 +187,43 @@ public class TelaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_jBoxActionPerformed
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        if(txtNome.getText() == null || txtNome.getText().isEmpty()){
-            Component btnNewButton = null;
-            JOptionPane.showMessageDialog(btnNewButton, "Favor inserir um nome!");
-        } else if(txtCPF.getText() == null || txtCPF.getText().isEmpty()){
-            Component btnNewButton = null;
-            JOptionPane.showMessageDialog(btnNewButton, "Favor inserir um CPF!");
-        }else if(jSenha.getPassword() == null || jSenha.getText().isEmpty()){
-            Component btnNewButton = null;
-            JOptionPane.showMessageDialog(btnNewButton, "Favor inserir uma senha!");
-        } else {
-            String nome = txtNome.getText();
-            String senha = jSenha.getPassword().toString();
-            String numCpf = txtCPF.getText();
-            Verifica cpf = new Verifica(numCpf);
-            
-            if(!cpf.isCPF()){
-                Component btnNewButton = null;
-                JOptionPane.showMessageDialog(btnNewButton, "CPF inválido! Favor inserir um CPF válido!");
-            } else {
-                Cadastro c = new Cadastro();
-
-                if("Cliente".equals(jBox.getSelectedItem().toString())){
-                    c.cadastrarCliente(nome, numCpf, senha);
-                } else if ("Caixa".equals(jBox.getSelectedItem().toString())){
-                    c.cadastrarCaixa(nome, numCpf, senha);
-                } else if ("Gerente".equals(jBox.getSelectedItem().toString())){
-                    c.cadastrarGerente(nome, numCpf, senha);
-                } 
-                Component btnNewButton = null;
-                JOptionPane.showMessageDialog(btnNewButton, "Cadastro realizado com sucesso!");
- 
-            } 
+         if (txtNome.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Favor inserir um nome!");
+            return;
         }
-     
+        if (txtCPF.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Favor inserir um CPF!");
+            return;
+        }
+        if (jSenha.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Favor inserir uma senha!");
+            return;
+        }
+
+        // Obtendo os valores
+        String nome = txtNome.getText().trim();
+        String senha = new String(jSenha.getPassword());
+        String numCpf = txtCPF.getText().trim();
+
+        Verifica cpf = new Verifica(numCpf);
+
+        if (!cpf.isCPF()) {
+            JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir um CPF válido!");
+            return;
+        }
+
+        Cadastro c = new Cadastro();
+        String tipoUsuario = jBox.getSelectedItem().toString();
+
+        if ("Cliente".equals(tipoUsuario)) {
+            c.cadastrarCliente(nome, numCpf, senha);
+        } else if ("Caixa".equals(tipoUsuario)) {
+            c.cadastrarCaixa(nome, numCpf, senha);
+        } else if ("Gerente".equals(tipoUsuario)) {
+            c.cadastrarGerente(nome, numCpf, senha);
+        }
+
+        JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed

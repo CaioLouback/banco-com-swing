@@ -1,9 +1,20 @@
 [
   {
-    "saldo": 0.0,
-    "nome": "Caio",
-    "cpf": "909.753.836-04",
-    "senha": "[C@27317ea7",
+    "nome": "Gleiph",
+    "cpf": "404.578.560-41",
+    "senha": "admin",
+    "tipo": "Gerente"
+  },
+  {
+    "nome": "Caio Cesar",
+    "cpf": "426.484.190-98",
+    "senha": "123",
     "tipo": "Cliente"
+  },
+  {
+    "nome": "Maria",
+    "cpf": "726.939.490-33",
+    "senha": "321",
+    "tipo": "Caixa"
   }
 ]

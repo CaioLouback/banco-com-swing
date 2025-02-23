@@ -4,6 +4,8 @@
  */
 package com.mycompany.banco.view;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author caiol
@@ -15,6 +17,7 @@ public class MenuCliente extends javax.swing.JFrame {
      */
     public MenuCliente() {
         initComponents();
+        setIcon();
     }
 
     /**
@@ -30,6 +33,8 @@ public class MenuCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cliente");
+        setResizable(false);
 
         jLabel1.setText("Tela Cliente!");
 
@@ -100,9 +105,16 @@ public class MenuCliente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuCliente().setVisible(true);
+                MenuCliente menu = new MenuCliente();
+                menu.setLocationRelativeTo(null); 
+                menu.setVisible(true);
+                
+                
             }
         });
+    }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

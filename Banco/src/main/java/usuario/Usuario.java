@@ -1,7 +1,7 @@
 package usuario;
 
 
-public abstract class Usuario {
+public class Usuario {
     protected String nome;
     protected String cpf;
     protected String senha;
@@ -12,6 +12,22 @@ public abstract class Usuario {
         this.cpf = cpf;
         this.senha = senha;
         this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getSenha() {
+        return senha;
     }
     
     

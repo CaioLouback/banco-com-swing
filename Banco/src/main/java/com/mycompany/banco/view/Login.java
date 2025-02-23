@@ -1,13 +1,16 @@
 
 package com.mycompany.banco.view;
 
+import auxiliar.ArquivoJson;
 import java.awt.Component;
 import java.awt.Toolkit;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+import usuario.Usuario;
 
 
 
@@ -133,14 +136,36 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-         if(txtCPF.getText() == null || txtCPF.getText().isEmpty() || 
-         jPasswordFieldLogin.getPassword() == null || jPasswordFieldLogin.getText().isEmpty() ){
-             Component btnNewButton = null;
-             JOptionPane.showMessageDialog(btnNewButton, "Há informações em branco. Favor inserir um cadastro válido!"); 
-         } //else if (txtCPF.getText() != || jPasswordFieldLogin !=  ){
-             //Component btnNewButton = null;
-             //JOptionPane.showMessageDialog(btnNewButton, "Cadastro inválido! Favor realizar um cadastro."); 
-         //} 
+        // Verifica se os campos estão vazios
+        if (txtCPF.getText().trim().isEmpty() || jPasswordFieldLogin.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Obtém os valores do CPF e senha digitados
+        String cpfDigitado = txtCPF.getText().trim();
+        String senhaDigitada = new String(jPasswordFieldLogin.getPassword());
+
+        // Carrega os usuários do JSON
+        List<Usuario> usuarios = ArquivoJson.lerUsuarios();
+
+        // Percorre os usuários e verifica se há correspondência
+        boolean loginValido = false;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
+                loginValido = true;
+                MenuCliente menu = new MenuCliente();
+                menu.setVisible(true);
+                menu.setLocationRelativeTo(null);
+                this.dispose();
+                break;
+            }
+        }
+
+        // Se não encontrou um usuário válido, exibe mensagem de erro
+        if (!loginValido) {
+            JOptionPane.showMessageDialog(this, "CPF ou senha incorretos. Tente novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
