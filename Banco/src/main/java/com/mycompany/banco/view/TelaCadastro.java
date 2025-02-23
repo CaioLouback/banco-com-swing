@@ -222,8 +222,9 @@ public class TelaCadastro extends javax.swing.JFrame {
         } else if ("Gerente".equals(tipoUsuario)) {
             c.cadastrarGerente(nome, numCpf, senha);
         }
-
+        
         JOptionPane.showMessageDialog(this, "Cadastro realizado com sucesso!");
+        reset();
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -288,5 +289,11 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cadastroicon.png")));
+    }
+    
+    private void reset(){
+        txtCPF.setText(null);
+        jSenha.setText(null);
+        txtNome.setText(null);
     }
 }

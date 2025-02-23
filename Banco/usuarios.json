@@ -12,5 +12,12 @@
     "senha": "321",
     "tipo": "Caixa",
     "saldo": 0.0
+  },
+  {
+    "nome": "Gleiph",
+    "cpf": "769.419.790-03",
+    "senha": "admin",
+    "tipo": "Gerente",
+    "saldo": 0.0
   }
 ]
