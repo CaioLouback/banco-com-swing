@@ -1,6 +1,7 @@
 package com.mycompany.banco.view;
 
-import static auxiliar.ArquivoJson.getSaldoPorCpf;
+
+import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Toolkit;
 import usuario.Usuario;
 
@@ -31,7 +32,6 @@ public class MenuCliente extends javax.swing.JFrame {
         lblTituloSaldo = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        lblRS = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jInvestimentos = new javax.swing.JMenu();
         jRendaFixa = new javax.swing.JMenuItem();
@@ -51,6 +51,15 @@ public class MenuCliente extends javax.swing.JFrame {
 
         lblNomeCliente.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         lblNomeCliente.setText("Nome do Cliente");
+        lblNomeCliente.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblNomeClienteAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
         lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
         lblLogoBanco.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -100,9 +109,20 @@ public class MenuCliente extends javax.swing.JFrame {
 
         jCheckBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jCheckBox1.setText("Mostrar Saldo");
-
-        lblRS.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
-        lblRS.setText("R$");
+        jCheckBox1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jCheckBox1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         jInvestimentos.setText("Investimentos");
 
@@ -142,8 +162,6 @@ public class MenuCliente extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTituloSaldo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblRS)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblSaldo)))))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -155,8 +173,7 @@ public class MenuCliente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTituloSaldo)
-                    .addComponent(lblSaldo)
-                    .addComponent(lblRS))
+                    .addComponent(lblSaldo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jCheckBox1)
                 .addGap(27, 27, 27))
@@ -166,8 +183,28 @@ public class MenuCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSaldoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblSaldoAncestorAdded
-        lblSaldo.setText(String.valueOf(getSaldoPorCpf(cpfLogado)));
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        if(user != null)
+            lblSaldo.setText(String.format("R$ %.2f", user.getSaldo()));
     }//GEN-LAST:event_lblSaldoAncestorAdded
+
+    private void lblNomeClienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeClienteAncestorAdded
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        lblNomeCliente.setText(user.getNome());
+    }//GEN-LAST:event_lblNomeClienteAncestorAdded
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        if (jCheckBox1.isSelected()) {
+            lblSaldo.setText(String.format("R$ %.2f", user.getSaldo())); // Exibe o saldo formatado
+        } else {
+            lblSaldo.setText("*"); // Esconde o saldo
+        }
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void jCheckBox1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jCheckBox1AncestorAdded
+        
+    }//GEN-LAST:event_jCheckBox1AncestorAdded
 
     /**
      * @param args the command line arguments
@@ -224,7 +261,6 @@ public class MenuCliente extends javax.swing.JFrame {
     private javax.swing.JMenuItem jRendaVariavel;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeCliente;
-    private javax.swing.JLabel lblRS;
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblTituloSaldo;
     // End of variables declaration//GEN-END:variables

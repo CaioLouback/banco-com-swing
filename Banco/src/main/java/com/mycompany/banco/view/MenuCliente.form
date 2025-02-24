@@ -79,8 +79,6 @@
                           <Group type="102" attributes="0">
                               <Component id="lblTituloSaldo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblRS" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblSaldo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -99,7 +97,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblTituloSaldo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblSaldo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblRS" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
@@ -169,6 +166,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Nome do Cliente"/>
           </Properties>
+          <Events>
+            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="lblNomeClienteAncestorAdded"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblLogoBanco">
           <Properties>
@@ -210,14 +210,10 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Mostrar Saldo"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblRS">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Cambria Math" size="18" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="R$"/>
-      </Properties>
+      <Events>
+        <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="jCheckBox1AncestorAdded"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

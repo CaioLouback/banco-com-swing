@@ -69,24 +69,7 @@ public class ArquivoJson {
         }
     }
     
-    public static Double getSaldoPorCpf(String cpf) {
-        try (FileReader reader = new FileReader(CAMINHO_ARQUIVO)) {
-            Type listType = new TypeToken<List<Usuario>>() {}.getType();
-            List<Usuario> usuarios = gson.fromJson(reader, listType);
-
-            for (Usuario u : usuarios) {
-                if (u.getCpf().equals(cpf)) {
-                    return u.getSaldo(); // Retorna o saldo do usuário encontrado
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null; // Retorna null se o CPF não for encontrado
-    }
-    
-    
-   /* public static Usuario buscarUsuarioPorCPF(String cpf) {
+   public static Usuario buscarUsuarioPorCPF(String cpf) {
         List<Usuario> usuarios = lerUsuarios();
         for (Usuario usuario : usuarios) {
             if (usuario.getCpf().equals(cpf)) {
@@ -94,6 +77,6 @@ public class ArquivoJson {
             }
         }
         return null; // Retorna null se o usuário não for encontrado
-    }*/
+    }
      
 }
