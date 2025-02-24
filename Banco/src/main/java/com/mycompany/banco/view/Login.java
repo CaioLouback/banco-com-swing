@@ -170,7 +170,7 @@ public class Login extends javax.swing.JFrame {
         for (Usuario usuario : usuarios) {
             if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
                 loginValido = true;
-                MenuCliente menu = new MenuCliente();
+                MenuCliente menu = new MenuCliente(cpfDigitado);
                 menu.setVisible(true);
                 menu.setLocationRelativeTo(null);
                 this.dispose();
