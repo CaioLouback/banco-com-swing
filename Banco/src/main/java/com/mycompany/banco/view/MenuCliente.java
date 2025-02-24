@@ -31,10 +31,12 @@ public class MenuCliente extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnConsultarSaldo = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lblNomeCliente = new javax.swing.JLabel();
         lblLogoBanco = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        lblTituloSaldo = new javax.swing.JLabel();
+        lblSaldo = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        lblRS = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jInvestimentos = new javax.swing.JMenu();
         jRendaFixa = new javax.swing.JMenuItem();
@@ -47,20 +49,16 @@ public class MenuCliente extends javax.swing.JFrame {
         setTitle("Cliente");
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel1.setText("Bem-Vindo: ");
 
-        btnConsultarSaldo.setText("Consultar Saldo");
-        btnConsultarSaldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarSaldoActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Nome do Cliente");
+        lblNomeCliente.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblNomeCliente.setText("Nome do Cliente");
 
         lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
+        lblLogoBanco.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -69,39 +67,38 @@ public class MenuCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblLogoBanco))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(133, 133, 133)
-                                .addComponent(btnConsultarSaldo))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(103, 103, 103)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                        .addGap(60, 60, 60)
+                        .addComponent(lblLogoBanco))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNomeCliente)))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(7, 7, 7)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNomeCliente)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(8, 8, 8)
                 .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
-                .addComponent(btnConsultarSaldo)
-                .addGap(14, 14, 14))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        lblTituloSaldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTituloSaldo.setText("Saldo Bancário: ");
+
+        lblSaldo.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        lblSaldo.setText("S");
+
+        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jCheckBox1.setText("Mostrar Saldo");
+
+        lblRS.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        lblRS.setText("R$");
 
         jInvestimentos.setText("Investimentos");
 
@@ -130,23 +127,39 @@ public class MenuCliente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblTituloSaldo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblRS)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblSaldo)))))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTituloSaldo)
+                    .addComponent(lblSaldo)
+                    .addComponent(lblRS))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox1)
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnConsultarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarSaldoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnConsultarSaldoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,18 +204,20 @@ public class MenuCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnConsultarSaldo;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JMenuItem jCredito;
     private javax.swing.JMenuItem jExtrato;
     private javax.swing.JMenu jInvestimentos;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuSolicitacao;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem jRendaFixa;
     private javax.swing.JMenuItem jRendaVariavel;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblLogoBanco;
+    private javax.swing.JLabel lblNomeCliente;
+    private javax.swing.JLabel lblRS;
+    private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblTituloSaldo;
     // End of variables declaration//GEN-END:variables
 }
