@@ -45,7 +45,7 @@ public class MenuCliente extends javax.swing.JFrame {
         lblTituloSaldo = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         saldoBox = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        btnTransferenciaBancaria = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jInvestimentos = new javax.swing.JMenu();
         jRendaFixa = new javax.swing.JMenuItem();
@@ -137,8 +137,13 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
-        jButton1.setText("  Transferência");
+        btnTransferenciaBancaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
+        btnTransferenciaBancaria.setText("  Transferência");
+        btnTransferenciaBancaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransferenciaBancariaActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -199,7 +204,7 @@ public class MenuCliente extends javax.swing.JFrame {
                         .addComponent(lblSaldo))
                     .addComponent(saldoBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnTransferenciaBancaria)
                 .addGap(43, 43, 43))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -219,7 +224,7 @@ public class MenuCliente extends javax.swing.JFrame {
                             .addComponent(lblSaldo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saldoBox))
-                    .addComponent(jButton1))
+                    .addComponent(btnTransferenciaBancaria))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
@@ -261,6 +266,14 @@ public class MenuCliente extends javax.swing.JFrame {
     private void jMenuBar1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jMenuBar1AncestorAdded
         
     }//GEN-LAST:event_jMenuBar1AncestorAdded
+
+    private void btnTransferenciaBancariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaBancariaActionPerformed
+        Transferencia trans = new Transferencia(cpfLogado);
+        this.dispose();
+        trans.setVisible(true);
+        trans.setLocationRelativeTo(null);
+        
+    }//GEN-LAST:event_btnTransferenciaBancariaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,7 +319,7 @@ public class MenuCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnTransferenciaBancaria;
     private javax.swing.JMenuItem jCredito;
     private javax.swing.JMenuItem jExtrato;
     private javax.swing.JMenu jInvestimentos;

@@ -2,15 +2,10 @@
 package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
-import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.text.AbstractDocument;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.DocumentFilter;
 import usuario.Usuario;
 
 
@@ -270,9 +265,9 @@ public class Login extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Login frame = new Login();
-                frame.setLocationRelativeTo(null); 
-                frame.setVisible(true);
+                Login login = new Login();
+                login.setLocationRelativeTo(null); 
+                login.setVisible(true);
             }
         });
     }
