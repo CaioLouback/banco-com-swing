@@ -1,11 +1,13 @@
 package com.mycompany.banco.view;
 
+import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
+import usuario.Usuario;
 
 
 public class Transferencia extends javax.swing.JFrame{
@@ -31,8 +33,8 @@ public class Transferencia extends javax.swing.JFrame{
 
        txtValor.setFormatterFactory(new DefaultFormatterFactory(formatador));
        txtValor.setValue(0.00); 
-}
-    
+    }
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -223,14 +225,29 @@ public class Transferencia extends javax.swing.JFrame{
         MenuCliente cliente = new MenuCliente(cpfLogado);
         cliente.setLocationRelativeTo(null); 
         cliente.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferirActionPerformed
-        JOptionPane.showMessageDialog(this,"Nunca compartilhe sua senha com ninguém. Ela é pessoal e de sua total responsabilidade!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-        ConfirmacaoLogin conf = new ConfirmacaoLogin();
-        conf.setVisible(true);
-        conf.setLocationRelativeTo(null);
+        Usuario user = buscarUsuarioPorCPF(txtDestino.getText());
+        Usuario userLogado = buscarUsuarioPorCPF(cpfLogado);
+        double valor = Double.parseDouble(txtValor.getText());
+        if(!(txtCliente.getText().equals(cpfLogado))){
+           JOptionPane.showMessageDialog(this,"CPF inválido! Favor inserir o mesmo CPF do seu login.", "Atenção!", JOptionPane.WARNING_MESSAGE); 
+        } else if(user == null){
+            JOptionPane.showMessageDialog(this,"CPF inválido! Favor inserir um CPF que tenha conta no banco.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+        } else if(valor == 0){
+            JOptionPane.showMessageDialog(this,"Insira um valor que não seja 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);  
+        } else if(valor > userLogado.getSaldo()){
+            JOptionPane.showMessageDialog(this,"SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this,"Nunca compartilhe sua senha com ninguém. Ela é pessoal e de sua total responsabilidade!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, valor);
+            conf.setVisible(true);
+            conf.setLocationRelativeTo(null); 
+        }
+        
     }//GEN-LAST:event_btnTransferirActionPerformed
 
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed

@@ -3,6 +3,7 @@ package auxiliar;
 
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
+import usuario.Usuario;
 
 public class Verifica {
     private String cpf;
@@ -11,6 +12,7 @@ public class Verifica {
     public Verifica(String C) {
         this.cpf = this.Format(C,false);
     }
+    
     
     public boolean isCPF(){
         

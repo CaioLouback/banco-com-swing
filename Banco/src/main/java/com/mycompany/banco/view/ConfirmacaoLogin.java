@@ -1,18 +1,22 @@
 package com.mycompany.banco.view;
 
-import auxiliar.ArquivoJson;
 import java.awt.Toolkit;
-import java.awt.event.KeyEvent;
-import java.util.List;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
 
 public class ConfirmacaoLogin extends javax.swing.JFrame {
-
+    private Usuario logado;
+    private double valor;
     public ConfirmacaoLogin() {
         initComponents();
         setIcon();
+    }
+    public ConfirmacaoLogin(Usuario logado, double valor){
+        initComponents();
+        setIcon();
+        this.logado = logado;
+        this.valor = valor;
     }
 
     /**
@@ -30,7 +34,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         jLabelSenha = new javax.swing.JLabel();
         jPasswordFieldLogin = new javax.swing.JPasswordField();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        btnConfirmar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -43,6 +47,11 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCPFActionPerformed(evt);
+            }
+        });
 
         jLabelSenha.setText("Senha:");
 
@@ -60,7 +69,12 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Confirmar");
+        btnConfirmar.setText("Confirmar");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/confirmacaoLogin.png"))); // NOI18N
 
@@ -83,7 +97,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                             .addComponent(jLabelSenha)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jButton1)))
+                        .addComponent(btnConfirmar)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -102,7 +116,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(jCheckBox1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnConfirmar)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
@@ -123,38 +137,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jPasswordFieldLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldLoginKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
-            // Verifica se os campos estão vazios
-            if (txtCPF.getText().trim().isEmpty() || jPasswordFieldLogin.getPassword().length == 0) {
-                JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            // Obtém os valores do CPF e senha digitados
-            String cpfDigitado = txtCPF.getText().trim();
-            String senhaDigitada = new String(jPasswordFieldLogin.getPassword());
-
-            // Carrega os usuários do JSON
-            List<Usuario> usuarios = ArquivoJson.lerUsuarios();
-
-            // Percorre os usuários e verifica se há correspondência
-            boolean loginValido = false;
-            for (Usuario usuario : usuarios) {
-                if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
-                    loginValido = true;
-                    MenuCliente menu = new MenuCliente(cpfDigitado);
-                    menu.setVisible(true);
-                    menu.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
-                }
-            }
-
-            // Se não encontrou um usuário válido, exibe mensagem de erro
-            if (!loginValido) {
-                JOptionPane.showMessageDialog(this, "CPF ou senha incorretos. Tente novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+        
     }//GEN-LAST:event_jPasswordFieldLoginKeyPressed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -163,6 +146,26 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         else
         jPasswordFieldLogin.setEchoChar('*');
     }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCPFActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        String senha = new String (jPasswordFieldLogin.getPassword());
+        if(!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
+           JOptionPane.showMessageDialog(this,"Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+        else{
+            double saldoUserLogado = logado.getSaldo();
+            saldoUserLogado = saldoUserLogado - valor;
+            logado.setSaldo(saldoUserLogado);
+            JOptionPane.showMessageDialog(this,"Transferência realizada com sucesso! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+            //System.out.println("SALDO " + logado.getSaldo());
+        }
+            
+        
+    }//GEN-LAST:event_btnConfirmarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +203,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnConfirmar;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelSenha;

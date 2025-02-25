@@ -15,6 +15,7 @@ public class MenuCliente extends javax.swing.JFrame {
         setIcon();
         frontInicial();
         saldoBox.setSelected(true);
+        atualizarSaldo();
     }
     
     public MenuCliente(String cpfLogado){
@@ -22,6 +23,7 @@ public class MenuCliente extends javax.swing.JFrame {
         this.cpfLogado = cpfLogado;
         frontInicial();
         saldoBox.setSelected(true);
+        atualizarSaldo();
     }
     
     private void frontInicial(){
@@ -32,6 +34,13 @@ public class MenuCliente extends javax.swing.JFrame {
         jMenuSolicitacao.setMnemonic('S');
         jCredito.setMnemonic('c');
         jExtrato.setMnemonic('E');
+    }
+    
+    private void atualizarSaldo() {
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        if (user != null) {
+            lblSaldo.setText(String.format("R$ %.2f", user.getSaldo()));
+        }
     }
     
     @SuppressWarnings("unchecked")
@@ -57,6 +66,18 @@ public class MenuCliente extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cliente");
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -232,9 +253,7 @@ public class MenuCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSaldoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblSaldoAncestorAdded
-        Usuario user = buscarUsuarioPorCPF(cpfLogado);
-        if(user != null)
-            lblSaldo.setText(String.format("R$ %.2f", user.getSaldo()));
+        
     }//GEN-LAST:event_lblSaldoAncestorAdded
 
     private void lblNomeClienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeClienteAncestorAdded
@@ -273,7 +292,19 @@ public class MenuCliente extends javax.swing.JFrame {
         trans.setVisible(true);
         trans.setLocationRelativeTo(null);
         
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        System.out.println("SALDO CARAI ATT " + user.getSaldo());
+        
+        
     }//GEN-LAST:event_btnTransferenciaBancariaActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        atualizarSaldo();
+    }//GEN-LAST:event_formWindowActivated
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+       atualizarSaldo();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     /**
      * @param args the command line arguments
