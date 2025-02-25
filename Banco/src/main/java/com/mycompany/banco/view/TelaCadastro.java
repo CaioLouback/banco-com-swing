@@ -2,12 +2,9 @@ package com.mycompany.banco.view;
 
 import auxiliar.Cadastro;
 import auxiliar.Verifica;
-import java.awt.Component;
 import java.awt.Toolkit;
 import java.util.Arrays;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
@@ -333,7 +330,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
     
     private void reset(){
-         txtCPF.setFocusable(false);
+        txtCPF.setFocusable(false);
         jSenha.setFocusable(false);
         txtNome.setFocusable(false);
         jSenha2.setFocusable(false);

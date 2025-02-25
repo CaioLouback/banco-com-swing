@@ -228,6 +228,9 @@ public class Transferencia extends javax.swing.JFrame{
 
     private void btnTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferirActionPerformed
         JOptionPane.showMessageDialog(this,"Nunca compartilhe sua senha com ninguém. Ela é pessoal e de sua total responsabilidade!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+        ConfirmacaoLogin conf = new ConfirmacaoLogin();
+        conf.setVisible(true);
+        conf.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnTransferirActionPerformed
 
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
