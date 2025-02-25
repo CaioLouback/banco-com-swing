@@ -163,9 +163,9 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtCliente" max="32767" attributes="0"/>
+                          <Component id="txtCliente" pref="158" max="32767" attributes="0"/>
                           <Component id="txtDestino" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtValor" pref="158" max="32767" attributes="0"/>
+                          <Component id="txtValor" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   </Group>
@@ -230,8 +230,9 @@
             <Component class="javax.swing.JFormattedTextField" name="txtValor">
               <Properties>
                 <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                  <Format format="&#xa4;#,##0.00" subtype="-1" type="4"/>
+                  <Format format="" subtype="-1" type="0"/>
                 </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtValorActionPerformed"/>

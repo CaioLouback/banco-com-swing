@@ -1,7 +1,11 @@
 package com.mycompany.banco.view;
 
 import java.awt.Toolkit;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.NumberFormatter;
 
 
 public class Transferencia extends javax.swing.JFrame{
@@ -9,15 +13,25 @@ public class Transferencia extends javax.swing.JFrame{
     public Transferencia() {
         initComponents();
         setIcon();
-        
+        campoMonetario();
     }
     
      public Transferencia(String cpfLogado) {
         initComponents();
         setIcon();
         this.cpfLogado = cpfLogado;
+        campoMonetario();
+        
     }
-    
+   private void campoMonetario() {
+       NumberFormat formato = new DecimalFormat("#,###.##"); 
+       NumberFormatter formatador = new NumberFormatter(formato);
+       formatador.setAllowsInvalid(false); 
+       formatador.setOverwriteMode(true);  
+
+       txtValor.setFormatterFactory(new DefaultFormatterFactory(formatador));
+       txtValor.setValue(0.00); 
+}
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,7 +88,8 @@ public class Transferencia extends javax.swing.JFrame{
             ex.printStackTrace();
         }
 
-        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("¤#,##0.00"))));
+        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+        txtValor.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtValor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtValorActionPerformed(evt);
@@ -99,9 +114,9 @@ public class Transferencia extends javax.swing.JFrame{
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtCliente)
+                    .addComponent(txtCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                     .addComponent(txtDestino)
-                    .addComponent(txtValor, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE))
+                    .addComponent(txtValor))
                 .addGap(29, 29, 29))
         );
         jPanel2Layout.setVerticalGroup(
@@ -204,10 +219,6 @@ public class Transferencia extends javax.swing.JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtValorActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         MenuCliente cliente = new MenuCliente(cpfLogado);
         cliente.setLocationRelativeTo(null); 
@@ -218,6 +229,11 @@ public class Transferencia extends javax.swing.JFrame{
     private void btnTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferirActionPerformed
         JOptionPane.showMessageDialog(this,"Nunca compartilhe sua senha com ninguém. Ela é pessoal e de sua total responsabilidade!", "Atenção!", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btnTransferirActionPerformed
+
+    private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
+        
+   
+    }//GEN-LAST:event_txtValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -249,7 +265,9 @@ public class Transferencia extends javax.swing.JFrame{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Transferencia().setVisible(true);
+                Transferencia trans = new Transferencia();
+                trans.setVisible(true);
+                trans.setLocationRelativeTo(null);
             }
         });
     }
