@@ -1,6 +1,7 @@
 package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -11,6 +12,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
 
     public ConfirmacaoLogin() {
         initComponents();
+        setIcon();
     }
 
     /**
@@ -32,6 +34,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Confirmação de Dados");
 
         jLabelUsuario.setText("Usuário (CPF):");
 
@@ -81,7 +84,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
                         .addComponent(jButton1)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +110,9 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,4 +209,8 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordFieldLogin;
     private javax.swing.JFormattedTextField txtCPF;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/confir.png")));
+    }
 }
