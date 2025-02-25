@@ -13,14 +13,27 @@ public class MenuCliente extends javax.swing.JFrame {
     public MenuCliente() {
         initComponents();
         setIcon();
+        frontInicial();
+        saldoBox.setSelected(true);
     }
     
     public MenuCliente(String cpfLogado){
         initComponents();
-        this.cpfLogado = cpfLogado;   
+        this.cpfLogado = cpfLogado;
+        frontInicial();
+        saldoBox.setSelected(true);
     }
-
-   
+    
+    private void frontInicial(){
+        setIcon();
+        jInvestimentos.setMnemonic('I');
+        jRendaFixa.setMnemonic('F');
+        jRendaVariavel.setMnemonic('V');
+        jMenuSolicitacao.setMnemonic('S');
+        jCredito.setMnemonic('c');
+        jExtrato.setMnemonic('E');
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -31,7 +44,7 @@ public class MenuCliente extends javax.swing.JFrame {
         lblLogoBanco = new javax.swing.JLabel();
         lblTituloSaldo = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        saldoBox = new javax.swing.JCheckBox();
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jInvestimentos = new javax.swing.JMenu();
@@ -70,16 +83,15 @@ public class MenuCliente extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLogoBanco)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(lblLogoBanco))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
+                        .addGap(56, 56, 56)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNomeCliente)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,27 +120,51 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jCheckBox1.setText("Mostrar Saldo");
-        jCheckBox1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        saldoBox.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        saldoBox.setText("Mostrar Saldo");
+        saldoBox.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jCheckBox1AncestorAdded(evt);
+                saldoBoxAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        saldoBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                saldoBoxActionPerformed(evt);
             }
         });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
         jButton1.setText("  Transferência");
 
+        jMenuBar1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jMenuBar1AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         jInvestimentos.setText("Investimentos");
+        jInvestimentos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jInvestimentosAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jInvestimentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jInvestimentosActionPerformed(evt);
+            }
+        });
 
         jRendaFixa.setText("Renda Fixa");
         jInvestimentos.add(jRendaFixa);
@@ -155,20 +191,20 @@ public class MenuCliente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(8, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblTituloSaldo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblSaldo)))
+                        .addComponent(lblSaldo))
+                    .addComponent(saldoBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(56, 56, 56))
+                .addGap(43, 43, 43))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -182,7 +218,7 @@ public class MenuCliente extends javax.swing.JFrame {
                             .addComponent(lblTituloSaldo)
                             .addComponent(lblSaldo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox1))
+                        .addComponent(saldoBox))
                     .addComponent(jButton1))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
@@ -201,18 +237,30 @@ public class MenuCliente extends javax.swing.JFrame {
         lblNomeCliente.setText(user.getNome());
     }//GEN-LAST:event_lblNomeClienteAncestorAdded
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void saldoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saldoBoxActionPerformed
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
-        if (jCheckBox1.isSelected()) {
+        if (saldoBox.isSelected()) {
             lblSaldo.setText(String.format("R$ %.2f", user.getSaldo())); // Exibe o saldo formatado
         } else {
             lblSaldo.setText("*"); // Esconde o saldo
         }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_saldoBoxActionPerformed
 
-    private void jCheckBox1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jCheckBox1AncestorAdded
+    private void saldoBoxAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_saldoBoxAncestorAdded
         
-    }//GEN-LAST:event_jCheckBox1AncestorAdded
+    }//GEN-LAST:event_saldoBoxAncestorAdded
+
+    private void jInvestimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInvestimentosActionPerformed
+        
+    }//GEN-LAST:event_jInvestimentosActionPerformed
+
+    private void jInvestimentosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jInvestimentosAncestorAdded
+       
+    }//GEN-LAST:event_jInvestimentosAncestorAdded
+
+    private void jMenuBar1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jMenuBar1AncestorAdded
+        
+    }//GEN-LAST:event_jMenuBar1AncestorAdded
 
     /**
      * @param args the command line arguments
@@ -251,6 +299,7 @@ public class MenuCliente extends javax.swing.JFrame {
                 
             }
         });
+        
     }
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
@@ -258,7 +307,6 @@ public class MenuCliente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JMenuItem jCredito;
     private javax.swing.JMenuItem jExtrato;
     private javax.swing.JMenu jInvestimentos;
@@ -272,5 +320,6 @@ public class MenuCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomeCliente;
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblTituloSaldo;
+    private javax.swing.JCheckBox saldoBox;
     // End of variables declaration//GEN-END:variables
 }
