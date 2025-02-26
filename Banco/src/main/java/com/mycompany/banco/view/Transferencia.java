@@ -242,7 +242,7 @@ public class Transferencia extends javax.swing.JFrame{
         } else if(valor > userLogado.getSaldo()){
             JOptionPane.showMessageDialog(this,"SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
         } else {
-            ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, valor);
+            ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, userDestino, valor);
             conf.setVisible(true);
             conf.setLocationRelativeTo(null); 
         }
