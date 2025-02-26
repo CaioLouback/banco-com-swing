@@ -230,19 +230,18 @@ public class Transferencia extends javax.swing.JFrame{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferirActionPerformed
-        Usuario user = buscarUsuarioPorCPF(txtDestino.getText());
+        Usuario userDestino = buscarUsuarioPorCPF(txtDestino.getText());
         Usuario userLogado = buscarUsuarioPorCPF(cpfLogado);
         double valor = Double.parseDouble(txtValor.getText());
         if(!(txtCliente.getText().equals(cpfLogado))){
            JOptionPane.showMessageDialog(this,"CPF inválido! Favor inserir o mesmo CPF do seu login.", "Atenção!", JOptionPane.WARNING_MESSAGE); 
-        } else if(user == null){
+        } else if(userDestino == null){
             JOptionPane.showMessageDialog(this,"CPF inválido! Favor inserir um CPF que tenha conta no banco.", "Atenção!", JOptionPane.WARNING_MESSAGE);
         } else if(valor == 0){
             JOptionPane.showMessageDialog(this,"Insira um valor que não seja 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);  
         } else if(valor > userLogado.getSaldo()){
             JOptionPane.showMessageDialog(this,"SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(this,"Nunca compartilhe sua senha com ninguém. Ela é pessoal e de sua total responsabilidade!", "Atenção!", JOptionPane.WARNING_MESSAGE);
             ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, valor);
             conf.setVisible(true);
             conf.setLocationRelativeTo(null); 
