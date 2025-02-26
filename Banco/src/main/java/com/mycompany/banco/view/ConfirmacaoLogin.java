@@ -1,5 +1,6 @@
 package com.mycompany.banco.view;
 
+import static auxiliar.ArquivoJson.attSaldo;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
@@ -158,10 +159,10 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         else{
             double saldoUserLogado = logado.getSaldo();
             saldoUserLogado = saldoUserLogado - valor;
-            logado.setSaldo(saldoUserLogado);
+            attSaldo(logado.getCpf(), saldoUserLogado);
             JOptionPane.showMessageDialog(this,"Transferência realizada com sucesso! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
-            //System.out.println("SALDO " + logado.getSaldo());
+            
         }
             
         

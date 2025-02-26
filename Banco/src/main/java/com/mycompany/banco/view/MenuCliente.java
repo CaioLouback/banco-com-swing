@@ -8,7 +8,7 @@ import usuario.Usuario;
 
 public class MenuCliente extends javax.swing.JFrame {
     private String cpfLogado;
-   
+    
     
     public MenuCliente() {
         initComponents();
@@ -290,11 +290,7 @@ public class MenuCliente extends javax.swing.JFrame {
         Transferencia trans = new Transferencia(cpfLogado);
         this.dispose();
         trans.setVisible(true);
-        trans.setLocationRelativeTo(null);
-        
-        Usuario user = buscarUsuarioPorCPF(cpfLogado);
-        System.out.println("SALDO CARAI ATT " + user.getSaldo());
-        
+        trans.setLocationRelativeTo(null);    
         
     }//GEN-LAST:event_btnTransferenciaBancariaActionPerformed
 

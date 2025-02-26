@@ -62,7 +62,7 @@ public class ArquivoJson {
             gson.toJson(usuarios, writer);
             writer.close();
 
-            System.out.println("Usuário removido com sucesso!");
+            System.out.println("Usuario removido com sucesso!");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,5 +78,19 @@ public class ArquivoJson {
         }
         return null; // Retorna null se o usuário não for encontrado
     }
-     
+   
+   public static void attSaldo(String cpf, double novoSaldo){
+       List<Usuario> usuarios = lerUsuarios();
+       for(Usuario usuario : usuarios){
+           if(usuario.getCpf().equals(cpf)) {
+               usuario.setSaldo(novoSaldo);
+           }
+       }
+       try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO)) {
+            gson.toJson(usuarios, writer);
+            System.out.println("Saldo atualizado!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+   }
 }
