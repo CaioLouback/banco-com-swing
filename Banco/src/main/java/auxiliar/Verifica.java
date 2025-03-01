@@ -2,6 +2,7 @@
 package auxiliar;
 
 import static auxiliar.ArquivoJson.attSaldo;
+import static auxiliar.ArquivoJson.registrarMovimentacao;
 import java.text.ParseException;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
@@ -101,6 +102,7 @@ public class Verifica {
         saldoUserLogado -= valor;
         double saldoUserDestino = destino.getSaldo();
         saldoUserDestino += valor;
+        registrarMovimentacao(origem.getCpf(), "Transferência", valor);
         attSaldo(origem.getCpf(), saldoUserLogado);
         attSaldo(destino.getCpf(), saldoUserDestino);
     }

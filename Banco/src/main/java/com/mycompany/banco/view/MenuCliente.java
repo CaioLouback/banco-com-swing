@@ -320,7 +320,10 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuSolicitacaoActionPerformed
 
     private void jExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExtratoActionPerformed
-        
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        ConfirmacaoLogin conf = new ConfirmacaoLogin(user, true);
+        conf.setVisible(true);
+        conf.setLocationRelativeTo(null);
      
     }//GEN-LAST:event_jExtratoActionPerformed
 

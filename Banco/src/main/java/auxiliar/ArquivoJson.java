@@ -8,6 +8,7 @@ import usuario.Usuario;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -91,9 +92,76 @@ public class ArquivoJson {
         }
    }
    
-   public static void extratoBancario(){
-       
-   }
+    public static void registrarMovimentacao(String cpf, String tipo, double valor) {
+        File file = new File(CAMINHO_EXTRATO);
+        Map<String, List<Map<String, Object>>> extratos;
+
+        // Verifica se o arquivo existe e carrega os dados existentes
+        if (file.exists()) {
+            try (FileReader reader = new FileReader(CAMINHO_EXTRATO)) {
+                Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+                }.getType();
+                extratos = gson.fromJson(reader, type);
+            } catch (IOException e) {
+                extratos = new HashMap<>();
+            }
+        } else {
+            extratos = new HashMap<>();
+        }
+
+        // Adiciona nova movimentação para o CPF correspondente
+        List<Map<String, Object>> movimentacoes = extratos.getOrDefault(cpf, new ArrayList<>());
+
+        Map<String, Object> novaMovimentacao = new HashMap<>();
+        novaMovimentacao.put("tipo", tipo);
+        novaMovimentacao.put("valor", valor);
+
+        movimentacoes.add(novaMovimentacao);
+        extratos.put(cpf, movimentacoes);
+
+        // Salvar no JSON
+        try (FileWriter writer = new FileWriter(CAMINHO_EXTRATO)) {
+            gson.toJson(extratos, writer);
+            System.out.println("Movimentação registrada com sucesso!");
+        } catch (IOException e) {
+        }
+    }
+    
+    public static List<Map<String, Object>> lerExtrato(String cpf) {
+        File file = new File(CAMINHO_EXTRATO);
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+
+        try (FileReader reader = new FileReader(CAMINHO_EXTRATO)) {
+            Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+            }.getType();
+            Map<String, List<Map<String, Object>>> extratos = gson.fromJson(reader, type);
+            return extratos.getOrDefault(cpf, new ArrayList<>());
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
+    }
+    
+    public static String obterExtrato(String cpf) {
+        List<Map<String, Object>> extrato = ArquivoJson.lerExtrato(cpf);
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("Extrato Bancário:\n\n");
+
+        if (extrato.isEmpty()) {
+            sb.append("Nenhuma movimentação encontrada.");
+        } else {
+            for (Map<String, Object> movimentacao : extrato) {
+                String tipo = (String) movimentacao.get("tipo");
+                double valor = (double) movimentacao.get("valor");
+                sb.append(String.format("%s: R$ %.2f\n", tipo, valor));
+            }
+        }
+
+        return sb.toString();
+    }
+
    
    
 }

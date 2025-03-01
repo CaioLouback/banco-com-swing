@@ -32,6 +32,16 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         this.transferencia = transferencia;
     }
     
+    public ConfirmacaoLogin(Usuario logado, boolean extrato){
+        initComponents();
+        setIcon();
+        this.logado = logado;
+        destino = null;
+        valor = 0;
+        this.extrato = extrato;
+        transferencia = false;
+    }
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -198,7 +208,9 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                 transferenciaBancaria(logado, destino, valor);
                 JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
             } else if (extrato == true){
-                JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                Extrato extrato = new Extrato(logado);
+                extrato.setVisible(true);
+                extrato.setLocationRelativeTo(null);
             }
             this.dispose(); 
         }
