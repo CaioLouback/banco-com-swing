@@ -4,14 +4,14 @@
     "cpf": "452.536.800-47",
     "senha": "123",
     "tipo": "Cliente",
-    "saldo": 34.0
+    "saldo": 30.0
   },
   {
     "nome": "Mariazinha",
     "cpf": "316.035.510-18",
     "senha": "321",
     "tipo": "Caixa",
-    "saldo": 66.0
+    "saldo": 70.0
   },
   {
     "nome": "Gleiph",

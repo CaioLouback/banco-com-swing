@@ -3,6 +3,7 @@ package com.mycompany.banco.view;
 
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import usuario.Usuario;
 
 
@@ -201,11 +202,21 @@ public class MenuCliente extends javax.swing.JFrame {
         jMenuBar1.add(jInvestimentos);
 
         jMenuSolicitacao.setText("Solicitação");
+        jMenuSolicitacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSolicitacaoActionPerformed(evt);
+            }
+        });
 
         jCredito.setText("Solicitação de Crédito");
         jMenuSolicitacao.add(jCredito);
 
         jExtrato.setText("Extrato");
+        jExtrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jExtratoActionPerformed(evt);
+            }
+        });
         jMenuSolicitacao.add(jExtrato);
 
         jMenuBar1.add(jMenuSolicitacao);
@@ -226,7 +237,7 @@ public class MenuCliente extends javax.swing.JFrame {
                     .addComponent(saldoBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnTransferenciaBancaria)
-                .addGap(43, 43, 43))
+                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,9 +275,11 @@ public class MenuCliente extends javax.swing.JFrame {
     private void saldoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saldoBoxActionPerformed
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
         if (saldoBox.isSelected()) {
+            lblSaldo.setIcon(null);
             lblSaldo.setText(String.format("R$ %.2f", user.getSaldo())); // Exibe o saldo formatado
         } else {
-            lblSaldo.setText("*"); // Esconde o saldo
+            lblSaldo.setText(""); 
+            lblSaldo.setIcon(new ImageIcon(getClass().getResource("/ocultar.png")));
         }
     }//GEN-LAST:event_saldoBoxActionPerformed
 
@@ -301,6 +314,15 @@ public class MenuCliente extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
        atualizarSaldo();
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void jMenuSolicitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSolicitacaoActionPerformed
+        
+    }//GEN-LAST:event_jMenuSolicitacaoActionPerformed
+
+    private void jExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExtratoActionPerformed
+        
+     
+    }//GEN-LAST:event_jExtratoActionPerformed
 
     /**
      * @param args the command line arguments

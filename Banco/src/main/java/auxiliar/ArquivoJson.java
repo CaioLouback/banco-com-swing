@@ -13,7 +13,8 @@ import java.util.Map;
 
 
 public class ArquivoJson {
-    private static final String CAMINHO_ARQUIVO = "usuarios.json"; // Nome do arquivo JSON
+    private static final String CAMINHO_ARQUIVO = "usuarios.json";
+    private static final String CAMINHO_EXTRATO = "extrato.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     
     public static void salvarUsuario(Usuario usuario) {
@@ -24,7 +25,6 @@ public class ArquivoJson {
             gson.toJson(usuarios, writer);
             System.out.println("Usuario salvo com sucesso!");
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
     
@@ -39,7 +39,6 @@ public class ArquivoJson {
             Type listType = new TypeToken<List<Usuario>>() {}.getType();
             return gson.fromJson(reader, listType);
         } catch (IOException e) {
-            e.printStackTrace();
             return new ArrayList<>();
         }
     }
@@ -65,7 +64,6 @@ public class ArquivoJson {
             System.out.println("Usuario removido com sucesso!");
 
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
     
@@ -90,7 +88,12 @@ public class ArquivoJson {
             gson.toJson(usuarios, writer);
             System.out.println("Saldo atualizado!");
         } catch (IOException e) {
-            e.printStackTrace();
         }
    }
+   
+   public static void extratoBancario(){
+       
+   }
+   
+   
 }

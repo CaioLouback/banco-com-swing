@@ -1,6 +1,8 @@
 package com.mycompany.banco.view;
 
+import static auxiliar.ArquivoJson.attSaldo;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static auxiliar.Verifica.transferenciaBancaria;
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -12,6 +14,7 @@ import usuario.Usuario;
 
 public class Transferencia extends javax.swing.JFrame{
     private String cpfLogado;
+    
     public Transferencia() {
         initComponents();
         setIcon();
@@ -233,6 +236,7 @@ public class Transferencia extends javax.swing.JFrame{
         Usuario userDestino = buscarUsuarioPorCPF(txtDestino.getText());
         Usuario userLogado = buscarUsuarioPorCPF(cpfLogado);
         double valor = Double.parseDouble(txtValor.getText());
+        
         if(!(txtCliente.getText().equals(cpfLogado))){
            JOptionPane.showMessageDialog(this,"CPF inválido! Favor inserir o mesmo CPF do seu login.", "Atenção!", JOptionPane.WARNING_MESSAGE); 
         } else if(userDestino == null){
@@ -242,9 +246,11 @@ public class Transferencia extends javax.swing.JFrame{
         } else if(valor > userLogado.getSaldo()){
             JOptionPane.showMessageDialog(this,"SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
         } else {
-            ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, userDestino, valor);
+            ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, userDestino, valor, true);
             conf.setVisible(true);
             conf.setLocationRelativeTo(null); 
+            
+            
         }
         
     }//GEN-LAST:event_btnTransferirActionPerformed

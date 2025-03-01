@@ -1,6 +1,6 @@
 package com.mycompany.banco.view;
 
-import static auxiliar.ArquivoJson.attSaldo;
+import static auxiliar.Verifica.transferenciaBancaria;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
@@ -8,21 +8,31 @@ import usuario.Usuario;
 
 public class ConfirmacaoLogin extends javax.swing.JFrame {
     private Usuario logado;
+    private boolean transferencia;
+    private boolean extrato;
     private Usuario destino;
     private double valor;
     
     public ConfirmacaoLogin() {
         initComponents();
         setIcon();
+        this.logado = null;
+        this.destino = null;
+        this.valor = 0;
+        extrato = false;
+        this.transferencia = false;
     }
-    public ConfirmacaoLogin(Usuario logado, Usuario destino, double valor){
+    public ConfirmacaoLogin(Usuario logado, Usuario destino, double valor, boolean transferencia){
         initComponents();
         setIcon();
         this.logado = logado;
-        this.valor = valor;
         this.destino = destino;
+        this.valor = valor;
+        extrato = false;
+        this.transferencia = transferencia;
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,13 +194,12 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         if(!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
            JOptionPane.showMessageDialog(this,"Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
         else{
-            double saldoUserLogado = logado.getSaldo();
-            saldoUserLogado -= valor;
-            double saldoUserDestino = destino.getSaldo();
-            saldoUserDestino += valor;
-            attSaldo(logado.getCpf(), saldoUserLogado);
-            attSaldo(destino.getCpf(), saldoUserDestino);
-            JOptionPane.showMessageDialog(this,"Transferência realizada com sucesso! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            if(transferencia == true){
+                transferenciaBancaria(logado, destino, valor);
+                JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            } else if (extrato == true){
+                JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            }
             this.dispose(); 
         }
                 

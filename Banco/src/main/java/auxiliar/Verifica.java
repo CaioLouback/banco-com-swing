@@ -1,6 +1,8 @@
 
 package auxiliar;
 
+import static auxiliar.ArquivoJson.attSaldo;
+import java.text.ParseException;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import usuario.Usuario;
@@ -88,8 +90,18 @@ public class Verifica {
     public static DefaultFormatterFactory getFormat(){
         try {
             return new DefaultFormatterFactory(new MaskFormatter(Formato));
-        } catch (Exception e) {
+        } catch (ParseException e) {
             return null;
         }
+    }
+    
+    
+    public static void transferenciaBancaria(Usuario origem, Usuario destino, double valor){
+        double saldoUserLogado = origem.getSaldo();
+        saldoUserLogado -= valor;
+        double saldoUserDestino = destino.getSaldo();
+        saldoUserDestino += valor;
+        attSaldo(origem.getCpf(), saldoUserLogado);
+        attSaldo(destino.getCpf(), saldoUserDestino);
     }
 }
