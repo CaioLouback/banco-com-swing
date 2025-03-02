@@ -324,7 +324,7 @@ public class MenuCliente extends javax.swing.JFrame {
         ConfirmacaoLogin conf = new ConfirmacaoLogin(user, true);
         conf.setVisible(true);
         conf.setLocationRelativeTo(null);
-     
+        
     }//GEN-LAST:event_jExtratoActionPerformed
 
     /**
