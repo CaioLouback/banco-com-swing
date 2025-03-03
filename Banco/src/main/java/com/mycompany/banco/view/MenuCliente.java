@@ -209,6 +209,11 @@ public class MenuCliente extends javax.swing.JFrame {
         });
 
         jCredito.setText("Solicitação de Crédito");
+        jCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCreditoActionPerformed(evt);
+            }
+        });
         jMenuSolicitacao.add(jCredito);
 
         jExtrato.setText("Extrato");
@@ -325,7 +330,15 @@ public class MenuCliente extends javax.swing.JFrame {
         conf.setVisible(true);
         conf.setLocationRelativeTo(null);
         
+        
     }//GEN-LAST:event_jExtratoActionPerformed
+
+    private void jCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreditoActionPerformed
+        Credito cred = new Credito();
+        cred.setVisible(true);
+        cred.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jCreditoActionPerformed
 
     /**
      * @param args the command line arguments

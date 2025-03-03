@@ -40,6 +40,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         valor = 0;
         this.extrato = extrato;
         transferencia = false;
+        
     }
     
     
@@ -211,6 +212,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                 Extrato extrato = new Extrato(logado);
                 extrato.setVisible(true);
                 extrato.setLocationRelativeTo(null);
+                
             }
             this.dispose(); 
         }
