@@ -2,8 +2,10 @@ package com.mycompany.banco.view;
 
 
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import java.awt.Color;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import usuario.Usuario;
 
 
@@ -17,6 +19,8 @@ public class MenuCliente extends javax.swing.JFrame {
         frontInicial();
         saldoBox.setSelected(true);
         atualizarSaldo();
+        lblClick.setText("<html><u>Desgolar</u></html>");
+        lblClick.setForeground(Color.BLUE);
     }
     
     public MenuCliente(String cpfLogado){
@@ -25,6 +29,8 @@ public class MenuCliente extends javax.swing.JFrame {
         frontInicial();
         saldoBox.setSelected(true);
         atualizarSaldo();
+        lblClick.setText("<html><u>Deslogar</u></html>");
+        lblClick.setForeground(Color.BLUE);
     }
     
     private void frontInicial(){
@@ -52,6 +58,7 @@ public class MenuCliente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblNomeCliente = new javax.swing.JLabel();
         lblLogoBanco = new javax.swing.JLabel();
+        lblClick = new javax.swing.JLabel();
         lblTituloSaldo = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
         saldoBox = new javax.swing.JCheckBox();
@@ -100,6 +107,14 @@ public class MenuCliente extends javax.swing.JFrame {
         lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
         lblLogoBanco.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
+        lblClick.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lblClick.setText("Deslogar");
+        lblClick.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblClickMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -107,13 +122,19 @@ public class MenuCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLogoBanco)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblLogoBanco)
+                        .addContainerGap(53, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNomeCliente)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addComponent(lblNomeCliente)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblClick)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,7 +145,9 @@ public class MenuCliente extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblClick)
+                .addContainerGap())
         );
 
         lblTituloSaldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -365,6 +388,25 @@ public class MenuCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jRendaVariavelActionPerformed
 
+    private void lblClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClickMouseClicked
+         Usuario user = buscarUsuarioPorCPF(cpfLogado);
+     
+        int resposta = JOptionPane.showConfirmDialog(
+            this,
+            "Deseja realmente finalizar a sua sessão com " + user.getNome() + "?",
+            "Finalizar Sessão",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (resposta == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            this.dispose(); 
+        } 
+    }//GEN-LAST:event_lblClickMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -419,6 +461,7 @@ public class MenuCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem jRendaFixa;
     private javax.swing.JMenuItem jRendaVariavel;
+    private javax.swing.JLabel lblClick;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeCliente;
     private javax.swing.JLabel lblSaldo;

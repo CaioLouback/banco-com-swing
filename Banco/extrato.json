@@ -1,18 +1,14 @@
 {
   "452.536.800-47": [
     {
-      "tipo": "Transferência",
-      "valor": 30.0
-    },
-    {
-      "tipo": "Transferência",
-      "valor": 30.0
+      "tipo": "Transferência (-)",
+      "valor": 20.0
     }
   ],
   "316.035.510-18": [
     {
-      "tipo": "Transferência",
-      "valor": 30.0
+      "tipo": "Transferência (+)",
+      "valor": 20.0
     }
   ]
 }
