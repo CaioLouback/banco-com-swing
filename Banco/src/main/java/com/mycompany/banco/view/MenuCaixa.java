@@ -39,8 +39,7 @@ public class MenuCaixa extends javax.swing.JFrame {
         lblCaixa.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         lblCaixa.setText("Caixa Eletrônico:");
 
-        lblNomeCaixa.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        lblNomeCaixa.setText("Nome");
+        lblNomeCaixa.setText("Nome Caixa");
         lblNomeCaixa.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 lblNomeCaixaAncestorAdded(evt);
@@ -58,9 +57,9 @@ public class MenuCaixa extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(105, 105, 105)
+                        .addGap(131, 131, 131)
                         .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(28, 28, 28)
                         .addComponent(lblNomeCaixa))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)
@@ -83,8 +82,10 @@ public class MenuCaixa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblNomeCaixaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeCaixaAncestorAdded
-        Usuario user = buscarUsuarioPorCPF(cpfCaixa);
-        lblNomeCaixa.setText(user.getNome());
+                                           
+    Usuario user = buscarUsuarioPorCPF(cpfCaixa);
+    lblNomeCaixa.setText(user.getNome());
+       
     }//GEN-LAST:event_lblNomeCaixaAncestorAdded
 
     /**
