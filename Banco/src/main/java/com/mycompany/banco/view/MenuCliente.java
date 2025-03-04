@@ -352,7 +352,7 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jCreditoActionPerformed
 
     private void jRendaFixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRendaFixaActionPerformed
-        Fixa fixa = new Fixa();
+        Fixa fixa = new Fixa(cpfLogado);
         fixa.setVisible(true);
         fixa.setLocationRelativeTo(null);
         this.dispose();
