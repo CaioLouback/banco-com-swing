@@ -334,7 +334,8 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jExtratoActionPerformed
 
     private void jCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreditoActionPerformed
-        Credito cred = new Credito();
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        Credito cred = new Credito(user.getNome(),user.getCpf());
         cred.setVisible(true);
         cred.setLocationRelativeTo(null);
         this.dispose();

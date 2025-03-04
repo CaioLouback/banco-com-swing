@@ -22,6 +22,10 @@ public class Usuario {
         this.tipo = tipo;
         this.saldo = 0;
     }
+    
+    public Usuario() {
+        
+    }
 
     public String getNome() {
         return nome;
