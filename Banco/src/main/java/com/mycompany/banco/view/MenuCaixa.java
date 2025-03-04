@@ -37,8 +37,9 @@ public class MenuCaixa extends javax.swing.JFrame {
         lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
 
         lblCaixa.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        lblCaixa.setText("Caixa Eletrônico:");
+        lblCaixa.setText("Caixa do Banco:");
 
+        lblNomeCaixa.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         lblNomeCaixa.setText("Nome Caixa");
         lblNomeCaixa.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -59,7 +60,7 @@ public class MenuCaixa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(131, 131, 131)
                         .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNomeCaixa))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(78, 78, 78)

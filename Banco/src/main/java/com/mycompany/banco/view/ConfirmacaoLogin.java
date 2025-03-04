@@ -10,6 +10,8 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     private Usuario logado;
     private boolean transferencia;
     private boolean extrato;
+    private boolean deposito;
+    private boolean saque;
     private Usuario destino;
     private double valor;
     
@@ -20,6 +22,8 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         this.destino = null;
         this.valor = 0;
         extrato = false;
+        saque = false;
+        deposito = false;
         this.transferencia = false;
     }
     public ConfirmacaoLogin(Usuario logado, Usuario destino, double valor, boolean transferencia){
@@ -29,6 +33,8 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         this.destino = destino;
         this.valor = valor;
         extrato = false;
+        saque = false;
+        deposito = false;
         this.transferencia = transferencia;
     }
     
@@ -40,6 +46,8 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         valor = 0;
         this.extrato = extrato;
         transferencia = false;
+        saque = false;
+        deposito = false;
         
     }
     
@@ -209,9 +217,12 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                 transferenciaBancaria(logado, destino, valor);
                 JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
             } else if (extrato == true){
-                Extrato extrato = new Extrato(logado);
-                extrato.setVisible(true);
-                extrato.setLocationRelativeTo(null);
+                Extrato extra = new Extrato(logado);
+                extra.setVisible(true);
+                extra.setLocationRelativeTo(null);    
+            } else if (deposito == true){
+                
+            } else if (saque == true){
                 
             }
             this.dispose(); 

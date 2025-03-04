@@ -102,7 +102,8 @@ public class Verifica {
         saldoUserLogado -= valor;
         double saldoUserDestino = destino.getSaldo();
         saldoUserDestino += valor;
-        registrarMovimentacao(origem.getCpf(), "Transferência", valor);
+        registrarMovimentacao(origem.getCpf(), "Transferência (-)", valor);
+        registrarMovimentacao(destino.getCpf(), "Transferência (+)", valor);
         attSaldo(origem.getCpf(), saldoUserLogado);
         attSaldo(destino.getCpf(), saldoUserDestino);
     }
