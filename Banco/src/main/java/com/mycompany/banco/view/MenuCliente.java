@@ -109,6 +109,7 @@ public class MenuCliente extends javax.swing.JFrame {
 
         lblClick.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         lblClick.setText("Deslogar");
+        lblClick.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblClick.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblClickMouseClicked(evt);
