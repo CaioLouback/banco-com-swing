@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.banco.view;
 
-/**
- *
- * @author caiol
- */
+import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import usuario.Usuario;
+
+
 public class MenuCaixa extends javax.swing.JFrame {
     private String cpfCaixa;
     /**
@@ -35,6 +31,8 @@ public class MenuCaixa extends javax.swing.JFrame {
         lblNomeCaixa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Caixa");
+        setResizable(false);
 
         lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
 
@@ -42,7 +40,7 @@ public class MenuCaixa extends javax.swing.JFrame {
         lblCaixa.setText("Caixa Eletrônico:");
 
         lblNomeCaixa.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        lblNomeCaixa.setText("Nome do Caixa");
+        lblNomeCaixa.setText("Nome");
         lblNomeCaixa.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 lblNomeCaixaAncestorAdded(evt);
@@ -85,7 +83,8 @@ public class MenuCaixa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblNomeCaixaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeCaixaAncestorAdded
-        
+        Usuario user = buscarUsuarioPorCPF(cpfCaixa);
+        lblNomeCaixa.setText(user.getNome());
     }//GEN-LAST:event_lblNomeCaixaAncestorAdded
 
     /**

@@ -1,5 +1,8 @@
 package com.mycompany.banco.view;
 
+import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import usuario.Usuario;
+
 
 public class MenuGerente extends javax.swing.JFrame {
     private String cpfGerente;
@@ -29,6 +32,8 @@ public class MenuGerente extends javax.swing.JFrame {
         lblLogoBanco = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gerente");
+        setResizable(false);
 
         lblGerente.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         lblGerente.setText("Gerente:");
@@ -79,7 +84,8 @@ public class MenuGerente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblNomeGerenteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeGerenteAncestorAdded
-        
+        Usuario user = buscarUsuarioPorCPF(cpfGerente);
+        lblNomeGerente.setText(user.getNome());
     }//GEN-LAST:event_lblNomeGerenteAncestorAdded
 
     /**
