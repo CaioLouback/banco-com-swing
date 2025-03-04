@@ -20,11 +20,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Renda Fixa"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRendaFixaActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jRendaVariavel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Renda Vari&#xe1;vel"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRendaVariavelActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

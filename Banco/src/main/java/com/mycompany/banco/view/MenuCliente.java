@@ -194,9 +194,19 @@ public class MenuCliente extends javax.swing.JFrame {
         });
 
         jRendaFixa.setText("Renda Fixa");
+        jRendaFixa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRendaFixaActionPerformed(evt);
+            }
+        });
         jInvestimentos.add(jRendaFixa);
 
         jRendaVariavel.setText("Renda Variável");
+        jRendaVariavel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRendaVariavelActionPerformed(evt);
+            }
+        });
         jInvestimentos.add(jRendaVariavel);
 
         jMenuBar1.add(jInvestimentos);
@@ -340,6 +350,20 @@ public class MenuCliente extends javax.swing.JFrame {
         cred.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_jCreditoActionPerformed
+
+    private void jRendaFixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRendaFixaActionPerformed
+        Fixa fixa = new Fixa();
+        fixa.setVisible(true);
+        fixa.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jRendaFixaActionPerformed
+
+    private void jRendaVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRendaVariavelActionPerformed
+        Variavel variavel = new Variavel();
+        variavel.setVisible(true);
+        variavel.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_jRendaVariavelActionPerformed
 
     /**
      * @param args the command line arguments
