@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.banco.view;
 
-/**
- *
- * @author caiol
- */
-public class MenuGerente extends javax.swing.JFrame {
 
+public class MenuGerente extends javax.swing.JFrame {
+    private String cpfGerente;
     /**
      * Creates new form MenuGerente
      */
-    public MenuGerente() {
+    public MenuGerente(String cpfGerente) {
+        initComponents();
+        this.cpfGerente = cpfGerente;
+    }
+    
+    public MenuGerente(){
         initComponents();
     }
 
@@ -26,21 +24,63 @@ public class MenuGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblGerente = new javax.swing.JLabel();
+        lblNomeGerente = new javax.swing.JLabel();
+        lblLogoBanco = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        lblGerente.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblGerente.setText("Gerente:");
+
+        lblNomeGerente.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
+        lblNomeGerente.setText("Nome do Gerente");
+        lblNomeGerente.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblNomeGerenteAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(lblGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNomeGerente))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addComponent(lblLogoBanco)))
+                .addContainerGap(200, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomeGerente))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblLogoBanco)
+                .addContainerGap(302, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblNomeGerenteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeGerenteAncestorAdded
+        
+    }//GEN-LAST:event_lblNomeGerenteAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -72,11 +112,16 @@ public class MenuGerente extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuGerente().setVisible(true);
+                MenuGerente user = new MenuGerente();
+                user.setVisible(true);
+                user.setLocationRelativeTo(null);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel lblGerente;
+    private javax.swing.JLabel lblLogoBanco;
+    private javax.swing.JLabel lblNomeGerente;
     // End of variables declaration//GEN-END:variables
 }

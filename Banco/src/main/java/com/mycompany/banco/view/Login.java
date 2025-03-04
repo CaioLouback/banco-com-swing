@@ -171,13 +171,30 @@ public class Login extends javax.swing.JFrame {
         boolean loginValido = false;
         for (Usuario usuario : usuarios) {
             if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
-                loginValido = true;
-                MenuCliente menu = new MenuCliente(cpfDigitado);
-                menu.setVisible(true);
-                menu.setLocationRelativeTo(null);
-                this.dispose();
-                break;
-            }
+                if(usuario.getTipo().equals("Cliente"))
+                {
+                    loginValido = true;
+                    MenuCliente menu = new MenuCliente(cpfDigitado);
+                    menu.setVisible(true);
+                    menu.setLocationRelativeTo(null);
+                    this.dispose();
+                    break;
+                } else if (usuario.getTipo().equals("Gerente")){
+                    loginValido = true;
+                    MenuGerente gerente =  new MenuGerente(cpfDigitado);
+                    gerente.setVisible(true);
+                    gerente.setLocationRelativeTo(null);
+                    this.dispose();
+                    break;
+                } else if (usuario.getTipo().equals("Caixa")){
+                    loginValido = true;
+                    MenuCaixa caixa =  new MenuCaixa(cpfDigitado);
+                    caixa.setVisible(true);
+                    caixa.setLocationRelativeTo(null);
+                    this.dispose();
+                    break;
+                }      
+            } 
         }
 
         // Se não encontrou um usuário válido, exibe mensagem de erro
