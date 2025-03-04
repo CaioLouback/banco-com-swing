@@ -188,7 +188,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         TelaCadastro tela = new TelaCadastro();
-        //this.dispose();
+        this.dispose();
         tela.setLocationRelativeTo(null);
         tela.setVisible(true);
     }//GEN-LAST:event_btnCadastrarActionPerformed
