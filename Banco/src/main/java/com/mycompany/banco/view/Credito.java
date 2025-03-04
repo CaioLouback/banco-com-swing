@@ -1,6 +1,7 @@
 package com.mycompany.banco.view;
 
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static auxiliar.ArquivoJson.solicitacaoDeCredito;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import usuario.Gerente;
@@ -243,7 +244,7 @@ public class Credito extends javax.swing.JFrame {
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         Usuario user = buscarUsuarioPorCPF(cpfCliente);
         double valor = jSlider1.getValue();
-        Gerente maneger = new Gerente(user, valor);
+        solicitacaoDeCredito(cpfCliente, valor);
         JOptionPane.showMessageDialog(this,"Sua solicitação foi enviada com sucesso! Basta aguardar a liberação pelo gerente. ","Agora é só aguardar!", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 

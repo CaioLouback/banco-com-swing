@@ -1,5 +1,6 @@
 package com.mycompany.banco.view;
 
+import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import usuario.Usuario;
 
@@ -30,6 +31,10 @@ public class MenuGerente extends javax.swing.JFrame {
         lblGerente = new javax.swing.JLabel();
         lblNomeGerente = new javax.swing.JLabel();
         lblLogoBanco = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtPainel = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerente");
@@ -52,6 +57,17 @@ public class MenuGerente extends javax.swing.JFrame {
 
         lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
 
+        jScrollPane1.setViewportView(txtPainel);
+
+        jButton1.setText("Verificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Verifique se há solicitações de crédito: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -64,9 +80,17 @@ public class MenuGerente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNomeGerente))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
                         .addComponent(lblLogoBanco)))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -75,9 +99,15 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeGerente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(lblLogoBanco)
-                .addContainerGap(302, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         pack();
@@ -87,6 +117,11 @@ public class MenuGerente extends javax.swing.JFrame {
         Usuario user = buscarUsuarioPorCPF(cpfGerente);
         lblNomeGerente.setText(user.getNome());
     }//GEN-LAST:event_lblNomeGerenteAncestorAdded
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String solicitacoes = ArquivoJson.obterSolicitacoesCredito();
+        txtPainel.setText(solicitacoes);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,8 +161,12 @@ public class MenuGerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblGerente;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeGerente;
+    private javax.swing.JTextPane txtPainel;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,6 +16,7 @@ import java.util.Map;
 public class ArquivoJson {
     private static final String CAMINHO_ARQUIVO = "usuarios.json";
     private static final String CAMINHO_EXTRATO = "extrato.json";
+    private static final String CAMINHO_CREDITO = "credito.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     
     public static void salvarUsuario(Usuario usuario) {
@@ -122,7 +123,7 @@ public class ArquivoJson {
         // Salvar no JSON
         try (FileWriter writer = new FileWriter(CAMINHO_EXTRATO)) {
             gson.toJson(extratos, writer);
-            System.out.println("Movimentação registrada com sucesso!");
+            System.out.println("Movimentacao registrada com sucesso!");
         } catch (IOException e) {
         }
     }
@@ -147,10 +148,10 @@ public class ArquivoJson {
         List<Map<String, Object>> extrato = ArquivoJson.lerExtrato(cpf);
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Extrato Bancário:\n\n");
+        sb.append("Extrato Bancario:\n\n");
 
         if (extrato.isEmpty()) {
-            sb.append("Nenhuma movimentação encontrada.");
+            sb.append("Nenhuma movimentacao encontrada.");
         } else {
             for (Map<String, Object> movimentacao : extrato) {
                 String tipo = (String) movimentacao.get("tipo");
@@ -161,7 +162,86 @@ public class ArquivoJson {
 
         return sb.toString();
     }
+    
+    
+    public static void solicitacaoDeCredito(String cpfSolicitante, double valor){
+        Usuario user = buscarUsuarioPorCPF(cpfSolicitante);
+        File file = new File(CAMINHO_CREDITO);
+        Map<String, List<Map<String, Object>>> creditos;
 
+        // Verifica se o arquivo existe e carrega os dados existentes
+        if (file.exists()) {
+            try (FileReader reader = new FileReader(CAMINHO_CREDITO)) {
+                Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+                }.getType();
+                creditos = gson.fromJson(reader, type);
+            } catch (IOException e) {
+                creditos = new HashMap<>();
+            }
+        } else {
+            creditos = new HashMap<>();
+        }
+        
+        List<Map<String, Object>> solicitacoes = creditos.getOrDefault(cpfSolicitante, new ArrayList<>());
+        
+        Map<String, Object> novaSolicitacao = new HashMap<>();
+        novaSolicitacao.put("nome", user.getNome());
+        novaSolicitacao.put("valor", valor);
+        
+        solicitacoes.add(novaSolicitacao);
+        creditos.put(cpfSolicitante, solicitacoes);
+        
+        
+        try (FileWriter writer = new FileWriter(CAMINHO_CREDITO)) {
+            gson.toJson(creditos, writer);
+            System.out.println("Solicitacao registrada com sucesso!");
+        } catch (IOException e) {
+        }
+        
+    }
+    
+    
+    public static String obterSolicitacoesCredito() {
+        List<Map<String, Object>> creditos = lerSolicitacaoCredito();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Solicitações de Crédito:\n\n");
+
+        if (creditos.isEmpty()) {
+            sb.append("Nenhuma solicitação encontrada.");
+        } else {
+            for (Map<String, Object> solicitacao : creditos) {
+                String nome = (String) solicitacao.get("nome");
+                double valor = (double) solicitacao.get("valor");
+                sb.append(String.format("Nome: %s | Valor: R$ %.2f\n", nome, valor));
+            }
+        }
+
+        return sb.toString();
+    }
+    
+    
+    public static List<Map<String, Object>> lerSolicitacaoCredito() {
+        File file = new File(CAMINHO_CREDITO);
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+
+        try (FileReader reader = new FileReader(CAMINHO_CREDITO)) {
+            Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+            }.getType();
+            Map<String, List<Map<String, Object>>> creditos = gson.fromJson(reader, type);
+
+            // Criar uma lista única com todas as solicitações de crédito
+            List<Map<String, Object>> todasSolicitacoes = new ArrayList<>();
+            for (List<Map<String, Object>> lista : creditos.values()) {
+                todasSolicitacoes.addAll(lista);
+            }
+
+            return todasSolicitacoes;
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
+    }
    
    
 }
