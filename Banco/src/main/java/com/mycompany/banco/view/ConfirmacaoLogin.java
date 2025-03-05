@@ -61,22 +61,22 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabelUsuario = new javax.swing.JLabel();
+        Painel = new javax.swing.JPanel();
+        lblUsuario = new javax.swing.JLabel();
         txtCPF = new javax.swing.JFormattedTextField();
-        jLabelSenha = new javax.swing.JLabel();
-        jPasswordFieldLogin = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        lblSenha = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
+        CheckBox = new javax.swing.JCheckBox();
         btnConfirmar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblMsg = new javax.swing.JLabel();
+        lblMsg2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Confirmação de Dados");
         setResizable(false);
 
-        jLabelUsuario.setText("Usuário (CPF):");
+        lblUsuario.setText("Usuário (CPF):");
 
         try {
             txtCPF.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -89,19 +89,19 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabelSenha.setText("Senha:");
+        lblSenha.setText("Senha:");
 
-        jPasswordFieldLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPasswordFieldLoginKeyPressed(evt);
+                txtSenhaKeyPressed(evt);
             }
         });
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jCheckBox1.setText("Mostrar Senha");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        CheckBox.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        CheckBox.setText("Mostrar Senha");
+        CheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                CheckBoxActionPerformed(evt);
             }
         });
 
@@ -112,64 +112,64 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/confirmacaoLogin.png"))); // NOI18N
+        lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/confirmacaoLogin.png"))); // NOI18N
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("Nunca compartilhe sua senha com ninguém. ");
+        lblMsg.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
+        lblMsg.setForeground(new java.awt.Color(255, 0, 0));
+        lblMsg.setText("Nunca compartilhe sua senha com ninguém. ");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel2.setText("Ela é pessoal e de sua total responsabilidade!");
+        lblMsg2.setFont(new java.awt.Font("Segoe UI", 3, 10)); // NOI18N
+        lblMsg2.setForeground(new java.awt.Color(255, 0, 0));
+        lblMsg2.setText("Ela é pessoal e de sua total responsabilidade!");
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
+        Painel.setLayout(PainelLayout);
+        PainelLayout.setHorizontalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(jLabel4)
+                .addComponent(lblTitulo)
                 .addContainerGap(27, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jCheckBox1)
-                                .addComponent(jLabelUsuario)
+                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
+                        .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CheckBox)
+                                .addComponent(lblUsuario)
                                 .addComponent(txtCPF)
-                                .addComponent(jPasswordFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabelSenha)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblSenha)
+                            .addGroup(PainelLayout.createSequentialGroup()
                                 .addGap(39, 39, 39)
                                 .addComponent(btnConfirmar)))
                         .addGap(56, 56, 56))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
+                        .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMsg2)
+                            .addComponent(lblMsg))
                         .addGap(37, 37, 37))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PainelLayout.setVerticalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addComponent(jLabel4)
+                .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lblMsg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(lblMsg2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelUsuario)
+                .addComponent(lblUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabelSenha)
+                .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPasswordFieldLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jCheckBox1)
+                .addComponent(CheckBox)
                 .addGap(18, 18, 18)
                 .addComponent(btnConfirmar)
                 .addContainerGap())
@@ -180,36 +180,36 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordFieldLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordFieldLoginKeyPressed
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         
-    }//GEN-LAST:event_jPasswordFieldLoginKeyPressed
+    }//GEN-LAST:event_txtSenhaKeyPressed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if(jCheckBox1.isSelected())
-        jPasswordFieldLogin.setEchoChar((char)0);
+    private void CheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxActionPerformed
+        if(CheckBox.isSelected())
+        txtSenha.setEchoChar((char)0);
         else
-        jPasswordFieldLogin.setEchoChar('*');
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+        txtSenha.setEchoChar('*');
+    }//GEN-LAST:event_CheckBoxActionPerformed
 
     private void txtCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCPFActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        String senha = new String (jPasswordFieldLogin.getPassword());
+        String senha = new String (txtSenha.getPassword());
         if(!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
            JOptionPane.showMessageDialog(this,"Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
         else{
@@ -266,16 +266,16 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckBox;
+    private javax.swing.JPanel Painel;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabelSenha;
-    private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordFieldLogin;
+    private javax.swing.JLabel lblMsg;
+    private javax.swing.JLabel lblMsg2;
+    private javax.swing.JLabel lblSenha;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUsuario;
     private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {

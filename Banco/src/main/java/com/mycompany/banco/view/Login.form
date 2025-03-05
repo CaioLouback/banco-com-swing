@@ -27,7 +27,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <Component id="Painel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -36,14 +36,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" pref="350" max="-2" attributes="0"/>
+              <Component id="Painel" min="-2" pref="350" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="Painel">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="66" red="66" type="rgb"/>
@@ -57,21 +57,21 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblLogoBanco" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="CheckBoxSenha" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabelUsuario" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="btnEntrar" min="-2" pref="85" max="-2" attributes="0"/>
                                       <EmptySpace pref="33" max="32767" attributes="0"/>
                                       <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jLabelSenha" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jPasswordFieldLogin" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblSenha" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtCPF" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -84,17 +84,17 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLogoBanco" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabelUsuario" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="txtCPF" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabelSenha" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jPasswordFieldLogin" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="CheckBoxSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnEntrar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -114,17 +114,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEntrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordFieldLogin">
+        <Component class="javax.swing.JPasswordField" name="txtSenha">
           <Events>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jPasswordFieldLoginKeyPressed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSenhaKeyPressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelUsuario">
+        <Component class="javax.swing.JLabel" name="lblUsuario">
           <Properties>
             <Property name="text" type="java.lang.String" value="Usu&#xe1;rio (CPF):"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelSenha">
+        <Component class="javax.swing.JLabel" name="lblSenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Senha:"/>
           </Properties>
@@ -137,7 +137,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblLogoBanco">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/logobanco.png"/>
@@ -156,7 +156,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="CheckBoxSenha">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="2"/>
@@ -164,7 +164,7 @@
             <Property name="text" type="java.lang.String" value="Mostrar Senha"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckBoxSenhaActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

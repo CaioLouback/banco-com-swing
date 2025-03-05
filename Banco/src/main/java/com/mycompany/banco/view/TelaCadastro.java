@@ -39,22 +39,22 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        jPanel1 = new javax.swing.JPanel();
-        jButtonCadastrar = new javax.swing.JButton();
-        jBox = new javax.swing.JComboBox<>();
-        jLabelOpcao = new javax.swing.JLabel();
-        jLabelNomeCadastro = new javax.swing.JLabel();
-        jLabelCPFCadastro = new javax.swing.JLabel();
-        jLabelSenhaCadastro = new javax.swing.JLabel();
-        jSenha = new javax.swing.JPasswordField();
+        Painel = new javax.swing.JPanel();
+        btnCadastrar = new javax.swing.JButton();
+        Box = new javax.swing.JComboBox<>();
+        lblOpcao = new javax.swing.JLabel();
+        lblNome = new javax.swing.JLabel();
+        lblCPF = new javax.swing.JLabel();
+        lblSenha = new javax.swing.JLabel();
+        txtSenha = new javax.swing.JPasswordField();
         txtNome = new javax.swing.JTextField();
         txtCPF = new javax.swing.JFormattedTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel1 = new javax.swing.JLabel();
-        jSenha2 = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        CheckBoxSenha = new javax.swing.JCheckBox();
+        lblConfSenha = new javax.swing.JLabel();
+        txtConfSenha = new javax.swing.JPasswordField();
+        lblLogoBanco = new javax.swing.JLabel();
+        lblCadastro = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -64,29 +64,29 @@ public class TelaCadastro extends javax.swing.JFrame {
         setTitle("Cadastro");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        Painel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jButtonCadastrar.setText("Cadastrar");
-        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCadastrarActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
-        jBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Caixa", "Gerente"}));
-        jBox.addActionListener(new java.awt.event.ActionListener() {
+        Box.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Caixa", "Gerente"}));
+        Box.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBoxActionPerformed(evt);
+                BoxActionPerformed(evt);
             }
         });
 
-        jLabelOpcao.setText("Escolha uma opção abaixo:");
+        lblOpcao.setText("Escolha uma opção abaixo:");
 
-        jLabelNomeCadastro.setText("Nome:");
+        lblNome.setText("Nome:");
 
-        jLabelCPFCadastro.setText("CPF:");
+        lblCPF.setText("CPF:");
 
-        jLabelSenhaCadastro.setText("Senha:");
+        lblSenha.setText("Senha:");
 
         txtNome.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -101,102 +101,102 @@ public class TelaCadastro extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jCheckBox1.setText("Mostrar Senha");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        CheckBoxSenha.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        CheckBoxSenha.setText("Mostrar Senha");
+        CheckBoxSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                CheckBoxSenhaActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Confirmar Senha:");
+        lblConfSenha.setText("Confirmar Senha:");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco pq.png"))); // NOI18N
-        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco pq.png"))); // NOI18N
+        lblLogoBanco.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel3.setText("CADASTRO");
+        lblCadastro.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        lblCadastro.setText("CADASTRO");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/voltar.png"))); // NOI18N
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/voltar.png"))); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
+        Painel.setLayout(PainelLayout);
+        PainelLayout.setHorizontalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
                 .addGap(0, 19, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(lblLogoBanco)
                 .addGap(17, 17, 17))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(PainelLayout.createSequentialGroup()
+                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabelNomeCadastro)
-                                .addComponent(jLabelCPFCadastro)
-                                .addComponent(jLabelSenhaCadastro)
-                                .addComponent(jCheckBox1)
-                                .addComponent(jLabel1)
-                                .addComponent(jSenha2, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
-                                .addComponent(jSenha))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblNome)
+                                .addComponent(lblCPF)
+                                .addComponent(lblSenha)
+                                .addComponent(CheckBoxSenha)
+                                .addComponent(lblConfSenha)
+                                .addComponent(txtConfSenha, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                                .addComponent(txtSenha))))
+                    .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addComponent(jBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(jLabelOpcao))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblOpcao))
+                    .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jLabel3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblCadastro))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
-                        .addComponent(jButton1)
+                        .addComponent(btnVoltar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonCadastrar)))
+                        .addComponent(btnCadastrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        PainelLayout.setVerticalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
+                .addComponent(lblLogoBanco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(lblCadastro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelOpcao)
+                .addComponent(lblOpcao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Box, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelNomeCadastro)
+                .addComponent(lblNome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabelCPFCadastro)
+                .addComponent(lblCPF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
-                .addComponent(jLabelSenhaCadastro)
+                .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
+                .addComponent(lblConfSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSenha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtConfSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(CheckBoxSenha)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCadastrar)
-                    .addComponent(jButton1))
+                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCadastrar)
+                    .addComponent(btnVoltar))
                 .addGap(12, 12, 12))
         );
 
@@ -206,14 +206,14 @@ public class TelaCadastro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Painel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -221,11 +221,11 @@ public class TelaCadastro extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBoxActionPerformed
+    private void BoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BoxActionPerformed
        //
-    }//GEN-LAST:event_jBoxActionPerformed
+    }//GEN-LAST:event_BoxActionPerformed
 
-    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
          if (txtNome.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Favor inserir um nome!");
             return;
@@ -234,18 +234,18 @@ public class TelaCadastro extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Favor inserir um CPF!");
             return;
         }
-        if (jSenha.getPassword().length == 0) {
+        if (txtSenha.getPassword().length == 0) {
             JOptionPane.showMessageDialog(this, "Favor inserir uma senha!");
             return;
         }
-        if (jSenha2.getPassword().length == 0) {
+        if (txtConfSenha.getPassword().length == 0) {
             JOptionPane.showMessageDialog(this, "Favor confirmar a sua senha!");
             return;
         }
-        if(Arrays.equals(jSenha2.getPassword(), jSenha.getPassword())){
+        if(Arrays.equals(txtConfSenha.getPassword(), txtSenha.getPassword())){
             // Obtendo os valores
             String nome = txtNome.getText().trim();
-            String senha = new String(jSenha.getPassword());
+            String senha = new String(txtSenha.getPassword());
             String numCpf = txtCPF.getText().trim();
 
             Verifica cpf = new Verifica(numCpf);
@@ -256,7 +256,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
 
             Cadastro c = new Cadastro();
-            String tipoUsuario = jBox.getSelectedItem().toString();
+            String tipoUsuario = Box.getSelectedItem().toString();
 
             if ("Cliente".equals(tipoUsuario)) {
                 c.cadastrarCliente(nome, numCpf, senha);
@@ -271,28 +271,28 @@ public class TelaCadastro extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Sua confirmação de senha está incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);   
         }  
-    }//GEN-LAST:event_jButtonCadastrarActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if(jCheckBox1.isSelected()){
-            jSenha.setEchoChar((char)0);
-            jSenha2.setEchoChar((char)0);
+    private void CheckBoxSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxSenhaActionPerformed
+        if(CheckBoxSenha.isSelected()){
+            txtSenha.setEchoChar((char)0);
+            txtConfSenha.setEchoChar((char)0);
         }else{
-            jSenha.setEchoChar('*');
-            jSenha2.setEchoChar('*');
+            txtSenha.setEchoChar('*');
+            txtConfSenha.setEchoChar('*');
         }    
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_CheckBoxSenhaActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         Login login = new Login();
         login.setLocationRelativeTo(null); 
         login.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,24 +335,24 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jBox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonCadastrar;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelCPFCadastro;
-    private javax.swing.JLabel jLabelNomeCadastro;
-    private javax.swing.JLabel jLabelOpcao;
-    private javax.swing.JLabel jLabelSenhaCadastro;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> Box;
+    private javax.swing.JCheckBox CheckBoxSenha;
+    private javax.swing.JPanel Painel;
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JPasswordField jSenha;
-    private javax.swing.JPasswordField jSenha2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblCPF;
+    private javax.swing.JLabel lblCadastro;
+    private javax.swing.JLabel lblConfSenha;
+    private javax.swing.JLabel lblLogoBanco;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblOpcao;
+    private javax.swing.JLabel lblSenha;
     private javax.swing.JFormattedTextField txtCPF;
+    private javax.swing.JPasswordField txtConfSenha;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
@@ -361,19 +361,19 @@ public class TelaCadastro extends javax.swing.JFrame {
     
     private void reset(){
         txtCPF.setFocusable(false);
-        jSenha.setFocusable(false);
+        txtSenha.setFocusable(false);
         txtNome.setFocusable(false);
-        jSenha2.setFocusable(false);
+        txtConfSenha.setFocusable(false);
 
         txtCPF.setText("");
-        jSenha.setText("");
+        txtSenha.setText("");
         txtNome.setText("");
-        jSenha2.setText("");
+        txtConfSenha.setText("");
 
         txtCPF.setFocusable(true);
-        jSenha.setFocusable(true);
+        txtSenha.setFocusable(true);
         txtNome.setFocusable(true);
-        jSenha2.setFocusable(true);
+        txtConfSenha.setFocusable(true);
         
     }
 }

@@ -44,7 +44,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="Painel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -53,14 +53,14 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
+              <Component id="Painel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="Painel">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -74,7 +74,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace min="0" pref="19" max="32767" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLogoBanco" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
@@ -85,33 +85,33 @@
                               <Component id="txtNome" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
                               <Component id="txtCPF" alignment="1" min="-2" pref="172" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabelNomeCadastro" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelCPFCadastro" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabelSenhaCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jSenha2" alignment="0" pref="172" max="32767" attributes="0"/>
-                                  <Component id="jSenha" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CheckBoxSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblConfSenha" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtConfSenha" alignment="0" pref="172" max="32767" attributes="0"/>
+                                  <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                          <Component id="jBox" min="-2" max="-2" attributes="0"/>
+                          <Component id="Box" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                          <Component id="jLabelOpcao" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblOpcao" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCadastro" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVoltar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="jButtonCadastrar" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCadastrar" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -122,35 +122,35 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblLogoBanco" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="8" max="32767" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCadastro" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabelOpcao" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblOpcao" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jBox" min="-2" max="-2" attributes="0"/>
+                  <Component id="Box" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabelNomeCadastro" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblNome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="txtNome" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jLabelCPFCadastro" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblCPF" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="txtCPF" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jLabelSenhaCadastro" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jSenha" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblConfSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jSenha2" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtConfSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="CheckBoxSenha" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButtonCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnCadastrar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnVoltar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               </Group>
@@ -158,48 +158,48 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="jButtonCadastrar">
+        <Component class="javax.swing.JButton" name="btnCadastrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCadastrarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCadastrarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jBox">
+        <Component class="javax.swing.JComboBox" name="Box">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Cliente&quot;, &quot;Caixa&quot;, &quot;Gerente&quot;})" type="code"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBoxActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BoxActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelOpcao">
+        <Component class="javax.swing.JLabel" name="lblOpcao">
           <Properties>
             <Property name="text" type="java.lang.String" value="Escolha uma op&#xe7;&#xe3;o abaixo:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelNomeCadastro">
+        <Component class="javax.swing.JLabel" name="lblNome">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nome:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelCPFCadastro">
+        <Component class="javax.swing.JLabel" name="lblCPF">
           <Properties>
             <Property name="text" type="java.lang.String" value="CPF:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelSenhaCadastro">
+        <Component class="javax.swing.JLabel" name="lblSenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Senha:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jSenha">
+        <Component class="javax.swing.JPasswordField" name="txtSenha">
         </Component>
         <Component class="javax.swing.JTextField" name="txtNome">
           <Properties>
@@ -218,7 +218,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="CheckBoxSenha">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="12" style="2"/>
@@ -226,17 +226,17 @@
             <Property name="text" type="java.lang.String" value="Mostrar Senha"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckBoxSenhaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="lblConfSenha">
           <Properties>
             <Property name="text" type="java.lang.String" value="Confirmar Senha:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jSenha2">
+        <Component class="javax.swing.JPasswordField" name="txtConfSenha">
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="lblLogoBanco">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/logobanco pq.png"/>
@@ -248,7 +248,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lblCadastro">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Arial Black" size="18" style="0"/>
@@ -256,7 +256,7 @@
             <Property name="text" type="java.lang.String" value="CADASTRO"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnVoltar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/voltar.png"/>
@@ -264,7 +264,7 @@
             <Property name="text" type="java.lang.String" value="Voltar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVoltarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -19,7 +19,7 @@ public class MenuCliente extends javax.swing.JFrame {
         initComponents();
         setIcon();
         frontInicial();
-        saldoBox.setSelected(true);
+        CheckBoxSaldo.setSelected(true);
         atualizarSaldo();
         
     }
@@ -28,19 +28,19 @@ public class MenuCliente extends javax.swing.JFrame {
         initComponents();
         this.cpfLogado = cpfLogado;
         frontInicial();
-        saldoBox.setSelected(true);
+        CheckBoxSaldo.setSelected(true);
         atualizarSaldo();
         
     }
     
     private void frontInicial(){
         setIcon();
-        jInvestimentos.setMnemonic('I');
-        jRendaFixa.setMnemonic('F');
-        jRendaVariavel.setMnemonic('V');
-        jMenuSolicitacao.setMnemonic('S');
-        jCredito.setMnemonic('c');
-        jExtrato.setMnemonic('E');
+        MenuInvestimentos.setMnemonic('I');
+        MenuFixa.setMnemonic('F');
+        MenuVariavel.setMnemonic('V');
+        MenuSolicitacao.setMnemonic('S');
+        MenuCredito.setMnemonic('c');
+        MenuExtrato.setMnemonic('E');
     }
     
     private void atualizarSaldo() {
@@ -54,22 +54,22 @@ public class MenuCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        Painel = new javax.swing.JPanel();
+        lblBoasVindas = new javax.swing.JLabel();
         lblNomeCliente = new javax.swing.JLabel();
         lblLogoBanco = new javax.swing.JLabel();
         lblClick = new javax.swing.JLabel();
         lblTituloSaldo = new javax.swing.JLabel();
         lblSaldo = new javax.swing.JLabel();
-        saldoBox = new javax.swing.JCheckBox();
-        btnTransferenciaBancaria = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jInvestimentos = new javax.swing.JMenu();
-        jRendaFixa = new javax.swing.JMenuItem();
-        jRendaVariavel = new javax.swing.JMenuItem();
-        jMenuSolicitacao = new javax.swing.JMenu();
-        jCredito = new javax.swing.JMenuItem();
-        jExtrato = new javax.swing.JMenuItem();
+        CheckBoxSaldo = new javax.swing.JCheckBox();
+        btnTransferencia = new javax.swing.JButton();
+        MenuBar = new javax.swing.JMenuBar();
+        MenuInvestimentos = new javax.swing.JMenu();
+        MenuFixa = new javax.swing.JMenuItem();
+        MenuVariavel = new javax.swing.JMenuItem();
+        MenuSolicitacao = new javax.swing.JMenu();
+        MenuCredito = new javax.swing.JMenuItem();
+        MenuExtrato = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cliente");
@@ -87,10 +87,10 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        Painel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
-        jLabel1.setText("Bem-Vindo: ");
+        lblBoasVindas.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        lblBoasVindas.setText("Bem-Vindo: ");
 
         lblNomeCliente.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         lblNomeCliente.setText("Nome do Cliente");
@@ -117,32 +117,32 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
+        Painel.setLayout(PainelLayout);
+        PainelLayout.setHorizontalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLayout.createSequentialGroup()
                 .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLogoBanco)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblBoasVindas, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNomeCliente)))
                 .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblClick)
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PainelLayout.setVerticalGroup(
+            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLayout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNomeCliente)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblBoasVindas, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -165,34 +165,34 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        saldoBox.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        saldoBox.setText("Mostrar Saldo");
-        saldoBox.addAncestorListener(new javax.swing.event.AncestorListener() {
+        CheckBoxSaldo.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        CheckBoxSaldo.setText("Mostrar Saldo");
+        CheckBoxSaldo.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                saldoBoxAncestorAdded(evt);
+                CheckBoxSaldoAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        saldoBox.addActionListener(new java.awt.event.ActionListener() {
+        CheckBoxSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saldoBoxActionPerformed(evt);
+                CheckBoxSaldoActionPerformed(evt);
             }
         });
 
-        btnTransferenciaBancaria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
-        btnTransferenciaBancaria.setText("  Transferência");
-        btnTransferenciaBancaria.addActionListener(new java.awt.event.ActionListener() {
+        btnTransferencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
+        btnTransferencia.setText("  Transferência");
+        btnTransferencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTransferenciaBancariaActionPerformed(evt);
+                btnTransferenciaActionPerformed(evt);
             }
         });
 
-        jMenuBar1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        MenuBar.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jMenuBar1AncestorAdded(evt);
+                MenuBarAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -200,66 +200,66 @@ public class MenuCliente extends javax.swing.JFrame {
             }
         });
 
-        jInvestimentos.setText("Investimentos");
-        jInvestimentos.addAncestorListener(new javax.swing.event.AncestorListener() {
+        MenuInvestimentos.setText("Investimentos");
+        MenuInvestimentos.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jInvestimentosAncestorAdded(evt);
+                MenuInvestimentosAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jInvestimentos.addActionListener(new java.awt.event.ActionListener() {
+        MenuInvestimentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jInvestimentosActionPerformed(evt);
+                MenuInvestimentosActionPerformed(evt);
             }
         });
 
-        jRendaFixa.setText("Renda Fixa");
-        jRendaFixa.addActionListener(new java.awt.event.ActionListener() {
+        MenuFixa.setText("Renda Fixa");
+        MenuFixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRendaFixaActionPerformed(evt);
+                MenuFixaActionPerformed(evt);
             }
         });
-        jInvestimentos.add(jRendaFixa);
+        MenuInvestimentos.add(MenuFixa);
 
-        jRendaVariavel.setText("Renda Variável");
-        jRendaVariavel.addActionListener(new java.awt.event.ActionListener() {
+        MenuVariavel.setText("Renda Variável");
+        MenuVariavel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRendaVariavelActionPerformed(evt);
+                MenuVariavelActionPerformed(evt);
             }
         });
-        jInvestimentos.add(jRendaVariavel);
+        MenuInvestimentos.add(MenuVariavel);
 
-        jMenuBar1.add(jInvestimentos);
+        MenuBar.add(MenuInvestimentos);
 
-        jMenuSolicitacao.setText("Solicitação");
-        jMenuSolicitacao.addActionListener(new java.awt.event.ActionListener() {
+        MenuSolicitacao.setText("Solicitação");
+        MenuSolicitacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuSolicitacaoActionPerformed(evt);
+                MenuSolicitacaoActionPerformed(evt);
             }
         });
 
-        jCredito.setText("Solicitação de Crédito");
-        jCredito.addActionListener(new java.awt.event.ActionListener() {
+        MenuCredito.setText("Solicitação de Crédito");
+        MenuCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCreditoActionPerformed(evt);
+                MenuCreditoActionPerformed(evt);
             }
         });
-        jMenuSolicitacao.add(jCredito);
+        MenuSolicitacao.add(MenuCredito);
 
-        jExtrato.setText("Extrato");
-        jExtrato.addActionListener(new java.awt.event.ActionListener() {
+        MenuExtrato.setText("Extrato");
+        MenuExtrato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jExtratoActionPerformed(evt);
+                MenuExtratoActionPerformed(evt);
             }
         });
-        jMenuSolicitacao.add(jExtrato);
+        MenuSolicitacao.add(MenuExtrato);
 
-        jMenuBar1.add(jMenuSolicitacao);
+        MenuBar.add(MenuSolicitacao);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(MenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,20 +272,20 @@ public class MenuCliente extends javax.swing.JFrame {
                         .addComponent(lblTituloSaldo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblSaldo))
-                    .addComponent(saldoBox))
+                    .addComponent(CheckBoxSaldo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTransferenciaBancaria)
+                .addComponent(btnTransferencia)
                 .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -293,8 +293,8 @@ public class MenuCliente extends javax.swing.JFrame {
                             .addComponent(lblTituloSaldo)
                             .addComponent(lblSaldo))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saldoBox))
-                    .addComponent(btnTransferenciaBancaria))
+                        .addComponent(CheckBoxSaldo))
+                    .addComponent(btnTransferencia))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -312,9 +312,9 @@ public class MenuCliente extends javax.swing.JFrame {
         lblNomeCliente.setText(user.getNome());
     }//GEN-LAST:event_lblNomeClienteAncestorAdded
 
-    private void saldoBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saldoBoxActionPerformed
+    private void CheckBoxSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxSaldoActionPerformed
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
-        if (saldoBox.isSelected()) {
+        if (CheckBoxSaldo.isSelected()) {
             lblSaldo.setIcon(null);
             NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
             lblSaldo.setText(formato.format(user.getSaldo())); 
@@ -322,31 +322,31 @@ public class MenuCliente extends javax.swing.JFrame {
             lblSaldo.setText(""); 
             lblSaldo.setIcon(new ImageIcon(getClass().getResource("/ocultar.png")));
         }
-    }//GEN-LAST:event_saldoBoxActionPerformed
+    }//GEN-LAST:event_CheckBoxSaldoActionPerformed
 
-    private void saldoBoxAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_saldoBoxAncestorAdded
+    private void CheckBoxSaldoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_CheckBoxSaldoAncestorAdded
         
-    }//GEN-LAST:event_saldoBoxAncestorAdded
+    }//GEN-LAST:event_CheckBoxSaldoAncestorAdded
 
-    private void jInvestimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInvestimentosActionPerformed
+    private void MenuInvestimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuInvestimentosActionPerformed
         
-    }//GEN-LAST:event_jInvestimentosActionPerformed
+    }//GEN-LAST:event_MenuInvestimentosActionPerformed
 
-    private void jInvestimentosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jInvestimentosAncestorAdded
+    private void MenuInvestimentosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_MenuInvestimentosAncestorAdded
        
-    }//GEN-LAST:event_jInvestimentosAncestorAdded
+    }//GEN-LAST:event_MenuInvestimentosAncestorAdded
 
-    private void jMenuBar1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jMenuBar1AncestorAdded
+    private void MenuBarAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_MenuBarAncestorAdded
         
-    }//GEN-LAST:event_jMenuBar1AncestorAdded
+    }//GEN-LAST:event_MenuBarAncestorAdded
 
-    private void btnTransferenciaBancariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaBancariaActionPerformed
+    private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
         Transferencia trans = new Transferencia(cpfLogado);
         this.dispose();
         trans.setVisible(true);
         trans.setLocationRelativeTo(null);    
         
-    }//GEN-LAST:event_btnTransferenciaBancariaActionPerformed
+    }//GEN-LAST:event_btnTransferenciaActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         atualizarSaldo();
@@ -356,40 +356,40 @@ public class MenuCliente extends javax.swing.JFrame {
        atualizarSaldo();
     }//GEN-LAST:event_formWindowGainedFocus
 
-    private void jMenuSolicitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSolicitacaoActionPerformed
+    private void MenuSolicitacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuSolicitacaoActionPerformed
         
-    }//GEN-LAST:event_jMenuSolicitacaoActionPerformed
+    }//GEN-LAST:event_MenuSolicitacaoActionPerformed
 
-    private void jExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jExtratoActionPerformed
+    private void MenuExtratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuExtratoActionPerformed
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
         ConfirmacaoLogin conf = new ConfirmacaoLogin(user, true);
         conf.setVisible(true);
         conf.setLocationRelativeTo(null);
         
         
-    }//GEN-LAST:event_jExtratoActionPerformed
+    }//GEN-LAST:event_MenuExtratoActionPerformed
 
-    private void jCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCreditoActionPerformed
+    private void MenuCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreditoActionPerformed
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
         Credito cred = new Credito(user.getNome(),user.getCpf());
         cred.setVisible(true);
         cred.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_jCreditoActionPerformed
+    }//GEN-LAST:event_MenuCreditoActionPerformed
 
-    private void jRendaFixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRendaFixaActionPerformed
+    private void MenuFixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFixaActionPerformed
         Fixa fixa = new Fixa(cpfLogado);
         fixa.setVisible(true);
         fixa.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_jRendaFixaActionPerformed
+    }//GEN-LAST:event_MenuFixaActionPerformed
 
-    private void jRendaVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRendaVariavelActionPerformed
+    private void MenuVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuVariavelActionPerformed
         Variavel variavel = new Variavel();
         variavel.setVisible(true);
         variavel.setLocationRelativeTo(null);
         this.dispose();
-    }//GEN-LAST:event_jRendaVariavelActionPerformed
+    }//GEN-LAST:event_MenuVariavelActionPerformed
 
     private void lblClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClickMouseClicked
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
@@ -455,21 +455,21 @@ public class MenuCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnTransferenciaBancaria;
-    private javax.swing.JMenuItem jCredito;
-    private javax.swing.JMenuItem jExtrato;
-    private javax.swing.JMenu jInvestimentos;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuSolicitacao;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenuItem jRendaFixa;
-    private javax.swing.JMenuItem jRendaVariavel;
+    private javax.swing.JCheckBox CheckBoxSaldo;
+    private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JMenuItem MenuCredito;
+    private javax.swing.JMenuItem MenuExtrato;
+    private javax.swing.JMenuItem MenuFixa;
+    private javax.swing.JMenu MenuInvestimentos;
+    private javax.swing.JMenu MenuSolicitacao;
+    private javax.swing.JMenuItem MenuVariavel;
+    private javax.swing.JPanel Painel;
+    private javax.swing.JButton btnTransferencia;
+    private javax.swing.JLabel lblBoasVindas;
     private javax.swing.JLabel lblClick;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeCliente;
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblTituloSaldo;
-    private javax.swing.JCheckBox saldoBox;
     // End of variables declaration//GEN-END:variables
 }

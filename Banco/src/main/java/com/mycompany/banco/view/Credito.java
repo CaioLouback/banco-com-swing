@@ -4,7 +4,6 @@ import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import static auxiliar.ArquivoJson.solicitacaoDeCredito;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-import usuario.Gerente;
 import usuario.Usuario;
 
 public class Credito extends javax.swing.JFrame {
@@ -26,7 +25,7 @@ public class Credito extends javax.swing.JFrame {
     }
     
     private void preencherTermos(String nomeCliente, String cpfCliente) {
-        int valor = jSlider1.getValue();  
+        int valor = Slider.getValue();  
 
         String termoAceite = """
         <html>
@@ -53,8 +52,8 @@ public class Credito extends javax.swing.JFrame {
 
         String termoFormatado = String.format(termoAceite, nomeCliente, cpfCliente, valor);
 
-        textPaneTermos.setContentType("text/html"); 
-        textPaneTermos.setText(termoFormatado);  
+        txtPainelTermos.setContentType("text/html"); 
+        txtPainelTermos.setText(termoFormatado);  
     }
 
     /**
@@ -66,114 +65,114 @@ public class Credito extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        PainelPrincipal = new javax.swing.JPanel();
+        lblSolicitacao = new javax.swing.JLabel();
+        Slider = new javax.swing.JSlider();
         lblValor = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblRS = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        textPaneTermos = new javax.swing.JTextPane();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        txtPainelTermos = new javax.swing.JTextPane();
+        CheckBoxTermos = new javax.swing.JCheckBox();
+        PainelLogo = new javax.swing.JPanel();
+        lblLogoBanco = new javax.swing.JLabel();
+        lblTituloCredito = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Solicitação de Crédito");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Valor a ser solicidado: ");
+        lblSolicitacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSolicitacao.setText("Valor a ser solicidado: ");
 
-        jSlider1.setMaximum(50000);
-        jSlider1.setValue(0);
-        jSlider1.addChangeListener(new javax.swing.event.ChangeListener() {
+        Slider.setMaximum(50000);
+        Slider.setValue(0);
+        Slider.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSlider1StateChanged(evt);
+                SliderStateChanged(evt);
             }
         });
 
         lblValor.setText("0");
 
-        jLabel5.setText("R$");
+        lblRS.setText("R$");
 
-        jScrollPane2.setViewportView(textPaneTermos);
+        jScrollPane2.setViewportView(txtPainelTermos);
 
-        jCheckBox1.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
-        jCheckBox1.setText("Aceito os temos do contrato");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        CheckBoxTermos.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        CheckBoxTermos.setText("Aceito os temos do contrato");
+        CheckBoxTermos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                CheckBoxTermosActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PainelPrincipalLayout = new javax.swing.GroupLayout(PainelPrincipal);
+        PainelPrincipal.setLayout(PainelPrincipalLayout);
+        PainelPrincipalLayout.setHorizontalGroup(
+            PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelPrincipalLayout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Slider, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(lblRS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblValor))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(PainelPrincipalLayout.createSequentialGroup()
                         .addGap(94, 94, 94)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblSolicitacao, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PainelPrincipalLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
+                        .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CheckBoxTermos)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PainelPrincipalLayout.setVerticalGroup(
+            PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelPrincipalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblSolicitacao, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
+                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Slider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRS)
                     .addComponent(lblValor))
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
+                .addComponent(CheckBoxTermos)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelLogo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobancopqline.png"))); // NOI18N
+        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobancopqline.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout PainelLogoLayout = new javax.swing.GroupLayout(PainelLogo);
+        PainelLogo.setLayout(PainelLogoLayout);
+        PainelLogoLayout.setHorizontalGroup(
+            PainelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        PainelLogoLayout.setVerticalGroup(
+            PainelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
-        jLabel1.setText("SOLICITAÇÃO DE CRÉDITO");
+        lblTituloCredito.setFont(new java.awt.Font("Arial Black", 0, 20)); // NOI18N
+        lblTituloCredito.setText("SOLICITAÇÃO DE CRÉDITO");
 
         btnConfirmar.setText("Solicitar Crédito");
         btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -182,11 +181,11 @@ public class Credito extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/voltar.png"))); // NOI18N
-        jButton1.setText("Voltar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/voltar.png"))); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVoltarActionPerformed(evt);
             }
         });
 
@@ -196,19 +195,19 @@ public class Credito extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PainelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jLabel1))
+                        .addComponent(lblTituloCredito))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(PainelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48)
                         .addComponent(btnConfirmar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -217,44 +216,44 @@ public class Credito extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PainelLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
+                .addComponent(lblTituloCredito)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PainelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmar)
-                    .addComponent(jButton1))
+                    .addComponent(btnVoltar))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jSlider1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSlider1StateChanged
-        lblValor.setText(String.valueOf(jSlider1.getValue())); 
+    private void SliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_SliderStateChanged
+        lblValor.setText(String.valueOf(Slider.getValue())); 
         preencherTermos(nomeCliente, cpfCliente);
-    }//GEN-LAST:event_jSlider1StateChanged
+    }//GEN-LAST:event_SliderStateChanged
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        btnConfirmar.setEnabled(jCheckBox1.isSelected()); 
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    private void CheckBoxTermosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxTermosActionPerformed
+        btnConfirmar.setEnabled(CheckBoxTermos.isSelected()); 
+    }//GEN-LAST:event_CheckBoxTermosActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         Usuario user = buscarUsuarioPorCPF(cpfCliente);
-        double valor = jSlider1.getValue();
+        double valor = Slider.getValue();
         solicitacaoDeCredito(cpfCliente, valor);
         JOptionPane.showMessageDialog(this,"Sua solicitação foi enviada com sucesso! Basta aguardar a liberação pelo gerente. ","Agora é só aguardar!", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         MenuCliente cliente = new MenuCliente(cpfCliente);
         cliente.setLocationRelativeTo(null); 
         cliente.setVisible(true);
         
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
    
     public static void main(String args[]) {
@@ -291,19 +290,19 @@ public class Credito extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckBoxTermos;
+    private javax.swing.JPanel PainelLogo;
+    private javax.swing.JPanel PainelPrincipal;
+    private javax.swing.JSlider Slider;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSlider jSlider1;
+    private javax.swing.JLabel lblLogoBanco;
+    private javax.swing.JLabel lblRS;
+    private javax.swing.JLabel lblSolicitacao;
+    private javax.swing.JLabel lblTituloCredito;
     private javax.swing.JLabel lblValor;
-    private javax.swing.JTextPane textPaneTermos;
+    private javax.swing.JTextPane txtPainelTermos;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
