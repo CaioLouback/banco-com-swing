@@ -184,9 +184,10 @@ public class MenuGerente extends javax.swing.JFrame {
         model.addColumn("CPF");
         model.addColumn("Valor");
         
-        String cpf = "1";
+        
         for (Map<String, Object> solicitacao : solicitacoesCredito) {
             String nome = (String) solicitacao.get("nome");
+            String cpf = (String) solicitacao.get("cpf");
             double valor = (double) solicitacao.get("valor");
             model.addRow(new Object[]{nome, cpf, valor});
         }

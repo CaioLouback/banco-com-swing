@@ -186,6 +186,7 @@ public class ArquivoJson {
         
         Map<String, Object> novaSolicitacao = new HashMap<>();
         novaSolicitacao.put("nome", user.getNome());
+        novaSolicitacao.put("cpf", user.getCpf());
         novaSolicitacao.put("valor", valor);
         
         solicitacoes.add(novaSolicitacao);
