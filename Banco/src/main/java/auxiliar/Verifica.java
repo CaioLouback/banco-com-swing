@@ -2,6 +2,7 @@
 package auxiliar;
 
 import static auxiliar.ArquivoJson.attSaldo;
+import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import static auxiliar.ArquivoJson.registrarMovimentacao;
 import java.text.ParseException;
 import javax.swing.text.DefaultFormatterFactory;
@@ -106,5 +107,13 @@ public class Verifica {
         registrarMovimentacao(destino.getCpf(), "Transferência (+)", valor);
         attSaldo(origem.getCpf(), saldoUserLogado);
         attSaldo(destino.getCpf(), saldoUserDestino);
+    }
+    
+    public static void emprestimo(String cpf, double valor){
+        Usuario usuario = buscarUsuarioPorCPF(cpf);
+        double saldo = usuario.getSaldo();
+        saldo += valor;
+        attSaldo(usuario.getCpf(), saldo);
+        registrarMovimentacao(usuario.getCpf(), "Empréstimo (+)", saldo);
     }
 }

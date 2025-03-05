@@ -244,5 +244,46 @@ public class ArquivoJson {
         }
     }
    
+    public static void removerSolicitacaoCredito(String cpfSolicitante, double valor) {
+        File file = new File(CAMINHO_CREDITO);
+        Map<String, List<Map<String, Object>>> creditos;
+
+        // Verifica se o arquivo existe e carrega os dados existentes
+        if (file.exists()) {
+            try (FileReader reader = new FileReader(CAMINHO_CREDITO)) {
+                Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+                }.getType();
+                creditos = gson.fromJson(reader, type);
+            } catch (IOException e) {
+                creditos = new HashMap<>();
+            }
+        } else {
+            creditos = new HashMap<>();
+        }
+
+        // Verifica se o CPF existe na lista de créditos
+        List<Map<String, Object>> solicitacoes = creditos.getOrDefault(cpfSolicitante, new ArrayList<>());
+
+        // Itera sobre as solicitações para encontrar e remover a solicitação com o valor
+        solicitacoes.removeIf(solicitacao
+                -> solicitacao.get("valor").equals(valor)
+        );
+
+        // Se a lista de solicitações de um CPF ficar vazia, removemos o CPF
+        if (solicitacoes.isEmpty()) {
+            creditos.remove(cpfSolicitante);
+        } else {
+            creditos.put(cpfSolicitante, solicitacoes);
+        }
+
+        // Grava o arquivo atualizado
+        try (FileWriter writer = new FileWriter(CAMINHO_CREDITO)) {
+            gson.toJson(creditos, writer);
+            System.out.println("Solicitação de crédito removida com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao gravar as atualizações no arquivo.");
+        }
+    }
+
    
 }

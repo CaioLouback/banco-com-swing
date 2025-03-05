@@ -3,6 +3,10 @@
     {
       "tipo": "Transferência (-)",
       "valor": 20.0
+    },
+    {
+      "tipo": "Empréstimo (+)",
+      "valor": 50080.0
     }
   ],
   "316.035.510-18": [

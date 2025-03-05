@@ -2,9 +2,12 @@ package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static auxiliar.ArquivoJson.removerSolicitacaoCredito;
+import static auxiliar.Verifica.emprestimo;
 import java.awt.Toolkit;
 import java.util.List;
 import java.util.Map;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import usuario.Usuario;
 
@@ -85,6 +88,11 @@ public class MenuGerente extends javax.swing.JFrame {
 
         btnReprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/negado.png"))); // NOI18N
         btnReprovar.setText("Reprovar");
+        btnReprovar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReprovarActionPerformed(evt);
+            }
+        });
 
         tbTabela.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -197,8 +205,47 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovarActionPerformed
-        
+        // Obtém o índice da linha selecionada
+        int selectedRow = tbTabela.getSelectedRow();
+
+        // Verifica se há uma linha selecionada
+        if (selectedRow != -1) {
+            // Pega os valores da linha selecionada
+          
+            String cpf = (String) tbTabela.getValueAt(selectedRow, 1);  // CPF está na coluna 1
+            double valor = (double) tbTabela.getValueAt(selectedRow, 2); // Valor está na coluna 2
+
+            // Aqui você pode chamar o método para realizar a transferência
+            emprestimo(cpf, valor);
+            
+            removerSolicitacaoCredito(cpf, valor);
+            
+        } else {
+            // Caso não tenha linha selecionada
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnAprovarActionPerformed
+
+    private void btnReprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReprovarActionPerformed
+        // Obtém o índice da linha selecionada
+        int selectedRow = tbTabela.getSelectedRow();
+
+        // Verifica se há uma linha selecionada
+        if (selectedRow != -1) { // Pega os valores da linha selecionada
+         
+            String cpf = (String) tbTabela.getValueAt(selectedRow, 1);  // CPF está na coluna 1
+            double valor = (double) tbTabela.getValueAt(selectedRow, 2); // Valor está na coluna 2
+
+            removerSolicitacaoCredito(cpf, valor);
+            
+        } else {
+            // Caso não tenha linha selecionada
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnReprovarActionPerformed
 
     /**
      * @param args the command line arguments
