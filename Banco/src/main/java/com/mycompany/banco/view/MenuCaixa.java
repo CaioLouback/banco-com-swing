@@ -1,16 +1,17 @@
 package com.mycompany.banco.view;
 
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 import usuario.Usuario;
 
 
 public class MenuCaixa extends javax.swing.JFrame {
     private String cpfCaixa;
-    /**
-     * Creates new form MenuCaixa
-     */
+   
     public MenuCaixa() {
         initComponents();
+        setIcon();
     }
      public MenuCaixa(String cpfCaixa) {
         initComponents();
@@ -26,15 +27,51 @@ public class MenuCaixa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PainelPrincipal = new javax.swing.JPanel();
+        PainelLogoBanco = new javax.swing.JPanel();
         lblLogoBanco = new javax.swing.JLabel();
+        btnSaque = new javax.swing.JButton();
+        btnDeposito = new javax.swing.JButton();
+        btnTransferencia = new javax.swing.JButton();
         lblCaixa = new javax.swing.JLabel();
         lblNomeCaixa = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Caixa");
         setResizable(false);
 
+        PainelPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        PainelLogoBanco.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
+
+        javax.swing.GroupLayout PainelLogoBancoLayout = new javax.swing.GroupLayout(PainelLogoBanco);
+        PainelLogoBanco.setLayout(PainelLogoBancoLayout);
+        PainelLogoBancoLayout.setHorizontalGroup(
+            PainelLogoBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLogoBancoLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(lblLogoBanco)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        PainelLogoBancoLayout.setVerticalGroup(
+            PainelLogoBancoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelLogoBancoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        btnSaque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/saque.png"))); // NOI18N
+        btnSaque.setText("Saque");
+
+        btnDeposito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/deposito.png"))); // NOI18N
+        btnDeposito.setText("Depósito");
+
+        btnTransferencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
+        btnTransferencia.setText("Transferência");
 
         lblCaixa.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         lblCaixa.setText("Caixa do Banco:");
@@ -51,32 +88,78 @@ public class MenuCaixa extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
+        jLabel1.setText("Deslogar");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PainelPrincipalLayout = new javax.swing.GroupLayout(PainelPrincipal);
+        PainelPrincipal.setLayout(PainelPrincipalLayout);
+        PainelPrincipalLayout.setHorizontalGroup(
+            PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                        .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                                        .addComponent(btnTransferencia)
+                                        .addGap(45, 45, 45)
+                                        .addComponent(btnDeposito)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(btnSaque))
+                                    .addComponent(PainelLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblNomeCaixa)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelPrincipalLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)))
+                .addContainerGap())
+        );
+        PainelPrincipalLayout.setVerticalGroup(
+            PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomeCaixa))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(PainelLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSaque)
+                    .addComponent(btnDeposito)
+                    .addComponent(btnTransferencia))
+                .addGap(72, 72, 72))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(131, 131, 131)
-                        .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNomeCaixa))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addComponent(lblLogoBanco)))
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(PainelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNomeCaixa))
-                .addGap(18, 18, 18)
-                .addComponent(lblLogoBanco)
-                .addContainerGap(216, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(PainelPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -88,6 +171,26 @@ public class MenuCaixa extends javax.swing.JFrame {
     lblNomeCaixa.setText(user.getNome());
        
     }//GEN-LAST:event_lblNomeCaixaAncestorAdded
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+          Usuario user = buscarUsuarioPorCPF(cpfCaixa);
+            
+        int resposta = JOptionPane.showConfirmDialog(
+            this,
+            "Deseja realmente finalizar a sua sessão com " + user.getNome() + "?",
+            "Finalizar Sessão",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (resposta == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            
+            this.dispose(); 
+        } 
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -125,8 +228,18 @@ public class MenuCaixa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PainelLogoBanco;
+    private javax.swing.JPanel PainelPrincipal;
+    private javax.swing.JButton btnDeposito;
+    private javax.swing.JButton btnSaque;
+    private javax.swing.JButton btnTransferencia;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCaixa;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeCaixa;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
+    }
 }
