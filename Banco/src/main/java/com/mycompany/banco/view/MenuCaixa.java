@@ -15,6 +15,7 @@ public class MenuCaixa extends javax.swing.JFrame {
     }
      public MenuCaixa(String cpfCaixa) {
         initComponents();
+        setIcon();
         this.cpfCaixa = cpfCaixa;
     }
 
@@ -91,6 +92,7 @@ public class MenuCaixa extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         jLabel1.setText("Deslogar");
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel1MouseClicked(evt);
