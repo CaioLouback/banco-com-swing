@@ -154,53 +154,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // Verifica se os campos estão vazios
-        if (txtCPF.getText().trim().isEmpty() || jPasswordFieldLogin.getPassword().length == 0) {
-            JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Obtém os valores do CPF e senha digitados
-        String cpfDigitado = txtCPF.getText().trim();
-        String senhaDigitada = new String(jPasswordFieldLogin.getPassword());
-
-        // Carrega os usuários do JSON
-        List<Usuario> usuarios = ArquivoJson.lerUsuarios();
-
-        // Percorre os usuários e verifica se há correspondência
-        boolean loginValido = false;
-        for (Usuario usuario : usuarios) {
-            if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
-                if(usuario.getTipo().equals("Cliente"))
-                {
-                    loginValido = true;
-                    MenuCliente menu = new MenuCliente(cpfDigitado);
-                    menu.setVisible(true);
-                    menu.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
-                } else if (usuario.getTipo().equals("Gerente")){
-                    loginValido = true;
-                    MenuGerente gerente =  new MenuGerente(cpfDigitado);
-                    gerente.setVisible(true);
-                    gerente.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
-                } else if (usuario.getTipo().equals("Caixa")){
-                    loginValido = true;
-                    MenuCaixa caixa =  new MenuCaixa(cpfDigitado);
-                    caixa.setVisible(true);
-                    caixa.setLocationRelativeTo(null);
-                    this.dispose();
-                    break;
-                }      
-            } 
-        }
-
-        // Se não encontrou um usuário válido, exibe mensagem de erro
-        if (!loginValido) {
-            JOptionPane.showMessageDialog(this, "CPF ou senha incorretos. Tente novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+        System.out.println("teste");
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed

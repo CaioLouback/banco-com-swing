@@ -390,8 +390,8 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jRendaVariavelActionPerformed
 
     private void lblClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClickMouseClicked
-         Usuario user = buscarUsuarioPorCPF(cpfLogado);
-     
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+            
         int resposta = JOptionPane.showConfirmDialog(
             this,
             "Deseja realmente finalizar a sua sessão com " + user.getNome() + "?",
@@ -404,6 +404,7 @@ public class MenuCliente extends javax.swing.JFrame {
             Login login = new Login();
             login.setVisible(true);
             login.setLocationRelativeTo(null);
+            
             this.dispose(); 
         } 
     }//GEN-LAST:event_lblClickMouseClicked
