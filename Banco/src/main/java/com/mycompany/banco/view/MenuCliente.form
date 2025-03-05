@@ -130,7 +130,7 @@
                   </Group>
                   <Component id="btnTransferenciaBancaria" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="39" max="32767" attributes="0"/>
+              <EmptySpace pref="41" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -239,7 +239,7 @@
     <Component class="javax.swing.JLabel" name="lblTituloSaldo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="0"/>
+          <Font name="Segoe UI" size="17" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Saldo Banc&#xe1;rio: "/>
       </Properties>
@@ -247,7 +247,7 @@
     <Component class="javax.swing.JLabel" name="lblSaldo">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Cambria Math" size="18" style="0"/>
+          <Font name="Cambria Math" size="16" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="0"/>
       </Properties>

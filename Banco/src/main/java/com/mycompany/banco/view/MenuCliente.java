@@ -4,6 +4,8 @@ package com.mycompany.banco.view;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Color;
 import java.awt.Toolkit;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
@@ -148,10 +150,10 @@ public class MenuCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblTituloSaldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTituloSaldo.setFont(new java.awt.Font("Segoe UI", 0, 17)); // NOI18N
         lblTituloSaldo.setText("Saldo Bancário: ");
 
-        lblSaldo.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
+        lblSaldo.setFont(new java.awt.Font("Cambria Math", 0, 16)); // NOI18N
         lblSaldo.setText("0");
         lblSaldo.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -293,14 +295,16 @@ public class MenuCliente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(saldoBox))
                     .addComponent(btnTransferenciaBancaria))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblSaldoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblSaldoAncestorAdded
-        
+        Usuario user = buscarUsuarioPorCPF(cpfLogado);
+        NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        lblSaldo.setText(formato.format(user.getSaldo()));
     }//GEN-LAST:event_lblSaldoAncestorAdded
 
     private void lblNomeClienteAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeClienteAncestorAdded
@@ -312,7 +316,8 @@ public class MenuCliente extends javax.swing.JFrame {
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
         if (saldoBox.isSelected()) {
             lblSaldo.setIcon(null);
-            lblSaldo.setText(String.format("R$ %.2f", user.getSaldo())); // Exibe o saldo formatado
+            NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+            lblSaldo.setText(formato.format(user.getSaldo())); 
         } else {
             lblSaldo.setText(""); 
             lblSaldo.setIcon(new ImageIcon(getClass().getResource("/ocultar.png")));
