@@ -13,6 +13,10 @@
     {
       "tipo": "Transferência (+)",
       "valor": 20.0
+    },
+    {
+      "tipo": "Empréstimo (+)",
+      "valor": 12442.0
     }
   ]
 }

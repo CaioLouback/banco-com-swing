@@ -25,6 +25,26 @@ public class MenuGerente extends javax.swing.JFrame {
         initComponents();
     }
     
+    private void atualizarTabela() {
+    // Obtém as solicitações de crédito e atualiza a tabela
+    List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
+
+    DefaultTableModel model = new DefaultTableModel();
+    model.addColumn("Nome");
+    model.addColumn("CPF");
+    model.addColumn("Valor");
+
+    // Preenche a tabela com os dados atualizados
+    for (Map<String, Object> solicitacao : solicitacoesCredito) {
+        String nome = (String) solicitacao.get("nome");
+        String cpf = (String) solicitacao.get("cpf");
+        double valor = (double) solicitacao.get("valor");
+        model.addRow(new Object[]{nome, cpf, valor});
+    }
+
+    tbTabela.setModel(model);
+}
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,7 +239,8 @@ public class MenuGerente extends javax.swing.JFrame {
             emprestimo(cpf, valor);
             
             removerSolicitacaoCredito(cpf, valor);
-            
+            JOptionPane.showMessageDialog(this, "Solicitacão aceita!", "Aprovado!", JOptionPane.INFORMATION_MESSAGE);
+            atualizarTabela();
         } else {
             // Caso não tenha linha selecionada
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
