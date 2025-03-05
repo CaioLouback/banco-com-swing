@@ -6,6 +6,7 @@ import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
@@ -29,13 +30,30 @@ public class Transferencia extends javax.swing.JFrame{
         
     }
    private void campoMonetario() {
-       NumberFormat formato = new DecimalFormat("#,###.##"); 
+       NumberFormat formato = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
+       formato.setMaximumFractionDigits(2); // Permite duas casas decimais
+       formato.setMinimumFractionDigits(2); // Sempre exibe duas casas decimais
+
        NumberFormatter formatador = new NumberFormatter(formato);
-       formatador.setAllowsInvalid(false); 
-       formatador.setOverwriteMode(true);  
+       formatador.setAllowsInvalid(false);
+       formatador.setOverwriteMode(true);
+       formatador.setCommitsOnValidEdit(true); // Atualiza automaticamente
 
        txtValor.setFormatterFactory(new DefaultFormatterFactory(formatador));
-       txtValor.setValue(0.00); 
+       txtValor.setValue(0.00); // Começa com zero reais e centavos
+    }
+   
+    private double formatarValor(String valorTexto) {
+        if (valorTexto == null || valorTexto.isEmpty()) {
+            return 0.0;
+        }
+        try {
+            String valorLimpo = valorTexto.replace("R$", "").replace(".", "").replace(",", ".").trim();
+            return Double.parseDouble(valorLimpo);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valor inválido! Digite um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return 0.0;
+        }
     }
         
     /**
@@ -242,7 +260,7 @@ public class Transferencia extends javax.swing.JFrame{
         Usuario userLogado = buscarUsuarioPorCPF(cpfLogado);
         
         if(userLogado.getTipo().equals("Caixa")){
-            double valor = Double.parseDouble(txtValor.getText());
+            double valor = formatarValor(txtValor.getText());
             Usuario cliente = buscarUsuarioPorCPF(txtCliente.getText());
             
             if (txtCliente.getText() == null || userDestino == null) {
@@ -257,7 +275,7 @@ public class Transferencia extends javax.swing.JFrame{
                 conf.setLocationRelativeTo(null);
             }
         }else if (userLogado.getTipo().equals("Cliente")) {
-            double valor = Double.parseDouble(txtValor.getText());
+            double valor = formatarValor(txtValor.getText());
             if (!(txtCliente.getText().equals(cpfLogado))) {
                 JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir o mesmo CPF do seu login.", "Atenção!", JOptionPane.WARNING_MESSAGE);
             } else if (userDestino == null) {

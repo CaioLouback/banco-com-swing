@@ -1,22 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
 import java.awt.Toolkit;
 import usuario.Usuario;
 
-/**
- *
- * @author caiol
- */
+
 public class Extrato extends javax.swing.JFrame {
     private Usuario logado;
-    /**
-     * Creates new form Extrato
-     */
+    
     public Extrato() {
         initComponents();
         setIcon();
