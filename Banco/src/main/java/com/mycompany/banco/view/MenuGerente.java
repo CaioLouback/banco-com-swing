@@ -2,16 +2,16 @@ package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import java.awt.Toolkit;
 import usuario.Usuario;
 
 
 public class MenuGerente extends javax.swing.JFrame {
     private String cpfGerente;
-    /**
-     * Creates new form MenuGerente
-     */
+    
     public MenuGerente(String cpfGerente) {
         initComponents();
+        setIcon();
         this.cpfGerente = cpfGerente;
     }
     
@@ -211,4 +211,8 @@ public class MenuGerente extends javax.swing.JFrame {
     private javax.swing.JLabel lblNomeGerente;
     private javax.swing.JTextPane txtPainel;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
+    }
 }
