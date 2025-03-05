@@ -4,6 +4,7 @@ import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import static auxiliar.ArquivoJson.removerSolicitacaoCredito;
 import static auxiliar.Verifica.emprestimo;
+
 import java.awt.Toolkit;
 import java.util.List;
 import java.util.Map;
@@ -19,10 +20,12 @@ public class MenuGerente extends javax.swing.JFrame {
         initComponents();
         setIcon();
         this.cpfGerente = cpfGerente;
+      
     }
     
     public MenuGerente(){
         initComponents();
+  
     }
     
     private void atualizarTabela() {
@@ -56,7 +59,6 @@ public class MenuGerente extends javax.swing.JFrame {
 
         lblGerente = new javax.swing.JLabel();
         lblNomeGerente = new javax.swing.JLabel();
-        lblLogoBanco = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -64,6 +66,12 @@ public class MenuGerente extends javax.swing.JFrame {
         btnReprovar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbTabela = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
+        lblLogoBanco = new javax.swing.JLabel();
+        lblClick = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerente");
@@ -73,7 +81,7 @@ public class MenuGerente extends javax.swing.JFrame {
         lblGerente.setText("Gerente:");
 
         lblNomeGerente.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
-        lblNomeGerente.setText("Nome do Gerente");
+        lblNomeGerente.setText("Nome ");
         lblNomeGerente.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 lblNomeGerenteAncestorAdded(evt);
@@ -83,8 +91,6 @@ public class MenuGerente extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-
-        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -162,6 +168,45 @@ public class MenuGerente extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        lblClick.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lblClick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
+        lblClick.setText("Deslogar");
+        lblClick.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblClick.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblClickMouseClicked(evt);
+            }
+        });
+
+        jMenu1.setText("File");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,30 +214,35 @@ public class MenuGerente extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
+                        .addGap(184, 184, 184)
                         .addComponent(lblGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNomeGerente))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(lblLogoBanco))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(99, 99, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(72, 72, 72)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblClick))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeGerente))
-                .addGap(18, 18, 18)
-                .addComponent(lblLogoBanco)
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblClick))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -268,6 +318,26 @@ public class MenuGerente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnReprovarActionPerformed
 
+    private void lblClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClickMouseClicked
+        Usuario user = buscarUsuarioPorCPF(cpfGerente);
+            
+        int resposta = JOptionPane.showConfirmDialog(
+            this,
+            "Deseja realmente finalizar a sua sessão com " + user.getNome() + "?",
+            "Finalizar Sessão",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE
+        );
+
+        if (resposta == JOptionPane.YES_OPTION) {
+            Login login = new Login();
+            login.setVisible(true);
+            login.setLocationRelativeTo(null);
+            
+            this.dispose(); 
+        } 
+    }//GEN-LAST:event_lblClickMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -310,8 +380,13 @@ public class MenuGerente extends javax.swing.JFrame {
     private javax.swing.JButton btnReprovar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblClick;
     private javax.swing.JLabel lblGerente;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeGerente;

@@ -19,8 +19,7 @@ public class MenuCliente extends javax.swing.JFrame {
         frontInicial();
         saldoBox.setSelected(true);
         atualizarSaldo();
-        lblClick.setText("<html><u>Desgolar</u></html>");
-        lblClick.setForeground(Color.BLUE);
+        
     }
     
     public MenuCliente(String cpfLogado){
@@ -29,8 +28,7 @@ public class MenuCliente extends javax.swing.JFrame {
         frontInicial();
         saldoBox.setSelected(true);
         atualizarSaldo();
-        lblClick.setText("<html><u>Deslogar</u></html>");
-        lblClick.setForeground(Color.BLUE);
+        
     }
     
     private void frontInicial(){
@@ -108,6 +106,7 @@ public class MenuCliente extends javax.swing.JFrame {
         lblLogoBanco.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         lblClick.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lblClick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
         lblClick.setText("Deslogar");
         lblClick.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblClick.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -123,15 +122,13 @@ public class MenuCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblLogoBanco)
-                        .addContainerGap(53, Short.MAX_VALUE))
+                    .addComponent(lblLogoBanco)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNomeCliente)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(lblNomeCliente)))
+                .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblClick)
@@ -146,9 +143,9 @@ public class MenuCliente extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8)
                 .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblClick)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblTituloSaldo.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
