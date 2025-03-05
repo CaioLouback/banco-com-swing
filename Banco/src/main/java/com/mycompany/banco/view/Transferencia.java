@@ -1,8 +1,8 @@
 package com.mycompany.banco.view;
 
-import static auxiliar.ArquivoJson.attSaldo;
+
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
-import static auxiliar.Verifica.transferenciaBancaria;
+
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -223,34 +223,55 @@ public class Transferencia extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        MenuCliente cliente = new MenuCliente(cpfLogado);
-        cliente.setLocationRelativeTo(null); 
-        cliente.setVisible(true);
+        Usuario userLogado = buscarUsuarioPorCPF(cpfLogado);
         
+        if(userLogado.getTipo().equals("Caixa")){
+            MenuCaixa caixa = new MenuCaixa(cpfLogado);
+            caixa.setLocationRelativeTo(null); 
+            caixa.setVisible(true);
+        } else if (userLogado.getTipo().equals("Cliente")){
+            MenuCliente cliente = new MenuCliente(cpfLogado);
+            cliente.setLocationRelativeTo(null); 
+            cliente.setVisible(true);
+        }
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferirActionPerformed
         Usuario userDestino = buscarUsuarioPorCPF(txtDestino.getText());
         Usuario userLogado = buscarUsuarioPorCPF(cpfLogado);
-        double valor = Double.parseDouble(txtValor.getText());
         
-        if(!(txtCliente.getText().equals(cpfLogado))){
-           JOptionPane.showMessageDialog(this,"CPF inválido! Favor inserir o mesmo CPF do seu login.", "Atenção!", JOptionPane.WARNING_MESSAGE); 
-        } else if(userDestino == null){
-            JOptionPane.showMessageDialog(this,"CPF inválido! Favor inserir um CPF que tenha conta no banco.", "Atenção!", JOptionPane.WARNING_MESSAGE);
-        } else if(valor == 0){
-            JOptionPane.showMessageDialog(this,"Insira um valor que não seja 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);  
-        } else if(valor > userLogado.getSaldo()){
-            JOptionPane.showMessageDialog(this,"SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-        } else {
-            ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, userDestino, valor, true);
-            conf.setVisible(true);
-            conf.setLocationRelativeTo(null); 
+        if(userLogado.getTipo().equals("Caixa")){
+            double valor = Double.parseDouble(txtValor.getText());
+            Usuario cliente = buscarUsuarioPorCPF(txtCliente.getText());
             
-            
-        }
-        
+            if (txtCliente.getText() == null || userDestino == null) {
+                JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir um CPF que tenha conta no banco.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            }else if (valor == 0) {
+                JOptionPane.showMessageDialog(this, "Insira um valor que não seja 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            } else if (valor > cliente.getSaldo()) {
+                JOptionPane.showMessageDialog(this, "SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                ConfirmacaoLogin conf = new ConfirmacaoLogin(cliente, userDestino, valor, true);
+                conf.setVisible(true);
+                conf.setLocationRelativeTo(null);
+            }
+        }else if (userLogado.getTipo().equals("Cliente")) {
+            double valor = Double.parseDouble(txtValor.getText());
+            if (!(txtCliente.getText().equals(cpfLogado))) {
+                JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir o mesmo CPF do seu login.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            } else if (userDestino == null) {
+                JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir um CPF que tenha conta no banco.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            } else if (valor == 0) {
+                JOptionPane.showMessageDialog(this, "Insira um valor que não seja 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            } else if (valor > userLogado.getSaldo()) {
+                JOptionPane.showMessageDialog(this, "SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, userDestino, valor, true);
+                conf.setVisible(true);
+                conf.setLocationRelativeTo(null);
+            }
+        }  
     }//GEN-LAST:event_btnTransferirActionPerformed
 
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed

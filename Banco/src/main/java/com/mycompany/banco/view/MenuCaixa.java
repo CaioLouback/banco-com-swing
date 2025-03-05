@@ -73,6 +73,11 @@ public class MenuCaixa extends javax.swing.JFrame {
 
         btnTransferencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
         btnTransferencia.setText("Transferência");
+        btnTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransferenciaActionPerformed(evt);
+            }
+        });
 
         lblCaixa.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         lblCaixa.setText("Caixa do Banco:");
@@ -119,7 +124,7 @@ public class MenuCaixa extends javax.swing.JFrame {
                                     .addComponent(PainelLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(PainelPrincipalLayout.createSequentialGroup()
                                 .addGap(74, 74, 74)
-                                .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblCaixa)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(lblNomeCaixa)))
                         .addGap(0, 0, Short.MAX_VALUE))
@@ -193,6 +198,13 @@ public class MenuCaixa extends javax.swing.JFrame {
             this.dispose(); 
         } 
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
+        Transferencia trans = new Transferencia(cpfCaixa);
+        this.dispose();
+        trans.setVisible(true);
+        trans.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnTransferenciaActionPerformed
 
     /**
      * @param args the command line arguments
