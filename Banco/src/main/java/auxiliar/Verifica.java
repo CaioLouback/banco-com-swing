@@ -123,5 +123,10 @@ public class Verifica {
         registrarMovimentacao(usuario.getCpf(), "Depósito (+)", valor);
     }
     
-    
+    public static void saque(Usuario usuario, double valor){
+        double saldo = usuario.getSaldo();
+        saldo -= valor;
+        attSaldo(usuario.getCpf(), saldo);
+        registrarMovimentacao(usuario.getCpf(), "Saque (-)", valor);
+    }
 }

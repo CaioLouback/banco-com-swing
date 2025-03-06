@@ -1,8 +1,11 @@
 package com.mycompany.banco.view;
 
+import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static auxiliar.Verifica.saque;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
+import java.util.List;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
@@ -55,6 +58,18 @@ public class Saque extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Valor inválido! Digite um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
             return 0.0;
         }
+    }
+    
+    private void reset(){
+        txtCPF.setFocusable(false);
+        txtSenha.setFocusable(false);
+        
+        txtCPF.setText("");
+        txtSenha.setText("");
+  
+        txtCPF.setFocusable(true);
+        txtSenha.setFocusable(true);
+   
     }
 
     /**
@@ -252,10 +267,36 @@ public class Saque extends javax.swing.JFrame {
 
     private void btnSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaqueActionPerformed
         String cpfDoCliente = txtCPF.getText();
+        String senhaDigitada = new String(txtSenha.getPassword());
         Usuario user = buscarUsuarioPorCPF(cpfDoCliente);
         
-        if(txtCPF.getText().equals(user.getCpf()) && txtSenha.getPassword().equals(user.getSenha())){
-            double valor = formatarValor(txtValor.getText());
+        if(user == null){
+            JOptionPane.showMessageDialog(this, "Usuário não tem cadastro no banco ou o campo CPF está em branco.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        if (txtSenha.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Favor inserir uma senha!");
+            return;
+        }
+        
+        if(!(user.getSenha().equals(senhaDigitada))){
+            JOptionPane.showMessageDialog(this, "Senha incorreta!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+        }
+        
+        List<Usuario> usuarios = ArquivoJson.lerUsuarios();
+        
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCpf().equals(cpfDoCliente) && usuario.getSenha().equals(senhaDigitada)) {
+                double valor = formatarValor(txtValor.getText());
+                if(valor != 0){
+                    saque(user, valor);
+                    JOptionPane.showMessageDialog(this, "Saque realizado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                    reset();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Favor inserir um valor diferente de 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+                }   
+            }  
         }
     }//GEN-LAST:event_btnSaqueActionPerformed
 
