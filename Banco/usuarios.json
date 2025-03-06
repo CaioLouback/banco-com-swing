@@ -19,5 +19,47 @@
     "senha": "123",
     "tipo": "Cliente",
     "saldo": 85.0
+  },
+  {
+    "nome": "João",
+    "cpf": "123.456.789-00",
+    "senha": "senha123",
+    "tipo": "Cliente",
+    "saldo": 1000.0
+  },
+  {
+    "nome": "João",
+    "cpf": "123.456.789-00",
+    "senha": "senha123",
+    "tipo": "Cliente",
+    "saldo": 1000.0
+  },
+  {
+    "nome": "João",
+    "cpf": "123.456.789-00",
+    "senha": "senha123",
+    "tipo": "Cliente",
+    "saldo": 1000.0
+  },
+  {
+    "nome": "João",
+    "cpf": "123.456.789-00",
+    "senha": "senha123",
+    "tipo": "Cliente",
+    "saldo": 1000.0
+  },
+  {
+    "nome": "João",
+    "cpf": "123.456.789-00",
+    "senha": "senha123",
+    "tipo": "Cliente",
+    "saldo": 1000.0
+  },
+  {
+    "nome": "João",
+    "cpf": "123.456.789-00",
+    "senha": "senha123",
+    "tipo": "Cliente",
+    "saldo": 1000.0
   }
 ]

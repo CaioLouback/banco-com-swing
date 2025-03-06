@@ -300,13 +300,13 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBoxSenha;
     private javax.swing.JPanel Painel;
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnEntrar;
+    public javax.swing.JButton btnCadastrar;
+    public javax.swing.JButton btnEntrar;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblUsuario;
-    private javax.swing.JFormattedTextField txtCPF;
-    private javax.swing.JPasswordField txtSenha;
+    public javax.swing.JFormattedTextField txtCPF;
+    public javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
 }
