@@ -2,6 +2,7 @@ package com.mycompany.banco.view;
 
 import static auxiliar.Verifica.transferenciaBancaria;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
@@ -105,6 +106,11 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                 btnConfirmarActionPerformed(evt);
             }
         });
+        btnConfirmar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnConfirmarKeyPressed(evt);
+            }
+        });
 
         lblTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/confirmacaoLogin.png"))); // NOI18N
 
@@ -188,7 +194,23 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
-        
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String senha = new String(txtSenha.getPassword());
+
+            if (!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
+                JOptionPane.showMessageDialog(this, "Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            else {
+                if (transferencia == true) {
+                    transferenciaBancaria(logado, destino, valor);
+                    JOptionPane.showMessageDialog(this, "Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                } else if (extrato == true) {
+                    Extrato extra = new Extrato(logado);
+                    extra.setVisible(true);
+                    extra.setLocationRelativeTo(null);
+                }
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
     private void CheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxActionPerformed
@@ -220,6 +242,24 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         }
                 
     }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void btnConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnConfirmarKeyPressed
+        String senha = new String (txtSenha.getPassword());
+        
+        if(!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
+           JOptionPane.showMessageDialog(this,"Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+        else{
+            if(transferencia == true){
+                transferenciaBancaria(logado, destino, valor);
+                JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            } else if (extrato == true){
+                Extrato extra = new Extrato(logado);
+                extra.setVisible(true);
+                extra.setLocationRelativeTo(null);    
+            } 
+            this.dispose(); 
+        }
+    }//GEN-LAST:event_btnConfirmarKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
