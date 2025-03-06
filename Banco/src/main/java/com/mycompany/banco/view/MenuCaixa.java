@@ -72,6 +72,11 @@ public class MenuCaixa extends javax.swing.JFrame {
 
         btnSaque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/saque.png"))); // NOI18N
         btnSaque.setText("Saque");
+        btnSaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaqueActionPerformed(evt);
+            }
+        });
 
         btnDeposito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/deposito.png"))); // NOI18N
         btnDeposito.setText("Depósito");
@@ -220,6 +225,10 @@ public class MenuCaixa extends javax.swing.JFrame {
         deposito.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnDepositoActionPerformed
+
+    private void btnSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSaqueActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
