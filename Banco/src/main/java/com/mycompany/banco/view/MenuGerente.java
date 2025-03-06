@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import usuario.Usuario;
 
-
+// Aluno Caio Louback  matrícula 202335032
 public class MenuGerente extends javax.swing.JFrame {
     private String cpfGerente;
     

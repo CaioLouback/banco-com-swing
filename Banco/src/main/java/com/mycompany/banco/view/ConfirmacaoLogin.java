@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
-
+// Aluno Caio Louback  matrícula 202335032
 public class ConfirmacaoLogin extends javax.swing.JFrame {
     private Usuario logado;
     private boolean transferencia;

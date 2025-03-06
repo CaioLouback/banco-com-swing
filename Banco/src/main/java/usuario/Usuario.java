@@ -2,7 +2,7 @@ package usuario;
 
 import com.google.gson.annotations.Expose;
 
-
+// Aluno Caio Louback  matrícula 202335032
 public class Usuario {
     @Expose
     protected String nome;

@@ -4,7 +4,7 @@ import auxiliar.ArquivoJson;
 import java.awt.Toolkit;
 import usuario.Usuario;
 
-
+// Aluno Caio Louback  matrícula 202335032
 public class Extrato extends javax.swing.JFrame {
     private Usuario logado;
     

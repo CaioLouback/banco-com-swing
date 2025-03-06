@@ -6,6 +6,7 @@ import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
+// Aluno Caio Louback  matrícula 202335032
 public class Credito extends javax.swing.JFrame {
     String nomeCliente;
     String cpfCliente;

@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
+// Aluno Caio Louback  matrícula 202335032
 public class MenuCliente extends javax.swing.JFrame {
     private String cpfLogado;
     

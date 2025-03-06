@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
-
+// Aluno Caio Louback  matrícula 202335032
 public class MenuCaixa extends javax.swing.JFrame {
     private String cpfCaixa;
    

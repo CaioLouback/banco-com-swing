@@ -4,7 +4,7 @@ import usuario.Caixa;
 import usuario.Cliente;
 import usuario.Gerente;
 
-
+// Aluno Caio Louback  matrícula 202335032
 public class Cadastro {
     private static ArquivoJson j = new ArquivoJson();
     
