@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import usuario.Usuario;
-
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -20,8 +19,8 @@ public class ArquivoJson {
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     
     public static void salvarUsuario(Usuario usuario) {
-        List<Usuario> usuarios = lerUsuarios(); // Carrega os usuários já salvos
-        usuarios.add(usuario); // Adiciona o novo usuário
+        List<Usuario> usuarios = lerUsuarios(); 
+        usuarios.add(usuario); 
 
         try (FileWriter writer = new FileWriter(CAMINHO_ARQUIVO)) {
             gson.toJson(usuarios, writer);
@@ -30,11 +29,10 @@ public class ArquivoJson {
         }
     }
     
-    
     public static List<Usuario> lerUsuarios() {
         File file = new File(CAMINHO_ARQUIVO);
         if (!file.exists()) {
-            return new ArrayList<>(); // Se o arquivo não existir, retorna lista vazia
+            return new ArrayList<>();
         }
 
         try (FileReader reader = new FileReader(CAMINHO_ARQUIVO)) {
@@ -76,7 +74,7 @@ public class ArquivoJson {
                 return usuario;
             }
         }
-        return null; // Retorna null se o usuário não for encontrado
+        return null; 
     }
    
    public static void attSaldo(String cpf, double novoSaldo){
@@ -186,7 +184,7 @@ public class ArquivoJson {
         
         Map<String, Object> novaSolicitacao = new HashMap<>();
         novaSolicitacao.put("nome", user.getNome());
-        novaSolicitacao.put("cpf", user.getCpf());
+        novaSolicitacao.put("cpf", user.getCpf()); // Usei dessa forma porque estou usando o CPF como chave do JSON
         novaSolicitacao.put("valor", valor);
         
         solicitacoes.add(novaSolicitacao);
@@ -197,8 +195,7 @@ public class ArquivoJson {
             gson.toJson(creditos, writer);
             System.out.println("Solicitacao registrada com sucesso!");
         } catch (IOException e) {
-        }
-        
+        }  
     }
     
     
@@ -283,7 +280,5 @@ public class ArquivoJson {
         } catch (IOException e) {
             System.out.println("Erro ao gravar as atualizações no arquivo.");
         }
-    }
-
-   
+    } 
 }

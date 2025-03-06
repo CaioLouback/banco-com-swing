@@ -1,4 +1,3 @@
-
 package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
@@ -8,18 +7,16 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
-
-
-
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
     public Login() {
         initComponents();
         setIcon();
          
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
     }
 
     /**
@@ -154,30 +151,26 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // Verifica se os campos estão vazios
+
         if (txtCPF.getText().trim().isEmpty() || txtSenha.getPassword().length == 0) {
             JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Obtém os valores do CPF e senha digitados
         String cpfDigitado = txtCPF.getText().trim();
         String senhaDigitada = new String(txtSenha.getPassword());
 
-        // Carrega os usuários do JSON
         List<Usuario> usuarios = ArquivoJson.lerUsuarios();
-        
+
         for (Usuario usuario : usuarios) {
-    System.out.println("Usuário do JSON: CPF=" + usuario.getCpf() + ", Senha=" + usuario.getSenha() + ", Tipo=" + usuario.getTipo());
-}
-        
-        
+            System.out.println("Usuário do JSON: CPF=" + usuario.getCpf() + ", Senha=" + usuario.getSenha() + ", Tipo=" + usuario.getTipo());
+        }
+
         // Percorre os usuários e verifica se há correspondência
         boolean loginValido = false;
         for (Usuario usuario : usuarios) {
             if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
-                if(usuario.getTipo().trim().equalsIgnoreCase("Cliente"))
-                {
+                if (usuario.getTipo().trim().equalsIgnoreCase("Cliente")) {
                     loginValido = true;
                     MenuCliente menu = new MenuCliente(cpfDigitado);
                     menu.setVisible(true);
@@ -185,27 +178,26 @@ public class Login extends javax.swing.JFrame {
                     System.out.println("ENTROI AQUI NO CLIENTE");
                     this.dispose();
                     break;
-                } else if (usuario.getTipo().trim().equalsIgnoreCase("Gerente")){
+                } else if (usuario.getTipo().trim().equalsIgnoreCase("Gerente")) {
                     loginValido = true;
-                    MenuGerente gerente =  new MenuGerente(cpfDigitado);
+                    MenuGerente gerente = new MenuGerente(cpfDigitado);
                     gerente.setVisible(true);
                     gerente.setLocationRelativeTo(null);
                     System.out.println("ENTROI AQUI NO GERENTE");
                     this.dispose();
                     break;
-                } else if (usuario.getTipo().trim().equalsIgnoreCase("Caixa")){
+                } else if (usuario.getTipo().trim().equalsIgnoreCase("Caixa")) {
                     loginValido = true;
-                    MenuCaixa caixa =  new MenuCaixa(cpfDigitado);
+                    MenuCaixa caixa = new MenuCaixa(cpfDigitado);
                     caixa.setVisible(true);
                     caixa.setLocationRelativeTo(null);
                     System.out.println("ENTROI AQUI NO CAIXA");
                     this.dispose();
                     break;
-                }      
-            } 
+                }
+            }
         }
 
-        // Se não encontrou um usuário válido, exibe mensagem de erro
         if (!loginValido) {
             JOptionPane.showMessageDialog(this, "CPF ou senha incorretos. Tente novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -227,13 +219,12 @@ public class Login extends javax.swing.JFrame {
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            // Verifica se os campos estão vazios
+            
             if (txtCPF.getText().trim().isEmpty() || txtSenha.getPassword().length == 0) {
                 JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            // Obtém os valores do CPF e senha digitados
             String cpfDigitado = txtCPF.getText().trim();
             String senhaDigitada = new String(txtSenha.getPassword());
 
@@ -271,9 +262,6 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -320,9 +308,4 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
-    }
-
-   
 }

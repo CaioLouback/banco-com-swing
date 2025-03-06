@@ -254,7 +254,10 @@ public class Credito extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
-
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/dinheiropq.png")));
+    }
    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -305,7 +308,5 @@ public class Credito extends javax.swing.JFrame {
     private javax.swing.JTextPane txtPainelTermos;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/dinheiropq.png")));
-    }
+    
 }

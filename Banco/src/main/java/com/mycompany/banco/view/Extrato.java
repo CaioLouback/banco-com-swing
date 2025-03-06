@@ -22,7 +22,9 @@ public class Extrato extends javax.swing.JFrame {
         setIcon();
     }
     
-    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/extrato_pq.png")));
+    }
     
     
     /**
@@ -179,7 +181,5 @@ public class Extrato extends javax.swing.JFrame {
     private javax.swing.JTextArea txtAreaExtrato;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/extrato_pq.png")));
-    }
+    
 }

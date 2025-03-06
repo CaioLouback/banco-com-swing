@@ -1,8 +1,6 @@
 package com.mycompany.banco.view;
 
-
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
-import java.awt.Color;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -10,10 +8,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
 
-
 public class MenuCliente extends javax.swing.JFrame {
     private String cpfLogado;
-    
     
     public MenuCliente() {
         initComponents();
@@ -48,6 +44,10 @@ public class MenuCliente extends javax.swing.JFrame {
         if (user != null) {
             lblSaldo.setText(String.format("R$ %.2f", user.getSaldo()));
         }
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
     }
     
     @SuppressWarnings("unchecked")
@@ -364,9 +364,7 @@ public class MenuCliente extends javax.swing.JFrame {
         Usuario user = buscarUsuarioPorCPF(cpfLogado);
         ConfirmacaoLogin conf = new ConfirmacaoLogin(user, true);
         conf.setVisible(true);
-        conf.setLocationRelativeTo(null);
-        
-        
+        conf.setLocationRelativeTo(null);  
     }//GEN-LAST:event_MenuExtratoActionPerformed
 
     private void MenuCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCreditoActionPerformed
@@ -411,9 +409,6 @@ public class MenuCliente extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_lblClickMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -450,10 +445,7 @@ public class MenuCliente extends javax.swing.JFrame {
         });
         
     }
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox CheckBoxSaldo;
     private javax.swing.JMenuBar MenuBar;

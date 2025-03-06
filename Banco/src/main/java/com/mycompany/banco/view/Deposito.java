@@ -43,10 +43,10 @@ public class Deposito extends javax.swing.JFrame {
        formatador.setCommitsOnValidEdit(true); // Atualiza automaticamente
 
        txtValor.setFormatterFactory(new DefaultFormatterFactory(formatador));
-       txtValor.setValue(0.00); // Começa com zero reais e centavos
+       txtValor.setValue(0.00); 
     }
     
-    public double formatarValor(String valorTexto) {
+    private double formatarValor(String valorTexto) {
         if (valorTexto == null || valorTexto.isEmpty()) {
             return 0.0;
         }
@@ -58,7 +58,10 @@ public class Deposito extends javax.swing.JFrame {
             return 0.0;
         }
     }
-   
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/deposito.png")));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -270,7 +273,5 @@ public class Deposito extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/deposito.png")));
-    }
+    
 }

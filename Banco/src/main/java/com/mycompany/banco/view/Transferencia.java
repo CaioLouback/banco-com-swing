@@ -1,6 +1,5 @@
 package com.mycompany.banco.view;
 
-
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 
 import java.awt.Toolkit;
@@ -10,7 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
 import usuario.Usuario;
-
 
 public class Transferencia extends javax.swing.JFrame{
     private String cpfLogado;
@@ -42,7 +40,7 @@ public class Transferencia extends javax.swing.JFrame{
        txtValor.setValue(0.00); // Começa com zero reais e centavos
     }
    
-   public double formatarValor(String valorTexto) {
+    private double formatarValor(String valorTexto) {
         if (valorTexto == null || valorTexto.isEmpty()) {
             return 0.0;
         }
@@ -54,7 +52,10 @@ public class Transferencia extends javax.swing.JFrame{
             return 0.0;
         }
     }
-   
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/transferir.png")));
+    }
     
         
     /**
@@ -298,9 +299,6 @@ public class Transferencia extends javax.swing.JFrame{
    
     }//GEN-LAST:event_txtValorActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -351,7 +349,5 @@ public class Transferencia extends javax.swing.JFrame{
     private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/transferir.png")));
-    }
+    
 }

@@ -32,6 +32,27 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         }); 
     }
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cadastroicon.png")));
+    }
+    
+    private void reset(){
+        txtCPF.setFocusable(false);
+        txtSenha.setFocusable(false);
+        txtNome.setFocusable(false);
+        txtConfSenha.setFocusable(false);
+
+        txtCPF.setText("");
+        txtSenha.setText("");
+        txtNome.setText("");
+        txtConfSenha.setText("");
+
+        txtCPF.setFocusable(true);
+        txtSenha.setFocusable(true);
+        txtNome.setFocusable(true);
+        txtConfSenha.setFocusable(true);
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -294,9 +315,6 @@ public class TelaCadastro extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -355,25 +373,5 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/cadastroicon.png")));
-    }
     
-    private void reset(){
-        txtCPF.setFocusable(false);
-        txtSenha.setFocusable(false);
-        txtNome.setFocusable(false);
-        txtConfSenha.setFocusable(false);
-
-        txtCPF.setText("");
-        txtSenha.setText("");
-        txtNome.setText("");
-        txtConfSenha.setText("");
-
-        txtCPF.setFocusable(true);
-        txtSenha.setFocusable(true);
-        txtNome.setFocusable(true);
-        txtConfSenha.setFocusable(true);
-        
-    }
 }

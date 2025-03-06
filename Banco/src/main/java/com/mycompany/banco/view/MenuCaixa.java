@@ -13,10 +13,15 @@ public class MenuCaixa extends javax.swing.JFrame {
         initComponents();
         setIcon();
     }
-     public MenuCaixa(String cpfCaixa) {
+    
+    public MenuCaixa(String cpfCaixa) {
         initComponents();
         setIcon();
         this.cpfCaixa = cpfCaixa;
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
     }
 
     /**
@@ -36,7 +41,7 @@ public class MenuCaixa extends javax.swing.JFrame {
         btnTransferencia = new javax.swing.JButton();
         lblCaixa = new javax.swing.JLabel();
         lblNomeCaixa = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        lblDeslogar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Caixa");
@@ -99,13 +104,13 @@ public class MenuCaixa extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
-        jLabel1.setText("Deslogar");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblDeslogar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        lblDeslogar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sair.png"))); // NOI18N
+        lblDeslogar.setText("Deslogar");
+        lblDeslogar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblDeslogar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                lblDeslogarMouseClicked(evt);
             }
         });
 
@@ -135,7 +140,7 @@ public class MenuCaixa extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelPrincipalLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
+                        .addComponent(lblDeslogar)))
                 .addContainerGap())
         );
         PainelPrincipalLayout.setVerticalGroup(
@@ -148,7 +153,7 @@ public class MenuCaixa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PainelLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(lblDeslogar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSaque)
@@ -178,13 +183,11 @@ public class MenuCaixa extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblNomeCaixaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblNomeCaixaAncestorAdded
-                                           
-    Usuario user = buscarUsuarioPorCPF(cpfCaixa);
-    lblNomeCaixa.setText(user.getNome());
-       
+        Usuario user = buscarUsuarioPorCPF(cpfCaixa);
+        lblNomeCaixa.setText(user.getNome());
     }//GEN-LAST:event_lblNomeCaixaAncestorAdded
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void lblDeslogarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDeslogarMouseClicked
           Usuario user = buscarUsuarioPorCPF(cpfCaixa);
             
         int resposta = JOptionPane.showConfirmDialog(
@@ -202,7 +205,7 @@ public class MenuCaixa extends javax.swing.JFrame {
             
             this.dispose(); 
         } 
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_lblDeslogarMouseClicked
 
     private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
         Transferencia trans = new Transferencia(cpfCaixa);
@@ -218,9 +221,6 @@ public class MenuCaixa extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnDepositoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -259,13 +259,10 @@ public class MenuCaixa extends javax.swing.JFrame {
     private javax.swing.JButton btnDeposito;
     private javax.swing.JButton btnSaque;
     private javax.swing.JButton btnTransferencia;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCaixa;
+    private javax.swing.JLabel lblDeslogar;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeCaixa;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
-    }
 }

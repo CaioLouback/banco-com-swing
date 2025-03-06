@@ -1,11 +1,9 @@
-
 package auxiliar;
 
 import static auxiliar.ArquivoJson.attSaldo;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import static auxiliar.ArquivoJson.registrarMovimentacao;
 import java.text.ParseException;
-import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import usuario.Usuario;

@@ -20,33 +20,35 @@ public class MenuGerente extends javax.swing.JFrame {
         initComponents();
         setIcon();
         this.cpfGerente = cpfGerente;
-      
     }
     
     public MenuGerente(){
         initComponents();
-  
     }
     
     private void atualizarTabela() {
-    // Obtém as solicitações de crédito e atualiza a tabela
-    List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
+        // Obtém as solicitações de crédito e atualiza a tabela
+        List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
 
-    DefaultTableModel model = new DefaultTableModel();
-    model.addColumn("Nome");
-    model.addColumn("CPF");
-    model.addColumn("Valor");
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nome");
+        model.addColumn("CPF");
+        model.addColumn("Valor");
 
-    // Preenche a tabela com os dados atualizados
-    for (Map<String, Object> solicitacao : solicitacoesCredito) {
-        String nome = (String) solicitacao.get("nome");
-        String cpf = (String) solicitacao.get("cpf");
-        double valor = (double) solicitacao.get("valor");
-        model.addRow(new Object[]{nome, cpf, valor});
+        // Preenche a tabela com os dados atualizados
+        for (Map<String, Object> solicitacao : solicitacoesCredito) {
+            String nome = (String) solicitacao.get("nome");
+            String cpf = (String) solicitacao.get("cpf");
+            double valor = (double) solicitacao.get("valor");
+            model.addRow(new Object[]{nome, cpf, valor});
+        }
+
+        tbTabela.setModel(model);
     }
-
-    tbTabela.setModel(model);
-}
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -254,14 +256,13 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_lblNomeGerenteAncestorAdded
 
     private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
-  
+
         List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nome");
         model.addColumn("CPF");
         model.addColumn("Valor");
-        
         
         for (Map<String, Object> solicitacao : solicitacoesCredito) {
             String nome = (String) solicitacao.get("nome");
@@ -270,7 +271,6 @@ public class MenuGerente extends javax.swing.JFrame {
             model.addRow(new Object[]{nome, cpf, valor});
         }
 
-        
         tbTabela.setModel(model);
     }//GEN-LAST:event_btnVerificarActionPerformed
 
@@ -313,9 +313,7 @@ public class MenuGerente extends javax.swing.JFrame {
             // Caso não tenha linha selecionada
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-        
-        
-        
+ 
     }//GEN-LAST:event_btnReprovarActionPerformed
 
     private void lblClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClickMouseClicked
@@ -338,9 +336,6 @@ public class MenuGerente extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_lblClickMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -392,8 +387,5 @@ public class MenuGerente extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloPequeno;
     private javax.swing.JTable tbTabela;
     // End of variables declaration//GEN-END:variables
-
-    private void setIcon() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
-    }
+ 
 }
