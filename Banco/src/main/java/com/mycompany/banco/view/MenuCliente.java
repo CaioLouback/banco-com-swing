@@ -376,17 +376,11 @@ public class MenuCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuCreditoActionPerformed
 
     private void MenuFixaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuFixaActionPerformed
-        Fixa fixa = new Fixa(cpfLogado);
-        fixa.setVisible(true);
-        fixa.setLocationRelativeTo(null);
-        this.dispose();
+        
     }//GEN-LAST:event_MenuFixaActionPerformed
 
     private void MenuVariavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuVariavelActionPerformed
-        Variavel variavel = new Variavel();
-        variavel.setVisible(true);
-        variavel.setLocationRelativeTo(null);
-        this.dispose();
+       
     }//GEN-LAST:event_MenuVariavelActionPerformed
 
     private void lblClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClickMouseClicked

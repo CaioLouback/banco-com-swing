@@ -6,9 +6,11 @@ import com.google.gson.reflect.TypeToken;
 import usuario.Usuario;
 import java.io.*;
 import java.lang.reflect.Type;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -145,17 +147,18 @@ public class ArquivoJson {
     
     public static String obterExtrato(String cpf) {
         List<Map<String, Object>> extrato = ArquivoJson.lerExtrato(cpf);
+        NumberFormat formatoMoeda = NumberFormat.getCurrencyInstance(new Locale("pt", "BR")); // Formato monetário BR
 
         StringBuilder sb = new StringBuilder();
-        sb.append("Extrato Bancario:\n\n");
+        sb.append("Extrato Bancário:\n\n");
 
         if (extrato.isEmpty()) {
-            sb.append("Nenhuma movimentacao encontrada.");
+            sb.append("Nenhuma movimentação encontrada.");
         } else {
             for (Map<String, Object> movimentacao : extrato) {
                 String tipo = (String) movimentacao.get("tipo");
                 double valor = (double) movimentacao.get("valor");
-                sb.append(String.format("%s: R$ %.2f\n", tipo, valor));
+                sb.append(String.format("%s: %s\n", tipo, formatoMoeda.format(valor)));
             }
         }
 

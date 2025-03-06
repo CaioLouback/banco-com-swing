@@ -1,10 +1,10 @@
 [
   {
-    "nome": "Caio Cesar",
-    "cpf": "452.536.800-47",
-    "senha": "123",
-    "tipo": "Cliente",
-    "saldo": 1000100.0
+    "nome": "Gleiph",
+    "cpf": "116.136.090-51",
+    "senha": "admin",
+    "tipo": "Gerente",
+    "saldo": 0.0
   },
   {
     "nome": "Mariazinha",
@@ -14,10 +14,10 @@
     "saldo": 0.0
   },
   {
-    "nome": "Gleiph",
-    "cpf": "116.136.090-51",
-    "senha": "admin",
-    "tipo": "Gerente",
-    "saldo": 0.0
+    "nome": "Caio Cesar",
+    "cpf": "452.536.800-47",
+    "senha": "123",
+    "tipo": "Cliente",
+    "saldo": 1285.0
   }
 ]
