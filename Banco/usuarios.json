@@ -4,7 +4,7 @@
     "cpf": "452.536.800-47",
     "senha": "123",
     "tipo": "Cliente",
-    "saldo": 1000000.0009999999
+    "saldo": 1045284.0009999999
   },
   {
     "nome": "Mariazinha",
@@ -12,5 +12,12 @@
     "senha": "123",
     "tipo": "Caixa",
     "saldo": 18.599
+  },
+  {
+    "nome": "Gleiph",
+    "cpf": "116.136.090-51",
+    "senha": "admin",
+    "tipo": "Gerente",
+    "saldo": 0.0
   }
 ]

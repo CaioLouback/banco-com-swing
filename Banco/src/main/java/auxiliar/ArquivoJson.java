@@ -16,6 +16,7 @@ public class ArquivoJson {
     private static final String CAMINHO_ARQUIVO = "usuarios.json";
     private static final String CAMINHO_EXTRATO = "extrato.json";
     private static final String CAMINHO_CREDITO = "credito.json";
+    private static final String CAMINHO_PEDIDO_SAQUE = "pedidosaque.json";
     private static final Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
     
     public static void salvarUsuario(Usuario usuario) {
@@ -281,4 +282,111 @@ public class ArquivoJson {
             System.out.println("Erro ao gravar as atualizações no arquivo.");
         }
     } 
+    
+    public static void pedidoSaque(String cpfSolicitante, double valor) {
+        Usuario user = buscarUsuarioPorCPF(cpfSolicitante);
+        File file = new File(CAMINHO_PEDIDO_SAQUE);
+        Map<String, List<Map<String, Object>>> saques;
+
+        // Verifica se o arquivo existe e carrega os dados existentes
+        if (file.exists()) {
+            try (FileReader reader = new FileReader(CAMINHO_PEDIDO_SAQUE)) {
+                Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+                }.getType();
+                saques = gson.fromJson(reader, type);
+            } catch (IOException e) {
+                saques = new HashMap<>();
+            }
+        } else {
+            saques = new HashMap<>();
+        }
+
+        List<Map<String, Object>> pedidos = saques.getOrDefault(cpfSolicitante, new ArrayList<>());
+
+        Map<String, Object> novoPedido = new HashMap<>();
+        novoPedido.put("nome", user.getNome());
+        novoPedido.put("cpf", user.getCpf());
+        novoPedido.put("valor", valor);
+
+        pedidos.add(novoPedido);
+        saques.put(cpfSolicitante, pedidos);
+
+        try (FileWriter writer = new FileWriter(CAMINHO_PEDIDO_SAQUE)) {
+            gson.toJson(saques, writer);
+            System.out.println("Pedido de saque registrado com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao registrar o pedido de saque.");
+        }
+    }
+    
+    public static String obterPedidosSaque() {
+        List<Map<String, Object>> saques = lerPedidosSaque();
+        StringBuilder sb = new StringBuilder();
+        sb.append("Pedidos de Saque:\n\n");
+
+        if (saques.isEmpty()) {
+            sb.append("Nenhum pedido de saque encontrado.");
+        } else {
+            for (Map<String, Object> pedido : saques) {
+                String nome = (String) pedido.get("nome");
+                double valor = (double) pedido.get("valor");
+                sb.append(String.format("Nome: %s | Valor: R$ %.2f\n", nome, valor));
+            }
+        }
+        return sb.toString();
+    }
+
+    public static List<Map<String, Object>> lerPedidosSaque() {
+        File file = new File(CAMINHO_PEDIDO_SAQUE);
+        if (!file.exists()) {
+            return new ArrayList<>();
+        }
+        try (FileReader reader = new FileReader(CAMINHO_PEDIDO_SAQUE)) {
+            Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+            }.getType();
+            Map<String, List<Map<String, Object>>> saques = gson.fromJson(reader, type);
+
+            List<Map<String, Object>> todosPedidos = new ArrayList<>();
+            for (List<Map<String, Object>> lista : saques.values()) {
+                todosPedidos.addAll(lista);
+            }
+            return todosPedidos;
+        } catch (IOException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    public static void removerPedidoSaque(String cpfSolicitante, double valor) {
+        File file = new File(CAMINHO_PEDIDO_SAQUE);
+        Map<String, List<Map<String, Object>>> saques;
+
+        if (file.exists()) {
+            try (FileReader reader = new FileReader(CAMINHO_PEDIDO_SAQUE)) {
+                Type type = new TypeToken<Map<String, List<Map<String, Object>>>>() {
+                }.getType();
+                saques = gson.fromJson(reader, type);
+            } catch (IOException e) {
+                saques = new HashMap<>();
+            }
+        } else {
+            saques = new HashMap<>();
+        }
+
+        List<Map<String, Object>> pedidos = saques.getOrDefault(cpfSolicitante, new ArrayList<>());
+        pedidos.removeIf(pedido -> pedido.get("valor").equals(valor));
+
+        if (pedidos.isEmpty()) {
+            saques.remove(cpfSolicitante);
+        } else {
+            saques.put(cpfSolicitante, pedidos);
+        }
+
+        try (FileWriter writer = new FileWriter(CAMINHO_PEDIDO_SAQUE)) {
+            gson.toJson(saques, writer);
+            System.out.println("Pedido de saque removido com sucesso!");
+        } catch (IOException e) {
+            System.out.println("Erro ao gravar as atualizações no arquivo.");
+        }
+    }
+    
 }

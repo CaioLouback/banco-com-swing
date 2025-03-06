@@ -2,6 +2,7 @@ package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static auxiliar.ArquivoJson.pedidoSaque;
 import static auxiliar.Verifica.saque;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
@@ -151,7 +152,7 @@ public class Saque extends javax.swing.JFrame {
                     .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
                         .addComponent(btnSaque)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         PainelLayout.setVerticalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +210,7 @@ public class Saque extends javax.swing.JFrame {
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnVoltar)
                                 .addGap(72, 72, 72)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,9 +218,8 @@ public class Saque extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(lblTituloSaldo)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblSaldo)))
-                                .addGap(14, 14, 14)))))
-                .addContainerGap(37, Short.MAX_VALUE))
+                                        .addComponent(lblSaldo)))))))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -290,9 +290,14 @@ public class Saque extends javax.swing.JFrame {
             if (usuario.getCpf().equals(cpfDoCliente) && usuario.getSenha().equals(senhaDigitada)) {
                 double valor = formatarValor(txtValor.getText());
                 if(valor != 0){
-                    saque(user, valor);
-                    JOptionPane.showMessageDialog(this, "Saque realizado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-                    reset();
+                    if(valor >= 1000000){
+                        JOptionPane.showMessageDialog(this, "Valor de saque alto. Favor procurar o seu gerente.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+                        pedidoSaque(usuario.getCpf(), valor);
+                    }else {
+                        saque(user, valor);
+                        JOptionPane.showMessageDialog(this, "Saque realizado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+                        reset(); 
+                    }  
                 } else {
                     JOptionPane.showMessageDialog(this, "Favor inserir um valor diferente de 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);
                 }   

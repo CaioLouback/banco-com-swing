@@ -43,7 +43,7 @@ public class MenuGerente extends javax.swing.JFrame {
             model.addRow(new Object[]{nome, cpf, valor});
         }
 
-        tbTabela.setModel(model);
+        tbTabelaCredito.setModel(model);
     }
     
     private void setIcon() {
@@ -59,6 +59,8 @@ public class MenuGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         lblGerente = new javax.swing.JLabel();
         lblNomeGerente = new javax.swing.JLabel();
         Painel = new javax.swing.JPanel();
@@ -67,13 +69,32 @@ public class MenuGerente extends javax.swing.JFrame {
         btnAprovar = new javax.swing.JButton();
         btnReprovar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tbTabela = new javax.swing.JTable();
+        tbTabelaCredito = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         lblLogoBanco = new javax.swing.JLabel();
         lblClick = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbTabelaSaque = new javax.swing.JTable();
+        lblTituloPequeno1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        MenuInvestimentos = new javax.swing.JMenu();
+        MenuCadastros = new javax.swing.JMenu();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerente");
@@ -122,7 +143,12 @@ public class MenuGerente extends javax.swing.JFrame {
             }
         });
 
-        tbTabela.setModel(new javax.swing.table.DefaultTableModel(
+        tbTabelaCredito = new javax.swing.JTable(){
+            public boolean isCellEditable(int   rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tbTabelaCredito.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -132,28 +158,40 @@ public class MenuGerente extends javax.swing.JFrame {
             new String [] {
                 "Nome", "CPF", "Valor"
             }
-        ));
-        jScrollPane2.setViewportView(tbTabela);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbTabelaCredito.setFocusable(false);
+        tbTabelaCredito.getTableHeader().setResizingAllowed(false);
+        tbTabelaCredito.getTableHeader().setReorderingAllowed(false);
+        jScrollPane2.setViewportView(tbTabelaCredito);
 
         javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
         Painel.setLayout(PainelLayout);
         PainelLayout.setHorizontalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(PainelLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addComponent(btnVerificar)
-                        .addGap(128, 128, 128)
+                        .addGap(54, 54, 54)
                         .addComponent(btnAprovar)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReprovar))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
-            .addGroup(PainelLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(lblTituloPequeno)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(PainelLayout.createSequentialGroup()
+                        .addGap(85, 85, 85)
+                        .addComponent(lblTituloPequeno))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         PainelLayout.setVerticalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,15 +218,15 @@ public class MenuGerente extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lblLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         lblClick.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
@@ -201,11 +239,99 @@ public class MenuGerente extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
-        MenuBar.add(jMenu1);
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jMenu2.setText("Edit");
-        MenuBar.add(jMenu2);
+        tbTabelaSaque = new javax.swing.JTable(){
+            public boolean isCellEditable(int   rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tbTabelaSaque.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nome", "CPF", "Valor"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbTabelaSaque.setFocusable(false);
+        tbTabelaSaque.getTableHeader().setResizingAllowed(false);
+        tbTabelaSaque.getTableHeader().setReorderingAllowed(false);
+        tbTabelaSaque.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTabelaSaqueMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tbTabelaSaque);
+
+        lblTituloPequeno1.setText("Verifique se há solicitações de saque de altos valores:");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/verificar.png"))); // NOI18N
+        jButton1.setText("Verificar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aprovado.png"))); // NOI18N
+        jButton2.setText("Liberar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(66, 66, 66)
+                        .addComponent(lblTituloPequeno1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(lblTituloPequeno1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        MenuInvestimentos.setText("Investimentos");
+        MenuBar.add(MenuInvestimentos);
+
+        MenuCadastros.setText("Cadastros");
+        MenuBar.add(MenuCadastros);
 
         setJMenuBar(MenuBar);
 
@@ -214,22 +340,24 @@ public class MenuGerente extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(184, 184, 184)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(37, 37, 37)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(191, 191, 191)
+                                .addComponent(lblClick))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(352, 352, 352)
                         .addComponent(lblGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNomeGerente))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(72, 72, 72)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblClick))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(23, 23, 23)
-                            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lblNomeGerente)))
+                .addGap(23, 23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,12 +367,17 @@ public class MenuGerente extends javax.swing.JFrame {
                     .addComponent(lblGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNomeGerente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblClick))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblClick)
+                        .addGap(16, 16, 16)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -271,19 +404,19 @@ public class MenuGerente extends javax.swing.JFrame {
             model.addRow(new Object[]{nome, cpf, valor});
         }
 
-        tbTabela.setModel(model);
+        tbTabelaCredito.setModel(model);
     }//GEN-LAST:event_btnVerificarActionPerformed
 
     private void btnAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovarActionPerformed
         // Obtém o índice da linha selecionada
-        int selectedRow = tbTabela.getSelectedRow();
+        int selectedRow = tbTabelaCredito.getSelectedRow();
 
         // Verifica se há uma linha selecionada
         if (selectedRow != -1) {
             // Pega os valores da linha selecionada
           
-            String cpf = (String) tbTabela.getValueAt(selectedRow, 1);  // CPF está na coluna 1
-            double valor = (double) tbTabela.getValueAt(selectedRow, 2); // Valor está na coluna 2
+            String cpf = (String) tbTabelaCredito.getValueAt(selectedRow, 1);  // CPF está na coluna 1
+            double valor = (double) tbTabelaCredito.getValueAt(selectedRow, 2); // Valor está na coluna 2
 
             // Aqui você pode chamar o método para realizar a transferência
             emprestimo(cpf, valor);
@@ -291,6 +424,7 @@ public class MenuGerente extends javax.swing.JFrame {
             removerSolicitacaoCredito(cpf, valor);
             JOptionPane.showMessageDialog(this, "Solicitacão aceita!", "Aprovado!", JOptionPane.INFORMATION_MESSAGE);
             atualizarTabela();
+            
         } else {
             // Caso não tenha linha selecionada
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
@@ -299,16 +433,17 @@ public class MenuGerente extends javax.swing.JFrame {
 
     private void btnReprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReprovarActionPerformed
         // Obtém o índice da linha selecionada
-        int selectedRow = tbTabela.getSelectedRow();
+        int selectedRow = tbTabelaCredito.getSelectedRow();
 
         // Verifica se há uma linha selecionada
         if (selectedRow != -1) { // Pega os valores da linha selecionada
          
-            String cpf = (String) tbTabela.getValueAt(selectedRow, 1);  // CPF está na coluna 1
-            double valor = (double) tbTabela.getValueAt(selectedRow, 2); // Valor está na coluna 2
+            String cpf = (String) tbTabelaCredito.getValueAt(selectedRow, 1);  // CPF está na coluna 1
+            double valor = (double) tbTabelaCredito.getValueAt(selectedRow, 2); // Valor está na coluna 2
 
             removerSolicitacaoCredito(cpf, valor);
-            
+            JOptionPane.showMessageDialog(this, "Solicitacão negada!", "Negado!", JOptionPane.INFORMATION_MESSAGE);
+            atualizarTabela();
         } else {
             // Caso não tenha linha selecionada
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
@@ -335,6 +470,35 @@ public class MenuGerente extends javax.swing.JFrame {
             this.dispose(); 
         } 
     }//GEN-LAST:event_lblClickMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        List<Map<String, Object>> pedidoSaque = ArquivoJson.lerPedidosSaque();
+        
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nome");
+        model.addColumn("CPF");
+        model.addColumn("Valor");
+        
+        
+        for (Map<String, Object> pedido : pedidoSaque) {
+            String nome = (String) pedido.get("nome");
+            String cpf = (String) pedido.get("cpf");
+            double valor = (double) pedido.get("valor");
+            model.addRow(new Object[]{nome, cpf, valor});
+        }
+
+        tbTabelaSaque.setModel(model);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tbTabelaSaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTabelaSaqueMouseClicked
+        if (evt.getClickCount() == 2) {
+            evt.consume(); // Impede a ação do duplo clique
+}
+    }//GEN-LAST:event_tbTabelaSaqueMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -372,20 +536,28 @@ public class MenuGerente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JMenu MenuCadastros;
+    private javax.swing.JMenu MenuInvestimentos;
     private javax.swing.JPanel Painel;
     private javax.swing.JButton btnAprovar;
     private javax.swing.JButton btnReprovar;
     private javax.swing.JButton btnVerificar;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblClick;
     private javax.swing.JLabel lblGerente;
     private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblNomeGerente;
     private javax.swing.JLabel lblTituloPequeno;
-    private javax.swing.JTable tbTabela;
+    private javax.swing.JLabel lblTituloPequeno1;
+    private javax.swing.JTable tbTabelaCredito;
+    private javax.swing.JTable tbTabelaSaque;
     // End of variables declaration//GEN-END:variables
  
 }
