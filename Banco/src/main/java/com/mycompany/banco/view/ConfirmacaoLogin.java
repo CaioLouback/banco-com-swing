@@ -10,8 +10,6 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     private Usuario logado;
     private boolean transferencia;
     private boolean extrato;
-    private boolean deposito;
-    private boolean saque;
     private Usuario destino;
     private double valor;
     
@@ -22,8 +20,6 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         this.destino = null;
         this.valor = 0;
         extrato = false;
-        saque = false;
-        deposito = false;
         this.transferencia = false;
     }
     public ConfirmacaoLogin(Usuario logado, Usuario destino, double valor, boolean transferencia){
@@ -33,8 +29,6 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         this.destino = destino;
         this.valor = valor;
         extrato = false;
-        saque = false;
-        deposito = false;
         this.transferencia = transferencia;
     }
     
@@ -45,10 +39,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         destino = null;
         valor = 0;
         this.extrato = extrato;
-        transferencia = false;
-        saque = false;
-        deposito = false;
-        
+        transferencia = false;   
     }
     
     private void setIcon() {
@@ -224,11 +215,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
                 Extrato extra = new Extrato(logado);
                 extra.setVisible(true);
                 extra.setLocationRelativeTo(null);    
-            } else if (deposito == true){
-                
-            } else if (saque == true){
-                
-            }
+            } 
             this.dispose(); 
         }
                 

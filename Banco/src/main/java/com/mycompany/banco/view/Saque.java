@@ -5,6 +5,8 @@ import java.awt.Toolkit;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JOptionPane;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.NumberFormatter;
 import usuario.Usuario;
 
 
@@ -14,16 +16,45 @@ public class Saque extends javax.swing.JFrame {
     public Saque() {
         initComponents();
         setIcon();
+        campoMonetario();
     }
     
     public Saque(String cpfCaixa) {
         initComponents();
         setIcon();
         this.cpfCaixa = cpfCaixa;
+        campoMonetario();
     }
     
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/saque.png")));
+    }
+    
+    private void campoMonetario() {
+       NumberFormat formato = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
+       formato.setMaximumFractionDigits(2); // Permite duas casas decimais
+       formato.setMinimumFractionDigits(2); // Sempre exibe duas casas decimais
+
+       NumberFormatter formatador = new NumberFormatter(formato);
+       formatador.setAllowsInvalid(false);
+       formatador.setOverwriteMode(true);
+       formatador.setCommitsOnValidEdit(true); // Atualiza automaticamente
+
+       txtValor.setFormatterFactory(new DefaultFormatterFactory(formatador));
+       txtValor.setValue(0.00); 
+    }
+    
+    private double formatarValor(String valorTexto) {
+        if (valorTexto == null || valorTexto.isEmpty()) {
+            return 0.0;
+        }
+        try {
+            String valorLimpo = valorTexto.replace("R$", "").replace(".", "").replace(",", ".").trim();
+            return Double.parseDouble(valorLimpo);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valor inválido! Digite um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return 0.0;
+        }
     }
 
     /**
@@ -43,6 +74,8 @@ public class Saque extends javax.swing.JFrame {
         lblCPF = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
         txtSenha = new javax.swing.JPasswordField();
+        txtValor = new javax.swing.JFormattedTextField();
+        lblValor = new javax.swing.JLabel();
         lblTituloSaldo = new javax.swing.JLabel();
         btnConsultarSaldo = new javax.swing.JButton();
         lblSaldo = new javax.swing.JLabel();
@@ -64,6 +97,11 @@ public class Saque extends javax.swing.JFrame {
 
         btnSaque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/saque.png"))); // NOI18N
         btnSaque.setText("Sacar");
+        btnSaque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaqueActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setText("SAQUE");
@@ -71,6 +109,10 @@ public class Saque extends javax.swing.JFrame {
         lblCPF.setText("Cliente (CPF):");
 
         lblSenha.setText("Senha:");
+
+        txtValor.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
+
+        lblValor.setText("Valor:");
 
         javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
         Painel.setLayout(PainelLayout);
@@ -84,13 +126,15 @@ public class Saque extends javax.swing.JFrame {
                 .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(53, 53, 53)
-                        .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblCPF)
-                            .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCPF, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
                             .addComponent(lblSenha)
-                            .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtSenha)
+                            .addComponent(lblValor)
+                            .addComponent(txtValor)))
                     .addGroup(PainelLayout.createSequentialGroup()
-                        .addGap(85, 85, 85)
+                        .addGap(88, 88, 88)
                         .addComponent(btnSaque)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
@@ -108,8 +152,12 @@ public class Saque extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(lblValor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addComponent(btnSaque)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         lblTituloSaldo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -165,7 +213,7 @@ public class Saque extends javax.swing.JFrame {
                 .addComponent(lblLogoBanco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTituloSaldo)
                     .addComponent(lblSaldo))
@@ -201,6 +249,15 @@ public class Saque extends javax.swing.JFrame {
         caixa.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaqueActionPerformed
+        String cpfDoCliente = txtCPF.getText();
+        Usuario user = buscarUsuarioPorCPF(cpfDoCliente);
+        
+        if(txtCPF.getText().equals(user.getCpf()) && txtSenha.getPassword().equals(user.getSenha())){
+            double valor = formatarValor(txtValor.getText());
+        }
+    }//GEN-LAST:event_btnSaqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,8 +305,10 @@ public class Saque extends javax.swing.JFrame {
     private javax.swing.JLabel lblSaldo;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblTituloSaldo;
+    private javax.swing.JLabel lblValor;
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JFormattedTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
     
