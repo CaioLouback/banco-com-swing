@@ -113,7 +113,7 @@ public class Verifica {
         double saldo = usuario.getSaldo();
         saldo += valor;
         attSaldo(usuario.getCpf(), saldo);
-        registrarMovimentacao(usuario.getCpf(), "Empréstimo (+)", saldo);
+        registrarMovimentacao(usuario.getCpf(), "Empréstimo (+)", valor);
     }
     
     public static void deposito(Usuario usuario, double valor){

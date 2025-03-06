@@ -2,8 +2,10 @@ package com.mycompany.banco.view;
 
 import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static auxiliar.ArquivoJson.removerPedidoSaque;
 import static auxiliar.ArquivoJson.removerSolicitacaoCredito;
 import static auxiliar.Verifica.emprestimo;
+import static auxiliar.Verifica.saque;
 
 import java.awt.Toolkit;
 import java.util.List;
@@ -44,6 +46,26 @@ public class MenuGerente extends javax.swing.JFrame {
         }
 
         tbTabelaCredito.setModel(model);
+    }
+    
+    private void atualizarTabela2() {
+        // Obtém as solicitações de crédito e atualiza a tabela
+        List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Nome");
+        model.addColumn("CPF");
+        model.addColumn("Valor");
+
+        // Preenche a tabela com os dados atualizados
+        for (Map<String, Object> solicitacao : solicitacoesCredito) {
+            String nome = (String) solicitacao.get("nome");
+            String cpf = (String) solicitacao.get("cpf");
+            double valor = (double) solicitacao.get("valor");
+            model.addRow(new Object[]{nome, cpf, valor});
+        }
+
+        tbTabelaSaque.setModel(model);
     }
     
     private void setIcon() {
@@ -491,7 +513,29 @@ public class MenuGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+        int selectedRow = tbTabelaSaque.getSelectedRow();
+
+        // Verifica se há uma linha selecionada
+        if (selectedRow != -1) {
+            // Pega os valores da linha selecionada
+          
+            String cpf = (String) tbTabelaSaque.getValueAt(selectedRow, 1);  // CPF está na coluna 1
+            double valor = (double) tbTabelaSaque.getValueAt(selectedRow, 2); // Valor está na coluna 2
+
+            // Aqui você pode chamar o método para realizar a transferência
+            Usuario usuario = buscarUsuarioPorCPF(cpf);
+            
+            saque(usuario, valor);
+           
+            removerPedidoSaque(cpf, valor);
+            
+            JOptionPane.showMessageDialog(this, "Saque Liberado!", "Liberado!", JOptionPane.INFORMATION_MESSAGE);
+            atualizarTabela2();
+            
+        } else {
+            // Caso não tenha linha selecionada
+            JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void tbTabelaSaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTabelaSaqueMouseClicked
