@@ -70,6 +70,11 @@ public class MenuCaixa extends javax.swing.JFrame {
 
         btnDeposito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/deposito.png"))); // NOI18N
         btnDeposito.setText("Depósito");
+        btnDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositoActionPerformed(evt);
+            }
+        });
 
         btnTransferencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/transferir.png"))); // NOI18N
         btnTransferencia.setText("Transferência");
@@ -205,6 +210,13 @@ public class MenuCaixa extends javax.swing.JFrame {
         trans.setVisible(true);
         trans.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnTransferenciaActionPerformed
+
+    private void btnDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositoActionPerformed
+        Deposito deposito = new Deposito(cpfCaixa);
+        deposito.setVisible(true);
+        deposito.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnDepositoActionPerformed
 
     /**
      * @param args the command line arguments

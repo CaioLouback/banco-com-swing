@@ -4,7 +4,6 @@ package com.mycompany.banco.view;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 
 import java.awt.Toolkit;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JOptionPane;
