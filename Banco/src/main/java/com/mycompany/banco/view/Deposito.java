@@ -26,6 +26,11 @@ public class Deposito extends javax.swing.JFrame {
         campoMonetario();
         this.cpfCaixa = cpfCaixa;
     }
+    private void reset(){
+        txtCPF.setFocusable(false);
+        txtCPF.setText("");
+        txtCPF.setFocusable(true);
+    }
     
     private void campoMonetario() {
        NumberFormat formato = NumberFormat.getNumberInstance(new Locale("pt", "BR"));
@@ -212,6 +217,7 @@ public class Deposito extends javax.swing.JFrame {
         else{ 
             deposito(cliente, valor);
             JOptionPane.showMessageDialog(this, "Depósito registrado com sucesso!", "Depósito bem sucedido!", JOptionPane.INFORMATION_MESSAGE);
+            reset();
         }
         
         
