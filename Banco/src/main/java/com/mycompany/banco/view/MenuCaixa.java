@@ -51,7 +51,7 @@ public class MenuCaixa extends javax.swing.JFrame {
 
         PainelLogoBanco.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco.png"))); // NOI18N
+        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobanco pq.png"))); // NOI18N
 
         javax.swing.GroupLayout PainelLogoBancoLayout = new javax.swing.GroupLayout(PainelLogoBanco);
         PainelLogoBanco.setLayout(PainelLogoBancoLayout);
@@ -126,27 +126,23 @@ public class MenuCaixa extends javax.swing.JFrame {
             .addGroup(PainelPrincipalLayout.createSequentialGroup()
                 .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                        .addGap(52, 52, 52)
                         .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PainelPrincipalLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(PainelPrincipalLayout.createSequentialGroup()
-                                        .addComponent(btnTransferencia)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(btnDeposito)
-                                        .addGap(51, 51, 51)
-                                        .addComponent(btnSaque))
-                                    .addComponent(PainelLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(PainelPrincipalLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
                                 .addComponent(lblCaixa)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblNomeCaixa)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelPrincipalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblDeslogar)))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblNomeCaixa)
+                                .addGap(34, 34, 34)
+                                .addComponent(lblDeslogar))
+                            .addComponent(PainelLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(PainelPrincipalLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(btnTransferencia)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnDeposito)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnSaque)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PainelPrincipalLayout.setVerticalGroup(
             PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,17 +150,16 @@ public class MenuCaixa extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCaixa, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNomeCaixa))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(lblNomeCaixa)
+                    .addComponent(lblDeslogar))
+                .addGap(18, 18, 18)
                 .addComponent(PainelLogoBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblDeslogar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(PainelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSaque)
+                    .addComponent(btnTransferencia)
                     .addComponent(btnDeposito)
-                    .addComponent(btnTransferencia))
-                .addGap(72, 72, 72))
+                    .addComponent(btnSaque))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +222,10 @@ public class MenuCaixa extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDepositoActionPerformed
 
     private void btnSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaqueActionPerformed
-        // TODO add your handling code here:
+        Saque saque = new Saque(cpfCaixa);
+        saque.setVisible(true);
+        saque.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnSaqueActionPerformed
 
     public static void main(String args[]) {

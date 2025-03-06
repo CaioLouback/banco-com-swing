@@ -1,20 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.mycompany.banco.view;
 
-/**
- *
- * @author caiol
- */
-public class Saque extends javax.swing.JFrame {
+import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import java.awt.Toolkit;
+import java.text.NumberFormat;
+import java.util.Locale;
+import javax.swing.JOptionPane;
+import usuario.Usuario;
 
-    /**
-     * Creates new form Saque
-     */
+
+public class Saque extends javax.swing.JFrame {
+    private String cpfCaixa;
+    
     public Saque() {
         initComponents();
+        setIcon();
+    }
+    
+    public Saque(String cpfCaixa) {
+        initComponents();
+        setIcon();
+        this.cpfCaixa = cpfCaixa;
+    }
+    
+    private void setIcon() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/saque.png")));
     }
 
     /**
@@ -37,6 +46,7 @@ public class Saque extends javax.swing.JFrame {
         lblTituloSaldo = new javax.swing.JLabel();
         btnConsultarSaldo = new javax.swing.JButton();
         lblSaldo = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Saque");
@@ -57,7 +67,7 @@ public class Saque extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jLabel1.setText("SAQUE");
 
-        lblCPF.setText("Clinete (CPF):");
+        lblCPF.setText("Cliente (CPF):");
 
         lblSenha.setText("Senha:");
 
@@ -105,9 +115,22 @@ public class Saque extends javax.swing.JFrame {
         lblTituloSaldo.setText("Saldo: ");
 
         btnConsultarSaldo.setText("Consultar Saldo");
+        btnConsultarSaldo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarSaldoActionPerformed(evt);
+            }
+        });
 
         lblSaldo.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
         lblSaldo.setText("0");
+
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/voltar.png"))); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,14 +143,18 @@ public class Saque extends javax.swing.JFrame {
                         .addComponent(lblLogoBanco))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnConsultarSaldo)
-                                .addGap(55, 55, 55)
+                                .addGap(168, 168, 168)
                                 .addComponent(lblTituloSaldo)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblSaldo))
-                            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnVoltar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnConsultarSaldo)
+                                .addGap(14, 14, 14)))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,16 +164,46 @@ public class Saque extends javax.swing.JFrame {
                 .addComponent(lblLogoBanco)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConsultarSaldo)
                     .addComponent(lblTituloSaldo)
                     .addComponent(lblSaldo))
-                .addGap(0, 13, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btnConsultarSaldo)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVoltar)
+                        .addGap(28, 28, 28))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultarSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarSaldoActionPerformed
+        String cpfDoCliente = txtCPF.getText();
+        Usuario user;
+        
+        if (cpfDoCliente != null && !cpfDoCliente.isEmpty()) { 
+            user = buscarUsuarioPorCPF(cpfDoCliente);
+            if (user == null) {
+                JOptionPane.showMessageDialog(this, "Usuário não tem cadastro no banco ou o campo CPF está em branco.", "Atenção!", JOptionPane.WARNING_MESSAGE);
+            } else {
+                NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+                lblSaldo.setText(formato.format(user.getSaldo()));
+            }
+        }
+
+    }//GEN-LAST:event_btnConsultarSaldoActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        MenuCaixa caixa = new MenuCaixa(cpfCaixa);
+        caixa.setVisible(true);
+        caixa.setLocationRelativeTo(null);
+        this.dispose();
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +244,7 @@ public class Saque extends javax.swing.JFrame {
     private javax.swing.JPanel Painel;
     private javax.swing.JButton btnConsultarSaldo;
     private javax.swing.JButton btnSaque;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCPF;
     private javax.swing.JLabel lblLogoBanco;
@@ -196,4 +254,6 @@ public class Saque extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField txtCPF;
     private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
+
+    
 }
