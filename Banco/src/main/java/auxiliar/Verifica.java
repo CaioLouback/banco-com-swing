@@ -5,6 +5,7 @@ import static auxiliar.ArquivoJson.attSaldo;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import static auxiliar.ArquivoJson.registrarMovimentacao;
 import java.text.ParseException;
+import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import usuario.Usuario;
@@ -116,4 +117,13 @@ public class Verifica {
         attSaldo(usuario.getCpf(), saldo);
         registrarMovimentacao(usuario.getCpf(), "Empréstimo (+)", saldo);
     }
+    
+    public static void deposito(Usuario usuario, double valor){
+        double saldo = usuario.getSaldo();
+        saldo += valor;
+        attSaldo(usuario.getCpf(), saldo);
+        registrarMovimentacao(usuario.getCpf(), "Depósito (+)", valor);
+    }
+    
+    
 }

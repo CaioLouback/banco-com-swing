@@ -1,11 +1,14 @@
 package com.mycompany.banco.view;
 
+import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static auxiliar.Verifica.deposito;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
+import usuario.Usuario;
 
 
 public class Deposito extends javax.swing.JFrame {
@@ -37,6 +40,19 @@ public class Deposito extends javax.swing.JFrame {
        txtValor.setFormatterFactory(new DefaultFormatterFactory(formatador));
        txtValor.setValue(0.00); // Começa com zero reais e centavos
     }
+    
+    public double formatarValor(String valorTexto) {
+        if (valorTexto == null || valorTexto.isEmpty()) {
+            return 0.0;
+        }
+        try {
+            String valorLimpo = valorTexto.replace("R$", "").replace(".", "").replace(",", ".").trim();
+            return Double.parseDouble(valorLimpo);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Valor inválido! Digite um número válido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return 0.0;
+        }
+    }
    
 
     /**
@@ -54,6 +70,7 @@ public class Deposito extends javax.swing.JFrame {
         lblValor = new javax.swing.JLabel();
         txtCPF = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
+        lblLogoBanco = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
         btnDepositar = new javax.swing.JButton();
 
@@ -84,16 +101,6 @@ public class Deposito extends javax.swing.JFrame {
 
         jLabel1.setText("Cliente(CPF):");
 
-        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/voltar.png"))); // NOI18N
-        btnVoltar.setText("Voltar");
-        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVoltarActionPerformed(evt);
-            }
-        });
-
-        btnDepositar.setText("Depositar");
-
         javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
         Painel.setLayout(PainelLayout);
         PainelLayout.setHorizontalGroup(
@@ -104,25 +111,20 @@ public class Deposito extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addComponent(lblTituloDeposito))
                     .addGroup(PainelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnVoltar)
-                        .addGap(39, 39, 39)
-                        .addComponent(btnDepositar))
-                    .addGroup(PainelLayout.createSequentialGroup()
                         .addGap(41, 41, 41)
                         .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblValor)
                             .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         PainelLayout.setVerticalGroup(
             PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PainelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(lblTituloDeposito)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,28 +132,58 @@ public class Deposito extends javax.swing.JFrame {
                 .addComponent(lblValor)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVoltar)
-                    .addComponent(btnDepositar))
-                .addGap(15, 15, 15))
+                .addGap(66, 66, 66))
         );
+
+        lblLogoBanco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logobancopqline.png"))); // NOI18N
+
+        btnVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/voltar.png"))); // NOI18N
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
+        btnDepositar.setText("Depositar");
+        btnDepositar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnVoltar)
+                                .addGap(39, 39, 39)
+                                .addComponent(btnDepositar)
+                                .addGap(22, 22, 22))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblLogoBanco)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(13, 13, 13)
+                .addComponent(lblLogoBanco)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVoltar)
+                    .addComponent(btnDepositar))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -167,6 +199,23 @@ public class Deposito extends javax.swing.JFrame {
         caixa.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
+
+    private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
+        String cpfCliente = txtCPF.getText();
+        Usuario cliente = buscarUsuarioPorCPF(cpfCliente);
+        double valor = formatarValor(txtValor.getText());
+        
+        if(txtCPF.getText().isEmpty() || valor == 0)
+            JOptionPane.showMessageDialog(this, "O campo CPF ou valor está em branco. Favor preencher corretamente.", "Atenção!", JOptionPane.WARNING_MESSAGE);  
+        else if (cliente == null) 
+            JOptionPane.showMessageDialog(this, "CPF não é cadastrado no bancoo.", "Erro", JOptionPane.ERROR_MESSAGE);
+        else{ 
+            deposito(cliente, valor);
+            JOptionPane.showMessageDialog(this, "Depósito registrado com sucesso!", "Depósito bem sucedido!", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+        
+    }//GEN-LAST:event_btnDepositarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +257,7 @@ public class Deposito extends javax.swing.JFrame {
     private javax.swing.JButton btnDepositar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblLogoBanco;
     private javax.swing.JLabel lblTituloDeposito;
     private javax.swing.JLabel lblValor;
     private javax.swing.JFormattedTextField txtCPF;

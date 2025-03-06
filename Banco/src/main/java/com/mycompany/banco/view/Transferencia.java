@@ -42,7 +42,7 @@ public class Transferencia extends javax.swing.JFrame{
        txtValor.setValue(0.00); // Começa com zero reais e centavos
     }
    
-    private double formatarValor(String valorTexto) {
+   public double formatarValor(String valorTexto) {
         if (valorTexto == null || valorTexto.isEmpty()) {
             return 0.0;
         }
@@ -54,6 +54,8 @@ public class Transferencia extends javax.swing.JFrame{
             return 0.0;
         }
     }
+   
+    
         
     /**
      * This method is called from within the constructor to initialize the form.
