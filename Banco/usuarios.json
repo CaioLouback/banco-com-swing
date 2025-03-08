@@ -1,7 +1,7 @@
 [
   {
     "nome": "Gleiph",
-    "cpf": "116.136.090-51",
+    "cpf": "324.324.940-67",
     "senha": "admin",
     "tipo": "Gerente",
     "saldo": 0.0
@@ -10,56 +10,14 @@
     "nome": "Mariazinha",
     "cpf": "316.035.510-18",
     "senha": "123",
-    "tipo": "Caixa",
+    "tipo": "Gerente",
     "saldo": 0.0
   },
   {
-    "nome": "Caio Cesar",
+    "nome": "Caio",
     "cpf": "452.536.800-47",
     "senha": "123",
     "tipo": "Cliente",
-    "saldo": 85.0
-  },
-  {
-    "nome": "João",
-    "cpf": "123.456.789-00",
-    "senha": "senha123",
-    "tipo": "Cliente",
-    "saldo": 1000.0
-  },
-  {
-    "nome": "João",
-    "cpf": "123.456.789-00",
-    "senha": "senha123",
-    "tipo": "Cliente",
-    "saldo": 1000.0
-  },
-  {
-    "nome": "João",
-    "cpf": "123.456.789-00",
-    "senha": "senha123",
-    "tipo": "Cliente",
-    "saldo": 1000.0
-  },
-  {
-    "nome": "João",
-    "cpf": "123.456.789-00",
-    "senha": "senha123",
-    "tipo": "Cliente",
-    "saldo": 1000.0
-  },
-  {
-    "nome": "João",
-    "cpf": "123.456.789-00",
-    "senha": "senha123",
-    "tipo": "Cliente",
-    "saldo": 1000.0
-  },
-  {
-    "nome": "João",
-    "cpf": "123.456.789-00",
-    "senha": "senha123",
-    "tipo": "Cliente",
-    "saldo": 1000.0
+    "saldo": 100.0
   }
 ]
