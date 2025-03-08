@@ -10,11 +10,11 @@
     "nome": "Mariazinha",
     "cpf": "316.035.510-18",
     "senha": "123",
-    "tipo": "Gerente",
+    "tipo": "Caixa",
     "saldo": 0.0
   },
   {
-    "nome": "Caio",
+    "nome": "Caio Cesar",
     "cpf": "452.536.800-47",
     "senha": "123",
     "tipo": "Cliente",
