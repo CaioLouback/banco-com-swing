@@ -1,7 +1,7 @@
 package com.mycompany.banco.view;
 
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
-import static auxiliar.Verifica.deposito;
+import static auxiliar.Ajudante.deposito;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
 import java.util.Locale;

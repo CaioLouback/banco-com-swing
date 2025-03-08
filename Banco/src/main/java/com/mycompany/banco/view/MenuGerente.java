@@ -4,8 +4,8 @@ import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import static auxiliar.ArquivoJson.removerPedidoSaque;
 import static auxiliar.ArquivoJson.removerSolicitacaoCredito;
-import static auxiliar.Verifica.emprestimo;
-import static auxiliar.Verifica.saque;
+import static auxiliar.Ajudante.emprestimo;
+import static auxiliar.Ajudante.saque;
 
 import java.awt.Toolkit;
 import java.util.List;

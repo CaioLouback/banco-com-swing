@@ -3,7 +3,7 @@ package com.mycompany.banco.view;
 import auxiliar.ArquivoJson;
 import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
 import static auxiliar.ArquivoJson.pedidoSaque;
-import static auxiliar.Verifica.saque;
+import static auxiliar.Ajudante.saque;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
 import java.util.List;
