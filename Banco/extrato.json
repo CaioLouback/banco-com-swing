@@ -1,14 +1,8 @@
 {
   "452.536.800-47": [
     {
-      "tipo": "Transferência (-)",
-      "valor": 10.0
-    }
-  ],
-  "316.035.510-18": [
-    {
-      "tipo": "Transferência (+)",
-      "valor": 10.0
+      "tipo": "Saque (-)",
+      "valor": 100000.0
     }
   ]
 }

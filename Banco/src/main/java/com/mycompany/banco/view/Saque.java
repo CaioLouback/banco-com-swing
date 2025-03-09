@@ -290,14 +290,16 @@ public class Saque extends javax.swing.JFrame {
             if (usuario.getCpf().equals(cpfDoCliente) && usuario.getSenha().equals(senhaDigitada)) {
                 double valor = formatarValor(txtValor.getText());
                 if(valor != 0){
-                    if(valor >= 1000000){
+                    if(valor >= 1000000 && valor <= usuario.getSaldo()){
                         JOptionPane.showMessageDialog(this, "Valor de saque alto. Favor procurar o seu gerente.", "Atenção!", JOptionPane.WARNING_MESSAGE);
                         pedidoSaque(usuario.getCpf(), valor);
-                    }else {
+                    }else if(valor < usuario.getSaldo()) {
                         saque(user, valor);
                         JOptionPane.showMessageDialog(this, "Saque realizado!", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
                         reset(); 
-                    }  
+                    } else {
+                        JOptionPane.showMessageDialog(this, "SALDO INSUFICIENTE!", "Saldo", JOptionPane.INFORMATION_MESSAGE);
+                    } 
                 } else {
                     JOptionPane.showMessageDialog(this, "Favor inserir um valor diferente de 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);
                 }   
