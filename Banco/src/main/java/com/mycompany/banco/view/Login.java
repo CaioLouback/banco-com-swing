@@ -19,7 +19,60 @@ public class Login extends javax.swing.JFrame {
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icon.png")));
     }
+    
+    private void logar(){
+        if (txtCPF.getText().trim().isEmpty() || txtSenha.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        String cpfDigitado = txtCPF.getText().trim();
+        String senhaDigitada = new String(txtSenha.getPassword());
+
+        List<Usuario> usuarios = ArquivoJson.lerUsuarios();
+
+        for (Usuario usuario : usuarios) {
+            System.out.println("Usuário do JSON: CPF=" + usuario.getCpf() + ", Senha=" + usuario.getSenha() + ", Tipo=" + usuario.getTipo());
+        }
+
+        // Percorre os usuários e verifica se há correspondência
+        boolean loginValido = false;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
+                if (usuario.getTipo().trim().equalsIgnoreCase("Cliente")) {
+                    loginValido = true;
+                    MenuCliente menu = new MenuCliente(cpfDigitado);
+                    menu.setVisible(true);
+                    menu.setLocationRelativeTo(null);
+                    System.out.println("ENTROI AQUI NO CLIENTE");
+                    this.dispose();
+                    break;
+                } else if (usuario.getTipo().trim().equalsIgnoreCase("Gerente")) {
+                    loginValido = true;
+                    MenuGerente gerente = new MenuGerente(cpfDigitado);
+                    gerente.setVisible(true);
+                    gerente.setLocationRelativeTo(null);
+                    System.out.println("ENTROI AQUI NO GERENTE");
+                    this.dispose();
+                    break;
+                } else if (usuario.getTipo().trim().equalsIgnoreCase("Caixa")) {
+                    loginValido = true;
+                    MenuCaixa caixa = new MenuCaixa(cpfDigitado);
+                    caixa.setVisible(true);
+                    caixa.setLocationRelativeTo(null);
+                    System.out.println("ENTROI AQUI NO CAIXA");
+                    this.dispose();
+                    break;
+                }
+            }
+        }
+
+        if (!loginValido) {
+            JOptionPane.showMessageDialog(this, "CPF ou senha incorretos. Tente novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -152,56 +205,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-
-        if (txtCPF.getText().trim().isEmpty() || txtSenha.getPassword().length == 0) {
-            JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String cpfDigitado = txtCPF.getText().trim();
-        String senhaDigitada = new String(txtSenha.getPassword());
-
-        List<Usuario> usuarios = ArquivoJson.lerUsuarios();
-
-        for (Usuario usuario : usuarios) {
-            System.out.println("Usuário do JSON: CPF=" + usuario.getCpf() + ", Senha=" + usuario.getSenha() + ", Tipo=" + usuario.getTipo());
-        }
-
-        // Percorre os usuários e verifica se há correspondência
-        boolean loginValido = false;
-        for (Usuario usuario : usuarios) {
-            if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
-                if (usuario.getTipo().trim().equalsIgnoreCase("Cliente")) {
-                    loginValido = true;
-                    MenuCliente menu = new MenuCliente(cpfDigitado);
-                    menu.setVisible(true);
-                    menu.setLocationRelativeTo(null);
-                    System.out.println("ENTROI AQUI NO CLIENTE");
-                    this.dispose();
-                    break;
-                } else if (usuario.getTipo().trim().equalsIgnoreCase("Gerente")) {
-                    loginValido = true;
-                    MenuGerente gerente = new MenuGerente(cpfDigitado);
-                    gerente.setVisible(true);
-                    gerente.setLocationRelativeTo(null);
-                    System.out.println("ENTROI AQUI NO GERENTE");
-                    this.dispose();
-                    break;
-                } else if (usuario.getTipo().trim().equalsIgnoreCase("Caixa")) {
-                    loginValido = true;
-                    MenuCaixa caixa = new MenuCaixa(cpfDigitado);
-                    caixa.setVisible(true);
-                    caixa.setLocationRelativeTo(null);
-                    System.out.println("ENTROI AQUI NO CAIXA");
-                    this.dispose();
-                    break;
-                }
-            }
-        }
-
-        if (!loginValido) {
-            JOptionPane.showMessageDialog(this, "CPF ou senha incorretos. Tente novamente!", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
+        logar();    
     }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -220,46 +224,7 @@ public class Login extends javax.swing.JFrame {
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            
-            if (txtCPF.getText().trim().isEmpty() || txtSenha.getPassword().length == 0) {
-                JOptionPane.showMessageDialog(this, "Há informações em branco. Favor inserir um cadastro válido!", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            String cpfDigitado = txtCPF.getText().trim();
-            String senhaDigitada = new String(txtSenha.getPassword());
-
-            boolean loginValido = false;
-            List<Usuario> usuarios = ArquivoJson.lerUsuarios();
-            for (Usuario usuario : usuarios) {
-                if (usuario.getCpf().equals(cpfDigitado) && usuario.getSenha().equals(senhaDigitada)) {
-                    if (usuario.getTipo().trim().equalsIgnoreCase("Cliente")) {
-                        loginValido = true;
-                        MenuCliente menu = new MenuCliente(cpfDigitado);
-                        menu.setVisible(true);
-                        menu.setLocationRelativeTo(null);
-                        System.out.println("ENTROI AQUI NO CLIENTE");
-                        this.dispose();
-                        break;
-                    } else if (usuario.getTipo().trim().equalsIgnoreCase("Gerente")) {
-                        loginValido = true;
-                        MenuGerente gerente = new MenuGerente(cpfDigitado);
-                        gerente.setVisible(true);
-                        gerente.setLocationRelativeTo(null);
-                        System.out.println("ENTROI AQUI NO GERENTE");
-                        this.dispose();
-                        break;
-                    } else if (usuario.getTipo().trim().equalsIgnoreCase("Caixa")) {
-                        loginValido = true;
-                        MenuCaixa caixa = new MenuCaixa(cpfDigitado);
-                        caixa.setVisible(true);
-                        caixa.setLocationRelativeTo(null);
-                        System.out.println("ENTROI AQUI NO CAIXA");
-                        this.dispose();
-                        break;
-                    }
-                }
-            }
+            logar();
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
