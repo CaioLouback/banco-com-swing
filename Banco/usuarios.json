@@ -11,13 +11,13 @@
     "cpf": "316.035.510-18",
     "senha": "123",
     "tipo": "Caixa",
-    "saldo": 0.0
+    "saldo": 1.0
   },
   {
     "nome": "Caio Cesar",
     "cpf": "452.536.800-47",
     "senha": "123",
     "tipo": "Cliente",
-    "saldo": 100.0
+    "saldo": 99.0
   }
 ]
