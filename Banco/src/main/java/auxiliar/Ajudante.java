@@ -17,7 +17,6 @@ public class Ajudante {
         this.cpf = this.Format(C,false);
     }
     
-    
     public boolean isCPF(){
         
         if (this.cpf.equals("00000000000") || 
