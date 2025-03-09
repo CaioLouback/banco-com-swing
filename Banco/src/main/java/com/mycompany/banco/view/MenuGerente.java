@@ -28,7 +28,7 @@ public class MenuGerente extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void atualizarTabela() {
+    private void atualizarTabelaCredito() {
         // Obtém as solicitações de crédito e atualiza a tabela
         List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
 
@@ -48,9 +48,9 @@ public class MenuGerente extends javax.swing.JFrame {
         tbTabelaCredito.setModel(model);
     }
     
-    private void atualizarTabela2() {
+    private void atualizarTabelaSaque() {
         // Obtém as solicitações de crédito e atualiza a tabela
-        List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
+        List<Map<String, Object>> solicitacoesSaque = ArquivoJson.lerPedidosSaque();
 
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nome");
@@ -58,7 +58,7 @@ public class MenuGerente extends javax.swing.JFrame {
         model.addColumn("Valor");
 
         // Preenche a tabela com os dados atualizados
-        for (Map<String, Object> solicitacao : solicitacoesCredito) {
+        for (Map<String, Object> solicitacao : solicitacoesSaque) {
             String nome = (String) solicitacao.get("nome");
             String cpf = (String) solicitacao.get("cpf");
             double valor = (double) solicitacao.get("valor");
@@ -85,22 +85,22 @@ public class MenuGerente extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         lblGerente = new javax.swing.JLabel();
         lblNomeGerente = new javax.swing.JLabel();
-        Painel = new javax.swing.JPanel();
+        PainelCredito = new javax.swing.JPanel();
         lblTituloPequeno = new javax.swing.JLabel();
-        btnVerificar = new javax.swing.JButton();
-        btnAprovar = new javax.swing.JButton();
-        btnReprovar = new javax.swing.JButton();
+        btnVerificarCredito = new javax.swing.JButton();
+        btnAprovarCredito = new javax.swing.JButton();
+        btnReprovarCredito = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbTabelaCredito = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         lblLogoBanco = new javax.swing.JLabel();
         lblClick = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        PainelSaque = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tbTabelaSaque = new javax.swing.JTable();
         lblTituloPequeno1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnVerificarSaque = new javax.swing.JButton();
+        btnLiberarSaque = new javax.swing.JButton();
         MenuBar = new javax.swing.JMenuBar();
         MenuInvestimentos = new javax.swing.JMenu();
         MenuCadastros = new javax.swing.JMenu();
@@ -137,31 +137,31 @@ public class MenuGerente extends javax.swing.JFrame {
             }
         });
 
-        Painel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelCredito.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblTituloPequeno.setText("Verifique se há solicitações de crédito: ");
 
-        btnVerificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/verificar.png"))); // NOI18N
-        btnVerificar.setText("Verificar");
-        btnVerificar.addActionListener(new java.awt.event.ActionListener() {
+        btnVerificarCredito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/verificar.png"))); // NOI18N
+        btnVerificarCredito.setText("Verificar");
+        btnVerificarCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVerificarActionPerformed(evt);
+                btnVerificarCreditoActionPerformed(evt);
             }
         });
 
-        btnAprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aprovado.png"))); // NOI18N
-        btnAprovar.setText("Aprovar");
-        btnAprovar.addActionListener(new java.awt.event.ActionListener() {
+        btnAprovarCredito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aprovado.png"))); // NOI18N
+        btnAprovarCredito.setText("Aprovar");
+        btnAprovarCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAprovarActionPerformed(evt);
+                btnAprovarCreditoActionPerformed(evt);
             }
         });
 
-        btnReprovar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/negado.png"))); // NOI18N
-        btnReprovar.setText("Reprovar");
-        btnReprovar.addActionListener(new java.awt.event.ActionListener() {
+        btnReprovarCredito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/negado.png"))); // NOI18N
+        btnReprovarCredito.setText("Reprovar");
+        btnReprovarCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReprovarActionPerformed(evt);
+                btnReprovarCreditoActionPerformed(evt);
             }
         });
 
@@ -194,39 +194,39 @@ public class MenuGerente extends javax.swing.JFrame {
         tbTabelaCredito.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tbTabelaCredito);
 
-        javax.swing.GroupLayout PainelLayout = new javax.swing.GroupLayout(Painel);
-        Painel.setLayout(PainelLayout);
-        PainelLayout.setHorizontalGroup(
-            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelLayout.createSequentialGroup()
-                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(PainelLayout.createSequentialGroup()
+        javax.swing.GroupLayout PainelCreditoLayout = new javax.swing.GroupLayout(PainelCredito);
+        PainelCredito.setLayout(PainelCreditoLayout);
+        PainelCreditoLayout.setHorizontalGroup(
+            PainelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCreditoLayout.createSequentialGroup()
+                .addGroup(PainelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(PainelCreditoLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(btnVerificar)
+                        .addComponent(btnVerificarCredito)
                         .addGap(54, 54, 54)
-                        .addComponent(btnAprovar)
+                        .addComponent(btnAprovarCredito)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnReprovar))
-                    .addGroup(PainelLayout.createSequentialGroup()
+                        .addComponent(btnReprovarCredito))
+                    .addGroup(PainelCreditoLayout.createSequentialGroup()
                         .addGap(85, 85, 85)
                         .addComponent(lblTituloPequeno))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PainelCreditoLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-        PainelLayout.setVerticalGroup(
-            PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PainelLayout.createSequentialGroup()
+        PainelCreditoLayout.setVerticalGroup(
+            PainelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelCreditoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTituloPequeno)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PainelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnVerificar)
-                    .addComponent(btnAprovar)
-                    .addComponent(btnReprovar))
+                .addGroup(PainelCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerificarCredito)
+                    .addComponent(btnAprovarCredito)
+                    .addComponent(btnReprovarCredito))
                 .addGap(19, 19, 19))
         );
 
@@ -261,7 +261,7 @@ public class MenuGerente extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        PainelSaque.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         tbTabelaSaque = new javax.swing.JTable(){
             public boolean isCellEditable(int   rowIndex, int colIndex){
@@ -299,53 +299,53 @@ public class MenuGerente extends javax.swing.JFrame {
 
         lblTituloPequeno1.setText("Verifique se há solicitações de saque de altos valores:");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/verificar.png"))); // NOI18N
-        jButton1.setText("Verificar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnVerificarSaque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/verificar.png"))); // NOI18N
+        btnVerificarSaque.setText("Verificar");
+        btnVerificarSaque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnVerificarSaqueActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aprovado.png"))); // NOI18N
-        jButton2.setText("Liberar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLiberarSaque.setIcon(new javax.swing.ImageIcon(getClass().getResource("/aprovado.png"))); // NOI18N
+        btnLiberarSaque.setText("Liberar");
+        btnLiberarSaque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLiberarSaqueActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PainelSaqueLayout = new javax.swing.GroupLayout(PainelSaque);
+        PainelSaque.setLayout(PainelSaqueLayout);
+        PainelSaqueLayout.setHorizontalGroup(
+            PainelSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelSaqueLayout.createSequentialGroup()
+                .addGroup(PainelSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PainelSaqueLayout.createSequentialGroup()
                         .addGap(66, 66, 66)
                         .addComponent(lblTituloPequeno1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(PainelSaqueLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(PainelSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PainelSaqueLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(jButton1)
+                                .addComponent(btnVerificarSaque)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2))
+                                .addComponent(btnLiberarSaque))
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PainelSaqueLayout.setVerticalGroup(
+            PainelSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PainelSaqueLayout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addComponent(lblTituloPequeno1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(PainelSaqueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerificarSaque)
+                    .addComponent(btnLiberarSaque))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -367,9 +367,9 @@ public class MenuGerente extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(PainelCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(PainelSaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(191, 191, 191)
@@ -397,8 +397,8 @@ public class MenuGerente extends javax.swing.JFrame {
                         .addComponent(lblClick)
                         .addGap(16, 16, 16)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Painel, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PainelCredito, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PainelSaque, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -410,7 +410,7 @@ public class MenuGerente extends javax.swing.JFrame {
         lblNomeGerente.setText(user.getNome());
     }//GEN-LAST:event_lblNomeGerenteAncestorAdded
 
-    private void btnVerificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarActionPerformed
+    private void btnVerificarCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarCreditoActionPerformed
 
         List<Map<String, Object>> solicitacoesCredito = ArquivoJson.lerSolicitacaoCredito();
 
@@ -427,9 +427,9 @@ public class MenuGerente extends javax.swing.JFrame {
         }
 
         tbTabelaCredito.setModel(model);
-    }//GEN-LAST:event_btnVerificarActionPerformed
+    }//GEN-LAST:event_btnVerificarCreditoActionPerformed
 
-    private void btnAprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovarActionPerformed
+    private void btnAprovarCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprovarCreditoActionPerformed
         // Obtém o índice da linha selecionada
         int selectedRow = tbTabelaCredito.getSelectedRow();
 
@@ -445,15 +445,15 @@ public class MenuGerente extends javax.swing.JFrame {
             
             removerSolicitacaoCredito(cpf, valor);
             JOptionPane.showMessageDialog(this, "Solicitacão aceita!", "Aprovado!", JOptionPane.INFORMATION_MESSAGE);
-            atualizarTabela();
+            atualizarTabelaCredito();
             
         } else {
             // Caso não tenha linha selecionada
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_btnAprovarActionPerformed
+    }//GEN-LAST:event_btnAprovarCreditoActionPerformed
 
-    private void btnReprovarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReprovarActionPerformed
+    private void btnReprovarCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReprovarCreditoActionPerformed
         // Obtém o índice da linha selecionada
         int selectedRow = tbTabelaCredito.getSelectedRow();
 
@@ -465,13 +465,13 @@ public class MenuGerente extends javax.swing.JFrame {
 
             removerSolicitacaoCredito(cpf, valor);
             JOptionPane.showMessageDialog(this, "Solicitacão negada!", "Negado!", JOptionPane.INFORMATION_MESSAGE);
-            atualizarTabela();
+            atualizarTabelaCredito();
         } else {
             // Caso não tenha linha selecionada
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
  
-    }//GEN-LAST:event_btnReprovarActionPerformed
+    }//GEN-LAST:event_btnReprovarCreditoActionPerformed
 
     private void lblClickMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClickMouseClicked
         Usuario user = buscarUsuarioPorCPF(cpfGerente);
@@ -493,7 +493,7 @@ public class MenuGerente extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_lblClickMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnVerificarSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificarSaqueActionPerformed
         List<Map<String, Object>> pedidoSaque = ArquivoJson.lerPedidosSaque();
         
         DefaultTableModel model = new DefaultTableModel();
@@ -510,9 +510,9 @@ public class MenuGerente extends javax.swing.JFrame {
         }
 
         tbTabelaSaque.setModel(model);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnVerificarSaqueActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLiberarSaqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarSaqueActionPerformed
         int selectedRow = tbTabelaSaque.getSelectedRow();
 
         // Verifica se há uma linha selecionada
@@ -530,13 +530,13 @@ public class MenuGerente extends javax.swing.JFrame {
             removerPedidoSaque(cpf, valor);
             
             JOptionPane.showMessageDialog(this, "Saque Liberado!", "Liberado!", JOptionPane.INFORMATION_MESSAGE);
-            atualizarTabela2();
+            atualizarTabelaSaque();
             
         } else {
             // Caso não tenha linha selecionada
             JOptionPane.showMessageDialog(this, "Por favor, selecione uma linha!", "Aviso", JOptionPane.WARNING_MESSAGE);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnLiberarSaqueActionPerformed
 
     private void tbTabelaSaqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTabelaSaqueMouseClicked
         if (evt.getClickCount() == 2) {
@@ -582,13 +582,13 @@ public class MenuGerente extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenu MenuCadastros;
     private javax.swing.JMenu MenuInvestimentos;
-    private javax.swing.JPanel Painel;
-    private javax.swing.JButton btnAprovar;
-    private javax.swing.JButton btnReprovar;
-    private javax.swing.JButton btnVerificar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel PainelCredito;
+    private javax.swing.JPanel PainelSaque;
+    private javax.swing.JButton btnAprovarCredito;
+    private javax.swing.JButton btnLiberarSaque;
+    private javax.swing.JButton btnReprovarCredito;
+    private javax.swing.JButton btnVerificarCredito;
+    private javax.swing.JButton btnVerificarSaque;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

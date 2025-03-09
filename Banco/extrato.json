@@ -3,9 +3,21 @@
     {
       "tipo": "Transferência (-)",
       "valor": 1.0
+    },
+    {
+      "tipo": "Transferência (-)",
+      "valor": 1.0
+    },
+    {
+      "tipo": "Saque (-)",
+      "valor": -5550.0
     }
   ],
   "316.035.510-18": [
+    {
+      "tipo": "Transferência (+)",
+      "valor": 1.0
+    },
     {
       "tipo": "Transferência (+)",
       "valor": 1.0

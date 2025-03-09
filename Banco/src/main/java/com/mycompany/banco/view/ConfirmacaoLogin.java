@@ -23,6 +23,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         extrato = false;
         this.transferencia = false;
     }
+    
     public ConfirmacaoLogin(Usuario logado, Usuario destino, double valor, boolean transferencia){
         initComponents();
         setIcon();
@@ -42,6 +43,25 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
         this.extrato = extrato;
         transferencia = false;   
     }
+    
+    private void confirmacao(){
+        String senha = new String (txtSenha.getPassword());
+        
+        if(!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
+           JOptionPane.showMessageDialog(this,"Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
+        else{
+            if(transferencia == true){
+                transferenciaBancaria(logado, destino, valor);
+                JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+            } else if (extrato == true){
+                Extrato extra = new Extrato(logado);
+                extra.setVisible(true);
+                extra.setLocationRelativeTo(null);    
+            } 
+            this.dispose(); 
+        }
+    }
+    
     
     private void setIcon() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/confir.png")));
@@ -195,21 +215,7 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
 
     private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            String senha = new String(txtSenha.getPassword());
-
-            if (!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
-                JOptionPane.showMessageDialog(this, "Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-            else {
-                if (transferencia == true) {
-                    transferenciaBancaria(logado, destino, valor);
-                    JOptionPane.showMessageDialog(this, "Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ", "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-                } else if (extrato == true) {
-                    Extrato extra = new Extrato(logado);
-                    extra.setVisible(true);
-                    extra.setLocationRelativeTo(null);
-                }
-                this.dispose();
-            }
+            confirmacao();
         }
     }//GEN-LAST:event_txtSenhaKeyPressed
 
@@ -225,40 +231,11 @@ public class ConfirmacaoLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCPFActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        String senha = new String (txtSenha.getPassword());
-        
-        if(!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
-           JOptionPane.showMessageDialog(this,"Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-        else{
-            if(transferencia == true){
-                transferenciaBancaria(logado, destino, valor);
-                JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-            } else if (extrato == true){
-                Extrato extra = new Extrato(logado);
-                extra.setVisible(true);
-                extra.setLocationRelativeTo(null);    
-            } 
-            this.dispose(); 
-        }
-                
+        confirmacao();           
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnConfirmarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnConfirmarKeyPressed
-        String senha = new String (txtSenha.getPassword());
-        
-        if(!(txtCPF.getText().equals(logado.getCpf())) || (!(logado.getSenha().equals(senha))))
-           JOptionPane.showMessageDialog(this,"Login ou senha estão incorretos!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-        else{
-            if(transferencia == true){
-                transferenciaBancaria(logado, destino, valor);
-                JOptionPane.showMessageDialog(this,"Confirmação realizada com sucesso! Sua trasferência foi bem sucedida! ","Sucesso!", JOptionPane.INFORMATION_MESSAGE);
-            } else if (extrato == true){
-                Extrato extra = new Extrato(logado);
-                extra.setVisible(true);
-                extra.setLocationRelativeTo(null);    
-            } 
-            this.dispose(); 
-        }
+        confirmacao();
     }//GEN-LAST:event_btnConfirmarKeyPressed
 
     public static void main(String args[]) {

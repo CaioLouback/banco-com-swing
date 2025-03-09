@@ -16,9 +16,7 @@ public class Extrato extends javax.swing.JFrame {
     public Extrato(Usuario logado) {
         initComponents();
         this.logado = logado;
-        String extrato = ArquivoJson.obterExtrato(logado.getCpf());
-        System.out.println("Extrato carregado: " + extrato);  
-        txtAreaExtrato.setText(extrato);
+        mostraExtrato();
         setIcon();
     }
     
@@ -26,6 +24,12 @@ public class Extrato extends javax.swing.JFrame {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/extrato_pq.png")));
     }
     
+    
+    private void mostraExtrato(){
+        String extrato = ArquivoJson.obterExtrato(logado.getCpf());
+        System.out.println("Extrato carregado: " + extrato);  
+        txtAreaExtrato.setText(extrato);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.

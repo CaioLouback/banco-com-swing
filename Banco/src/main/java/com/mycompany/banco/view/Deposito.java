@@ -217,7 +217,9 @@ public class Deposito extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "O campo CPF ou valor está em branco. Favor preencher corretamente.", "Atenção!", JOptionPane.WARNING_MESSAGE);  
         else if (cliente == null) 
             JOptionPane.showMessageDialog(this, "CPF não é cadastrado no bancoo.", "Erro", JOptionPane.ERROR_MESSAGE);
-        else{ 
+        else if (valor <0){
+            JOptionPane.showMessageDialog(this, "VALOR NEGATIVO NÃO SÃO ACEITOS!", "ERROR!", JOptionPane.ERROR_MESSAGE);
+        }else{ 
             deposito(cliente, valor);
             JOptionPane.showMessageDialog(this, "Depósito registrado com sucesso!", "Depósito bem sucedido!", JOptionPane.INFORMATION_MESSAGE);
             reset();

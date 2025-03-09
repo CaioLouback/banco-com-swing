@@ -17,6 +17,7 @@ public class Ajudante {
         this.cpf = this.Format(C,false);
     }
     
+    //Vefirica se é um cpf válido
     public boolean isCPF(){
         
         if (this.cpf.equals("00000000000") || 
@@ -75,7 +76,8 @@ public class Ajudante {
     public String getCPF(boolean Mascara) {
         return Format(this.cpf,Mascara);
     }
-
+    
+    //Formatação do cpf para retorno
     private String Format(String C, boolean Mascara){
         if(Mascara){
             return(C.substring(0, 3) + "." + C.substring(3, 6) + "." +
@@ -98,12 +100,18 @@ public class Ajudante {
     
     
     public static void transferenciaBancaria(Usuario origem, Usuario destino, double valor){
+        
         double saldoUserLogado = origem.getSaldo();
         saldoUserLogado -= valor;
+       
         double saldoUserDestino = destino.getSaldo();
         saldoUserDestino += valor;
+        
+        //Registro das movimentações no extrato de ambos os clientes
         registrarMovimentacao(origem.getCpf(), "Transferência (-)", valor);
         registrarMovimentacao(destino.getCpf(), "Transferência (+)", valor);
+        
+        //Atualiza salto de ambos. Tanto quem transferiu quanto quem recebeu
         attSaldo(origem.getCpf(), saldoUserLogado);
         attSaldo(destino.getCpf(), saldoUserDestino);
     }
@@ -112,13 +120,16 @@ public class Ajudante {
         Usuario usuario = buscarUsuarioPorCPF(cpf);
         double saldo = usuario.getSaldo();
         saldo += valor;
+        //Atualiza saldo no JSON
         attSaldo(usuario.getCpf(), saldo);
+        
         registrarMovimentacao(usuario.getCpf(), "Empréstimo (+)", valor);
     }
     
     public static void deposito(Usuario usuario, double valor){
         double saldo = usuario.getSaldo();
         saldo += valor;
+        
         attSaldo(usuario.getCpf(), saldo);
         registrarMovimentacao(usuario.getCpf(), "Depósito (+)", valor);
     }
@@ -126,6 +137,7 @@ public class Ajudante {
     public static void saque(Usuario usuario, double valor){
         double saldo = usuario.getSaldo();
         saldo -= valor;
+        
         attSaldo(usuario.getCpf(), saldo);
         registrarMovimentacao(usuario.getCpf(), "Saque (-)", valor);
     }

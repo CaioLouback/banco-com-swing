@@ -272,7 +272,9 @@ public class Transferencia extends javax.swing.JFrame{
                 JOptionPane.showMessageDialog(this, "Insira um valor que não seja 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);
             } else if (valor > cliente.getSaldo()) {
                 JOptionPane.showMessageDialog(this, "SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-            } else {
+            } else if (valor < 0){
+                JOptionPane.showMessageDialog(this, "VALOR NEGATIVO NÃO SÃO ACEITOS!", "ERROR!", JOptionPane.ERROR_MESSAGE);
+            }else {
                 ConfirmacaoLogin conf = new ConfirmacaoLogin(cliente, userDestino, valor, true);
                 conf.setVisible(true);
                 conf.setLocationRelativeTo(null);
@@ -287,7 +289,9 @@ public class Transferencia extends javax.swing.JFrame{
                 JOptionPane.showMessageDialog(this, "Insira um valor que não seja 0.", "Atenção!", JOptionPane.WARNING_MESSAGE);
             } else if (valor > userLogado.getSaldo()) {
                 JOptionPane.showMessageDialog(this, "SALDO INSUFICIENTE!", "Atenção!", JOptionPane.WARNING_MESSAGE);
-            } else {
+            } else if (valor < 0) {
+                JOptionPane.showMessageDialog(this, "VALOR NEGATIVO NÃO SÃO ACEITOS!", "ERROR!", JOptionPane.ERROR_MESSAGE);
+            }else{
                 ConfirmacaoLogin conf = new ConfirmacaoLogin(userLogado, userDestino, valor, true);
                 conf.setVisible(true);
                 conf.setLocationRelativeTo(null);
