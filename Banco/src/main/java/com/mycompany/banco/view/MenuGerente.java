@@ -6,7 +6,6 @@ import static auxiliar.ArquivoJson.removerPedidoSaque;
 import static auxiliar.ArquivoJson.removerSolicitacaoCredito;
 import static auxiliar.Ajudante.emprestimo;
 import static auxiliar.Ajudante.saque;
-
 import java.awt.Toolkit;
 import java.util.List;
 import java.util.Map;
