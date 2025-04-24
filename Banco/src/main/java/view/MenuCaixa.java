@@ -1,4 +1,4 @@
-package com.mycompany.banco.view;
+package view;
 
 import static dao.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Toolkit;

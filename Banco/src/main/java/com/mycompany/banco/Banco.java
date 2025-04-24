@@ -2,7 +2,7 @@ package com.mycompany.banco;
 
 // Aluno Caio Louback  matrícula 202335032
 
-import com.mycompany.banco.view.Login;
+import view.Login;
 
 public class Banco {
 

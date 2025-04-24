@@ -1,11 +1,11 @@
-package com.mycompany.banco.view;
+package view;
 
 import dao.ArquivoJson;
 import static dao.ArquivoJson.buscarUsuarioPorCPF;
 import static dao.ArquivoJson.removerPedidoSaque;
 import static dao.ArquivoJson.removerSolicitacaoCredito;
-import static auxiliar.Ajudante.emprestimo;
-import static auxiliar.Ajudante.saque;
+import static auxiliar.Formatacao.emprestimo;
+import static auxiliar.Formatacao.saque;
 import java.awt.Toolkit;
 import java.util.List;
 import java.util.Map;

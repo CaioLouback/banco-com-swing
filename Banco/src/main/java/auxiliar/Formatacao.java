@@ -9,11 +9,11 @@ import javax.swing.text.MaskFormatter;
 import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
-public class Ajudante {
+public class Formatacao {
     private String cpf;
     private static final String Formato = "###.###.###-##";
     
-    public Ajudante(String C) {
+    public Formatacao(String C) {
         this.cpf = this.Format(C,false);
     }
     

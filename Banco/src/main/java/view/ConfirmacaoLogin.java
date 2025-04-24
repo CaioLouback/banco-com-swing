@@ -1,6 +1,6 @@
-package com.mycompany.banco.view;
+package view;
 
-import static auxiliar.Ajudante.transferenciaBancaria;
+import static auxiliar.Formatacao.transferenciaBancaria;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;

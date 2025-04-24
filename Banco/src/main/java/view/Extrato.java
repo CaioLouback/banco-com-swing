@@ -1,4 +1,4 @@
-package com.mycompany.banco.view;
+package view;
 
 import dao.ArquivoJson;
 import java.awt.Toolkit;

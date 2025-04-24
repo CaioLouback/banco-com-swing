@@ -1,9 +1,9 @@
-package com.mycompany.banco.view;
+package view;
 
 import dao.ArquivoJson;
 import static dao.ArquivoJson.buscarUsuarioPorCPF;
 import static dao.ArquivoJson.pedidoSaque;
-import static auxiliar.Ajudante.saque;
+import static auxiliar.Formatacao.saque;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
 import java.util.List;

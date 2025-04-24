@@ -1,7 +1,7 @@
-package com.mycompany.banco.view;
+package view;
 
 import auxiliar.Cadastro;
-import auxiliar.Ajudante;
+import auxiliar.Formatacao;
 import java.awt.Toolkit;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -269,7 +269,7 @@ public class TelaCadastro extends javax.swing.JFrame {
             String senha = new String(txtSenha.getPassword());
             String numCpf = txtCPF.getText().trim();
 
-            Ajudante cpf = new Ajudante(numCpf);
+            Formatacao cpf = new Formatacao(numCpf);
             
             if (!cpf.isCPF()) {
                 JOptionPane.showMessageDialog(this, "CPF inválido! Favor inserir um CPF válido!");
