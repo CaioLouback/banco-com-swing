@@ -1,6 +1,7 @@
 package view;
 
-import static auxiliar.Formatacao.transferenciaBancaria;
+
+import static auxiliar.MovimentacoesBancarias.transferenciaBancaria;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;

@@ -1,7 +1,7 @@
 package view;
 
+import static auxiliar.MovimentacoesBancarias.deposito;
 import static dao.ArquivoJson.buscarUsuarioPorCPF;
-import static auxiliar.Formatacao.deposito;
 import java.awt.Toolkit;
 import java.text.NumberFormat;
 import java.util.Locale;
