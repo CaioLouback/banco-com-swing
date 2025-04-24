@@ -3,7 +3,7 @@ package dao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import usuario.Usuario;
+import user.Usuario;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.text.NumberFormat;

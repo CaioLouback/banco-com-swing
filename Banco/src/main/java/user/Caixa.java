@@ -1,4 +1,4 @@
-package usuario;
+package user;
 
 // Aluno Caio Louback  matrícula 202335032
 public class Caixa extends Usuario{

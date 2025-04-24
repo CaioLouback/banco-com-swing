@@ -5,7 +5,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.JOptionPane;
-import usuario.Usuario;
+import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
 public class Login extends javax.swing.JFrame {

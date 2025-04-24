@@ -8,7 +8,7 @@ import java.util.Locale;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.NumberFormatter;
-import usuario.Usuario;
+import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
 public class Transferencia extends javax.swing.JFrame{

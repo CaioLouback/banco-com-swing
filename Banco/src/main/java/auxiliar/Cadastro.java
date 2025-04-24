@@ -1,9 +1,9 @@
 package auxiliar;
 
 import dao.ArquivoJson;
-import usuario.Caixa;
-import usuario.Cliente;
-import usuario.Gerente;
+import user.Caixa;
+import user.Cliente;
+import user.Gerente;
 
 // Aluno Caio Louback  matrícula 202335032
 public class Cadastro {

@@ -4,7 +4,7 @@ import static auxiliar.Ajudante.transferenciaBancaria;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import usuario.Usuario;
+import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
 public class ConfirmacaoLogin extends javax.swing.JFrame {

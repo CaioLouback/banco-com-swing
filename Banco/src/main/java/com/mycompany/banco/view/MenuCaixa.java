@@ -3,7 +3,7 @@ package com.mycompany.banco.view;
 import static dao.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-import usuario.Usuario;
+import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
 public class MenuCaixa extends javax.swing.JFrame {

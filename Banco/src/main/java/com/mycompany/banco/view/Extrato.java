@@ -2,7 +2,7 @@ package com.mycompany.banco.view;
 
 import dao.ArquivoJson;
 import java.awt.Toolkit;
-import usuario.Usuario;
+import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
 public class Extrato extends javax.swing.JFrame {

@@ -1,4 +1,4 @@
-package usuario;
+package user;
 
 public class Cliente extends Usuario{
     

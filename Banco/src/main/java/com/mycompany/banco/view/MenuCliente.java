@@ -6,7 +6,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import usuario.Usuario;
+import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
 public class MenuCliente extends javax.swing.JFrame {

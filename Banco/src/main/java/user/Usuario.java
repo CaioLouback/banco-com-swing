@@ -1,4 +1,4 @@
-package usuario;
+package user;
 
 import com.google.gson.annotations.Expose;
 

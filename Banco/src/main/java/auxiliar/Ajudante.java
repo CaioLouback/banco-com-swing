@@ -6,7 +6,7 @@ import static dao.ArquivoJson.registrarMovimentacao;
 import java.text.ParseException;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-import usuario.Usuario;
+import user.Usuario;
 
 // Aluno Caio Louback  matrícula 202335032
 public class Ajudante {
