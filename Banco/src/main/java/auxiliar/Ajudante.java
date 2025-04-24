@@ -1,8 +1,8 @@
 package auxiliar;
 
-import static auxiliar.ArquivoJson.attSaldo;
-import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
-import static auxiliar.ArquivoJson.registrarMovimentacao;
+import static dao.ArquivoJson.attSaldo;
+import static dao.ArquivoJson.buscarUsuarioPorCPF;
+import static dao.ArquivoJson.registrarMovimentacao;
 import java.text.ParseException;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;

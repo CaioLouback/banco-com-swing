@@ -1,9 +1,9 @@
 package com.mycompany.banco.view;
 
-import auxiliar.ArquivoJson;
-import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
-import static auxiliar.ArquivoJson.removerPedidoSaque;
-import static auxiliar.ArquivoJson.removerSolicitacaoCredito;
+import dao.ArquivoJson;
+import static dao.ArquivoJson.buscarUsuarioPorCPF;
+import static dao.ArquivoJson.removerPedidoSaque;
+import static dao.ArquivoJson.removerSolicitacaoCredito;
 import static auxiliar.Ajudante.emprestimo;
 import static auxiliar.Ajudante.saque;
 import java.awt.Toolkit;

@@ -1,8 +1,8 @@
 package com.mycompany.banco.view;
 
-import auxiliar.ArquivoJson;
-import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
-import static auxiliar.ArquivoJson.pedidoSaque;
+import dao.ArquivoJson;
+import static dao.ArquivoJson.buscarUsuarioPorCPF;
+import static dao.ArquivoJson.pedidoSaque;
 import static auxiliar.Ajudante.saque;
 import java.awt.Toolkit;
 import java.text.NumberFormat;

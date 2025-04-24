@@ -1,5 +1,6 @@
 package auxiliar;
 
+import dao.ArquivoJson;
 import usuario.Caixa;
 import usuario.Cliente;
 import usuario.Gerente;

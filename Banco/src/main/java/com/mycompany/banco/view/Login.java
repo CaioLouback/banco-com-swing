@@ -1,6 +1,6 @@
 package com.mycompany.banco.view;
 
-import auxiliar.ArquivoJson;
+import dao.ArquivoJson;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.mycompany.banco.view;
 
-import static auxiliar.ArquivoJson.buscarUsuarioPorCPF;
+import static dao.ArquivoJson.buscarUsuarioPorCPF;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import usuario.Usuario;
